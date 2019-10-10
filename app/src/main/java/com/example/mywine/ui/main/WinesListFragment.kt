@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.mywine.R
-import com.example.mywine.model.Wines
+import com.example.mywine.model.Wine
 
 class WinesListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WinesListFragment()
-    }
+//    private lateinit var wineSelector: Selector
 
-    private lateinit var viewModel: WinesListViewModel
+    private lateinit var sharedWinesViewModel: WinesListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +23,21 @@ class WinesListFragment : Fragment() {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WinesListViewModel::class.java)
-        viewModel.getWines().observe(this, Observer<List<Wines>> { wines ->
-            // update UI
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedWinesViewModel = activity?.run {
+            ViewModelProviders.of(this)[WinesListViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+        sharedWinesViewModel.getWines().observe(this, Observer<List<Wine>> { wines ->
+            // update UI for all wines
         })
+        // setOnClickListener z jakiegos powodu nie dziala
+//        wineSelector.setOnClickListener { wine: Wine ->
+//            // Update the UI for particular wine
+//        }
+    }
+
+    companion object {
+        fun newInstance() = WinesListFragment()
     }
 }
