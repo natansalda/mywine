@@ -16,9 +16,9 @@ class WineDetailFragment : Fragment() {
         sharedWinesViewModel = activity?.run {
             ViewModelProviders.of(this)[WinesListViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
-        sharedWinesViewModel.selectedWine.observe(this, Observer<Wine> { wine ->
-            updateChosenWine(wine)
-        })
+//        sharedWinesViewModel.selectedWine.observe(this, Observer<Wine> { wine ->
+//            updateChosenWine(wine)
+//        })
     }
 
     private fun updateChosenWine(wine: Wine?) {

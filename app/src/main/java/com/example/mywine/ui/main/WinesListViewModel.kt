@@ -1,30 +1,23 @@
 package com.example.mywine.ui.main
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mywine.WineRepository
 import com.example.mywine.model.Wine
 
-class WinesListViewModel : ViewModel() {
+class WinesListViewModel(private var repository: WineRepository) : ViewModel() {
 
-    val selectedWine = MutableLiveData<Wine>()
+    private var allWines: LiveData<List<Wine>> = repository.getAllWines()
 
-    private val wines: MutableLiveData<List<Wine>> by lazy {
-        MutableLiveData<List<Wine>>().also {
-            loadWines()
-        }
+    fun insert(note: Wine) {
+        repository.insert(note)
     }
 
-    fun getWines(): LiveData<List<Wine>> {
-        return wines
+    fun deleteAllWines() {
+        repository.deleteAllWines()
     }
 
-    private fun loadWines() {
-        // Do an asynchronous operation to fetch wines.
-    }
-
-    // this fun selects particular wine for detail view
-    fun selectWine(wine: Wine) {
-        selectedWine.value = wine
+    fun getAllWines(): LiveData<List<Wine>> {
+        return allWines
     }
 }

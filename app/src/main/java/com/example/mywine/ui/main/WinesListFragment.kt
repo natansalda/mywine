@@ -28,7 +28,7 @@ class WinesListFragment : Fragment() {
         sharedWinesViewModel = activity?.run {
             ViewModelProviders.of(this)[WinesListViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
-        sharedWinesViewModel.getWines().observe(this, Observer<List<Wine>> { wines ->
+        sharedWinesViewModel.getAllWines().observe(this, Observer<List<Wine>> { wines ->
             // update UI for all wines
         })
         // setOnClickListener z jakiegos powodu nie dziala
