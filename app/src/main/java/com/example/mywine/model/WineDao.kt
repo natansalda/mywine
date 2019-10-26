@@ -9,7 +9,7 @@ import androidx.room.Query
 interface WineDao {
 
     @Insert
-    fun insert(note: Wine)
+    fun insert(wine: Wine)
 
     @Query("DELETE FROM wines_table")
     fun deleteAllWines()

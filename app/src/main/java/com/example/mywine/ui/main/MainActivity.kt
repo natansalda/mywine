@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)
+        recycler_view.setHasFixedSize(false)
         recycler_view.adapter = adapter
     }
 
@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity() {
                 data.getStringExtra(AddWineActivity.EXTRA_COLOR),
                 data.getIntExtra(AddWineActivity.EXTRA_YEAR, 2003),
                 data.getDoubleExtra(AddWineActivity.EXTRA_RATE, 4.5)
-
             )
             noteViewModel.insert(newNote)
 

@@ -51,11 +51,11 @@ abstract class WineDatabase : RoomDatabase() {
             wineDao?.insert(Wine("Title 1", "red", 1987, 3.5))
             wineDao?.insert(Wine("Title 2", "white", 1999, 4.5))
             wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
-            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
-            wineDao?.insert(Wine("Title 3", "white", 1987, 4.5))
-            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
-            wineDao?.insert(Wine("Title 3", "white", 1957, 3.5))
-            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 4", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 5", "white", 1987, 4.5))
+            wineDao?.insert(Wine("Title 6", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 7", "white", 1957, 3.5))
+            wineDao?.insert(Wine("Title 8", "red", 2019, 2.5))
         }
     }
 }

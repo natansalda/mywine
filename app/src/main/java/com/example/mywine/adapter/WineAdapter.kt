@@ -1,5 +1,6 @@
 package com.example.mywine.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
     }
 
     override fun getItemCount(): Int {
+        Log.v("WineAdapter", "there is ${wines.size} wines in db")
         return wines.size
     }
 
