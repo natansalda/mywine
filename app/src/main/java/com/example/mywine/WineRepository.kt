@@ -1,32 +1,22 @@
 package com.example.mywine
 
-import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.example.mywine.model.Wine
 import com.example.mywine.model.WineDao
-import com.example.mywine.model.WineDatabase
 
-class WineRepository(application: Application) {
+class WineRepository(private val wineDao: WineDao) {
 
-    private var wineDao: WineDao
-
-    private var allWines: LiveData<List<Wine>>
-
-    init {
-        val database: WineDatabase = WineDatabase.getInstance(
-            application.applicationContext
-        )
-        wineDao = database.wineDao()
-        allWines = wineDao.getAllWines()
-    }
+    private val allWines: LiveData<List<Wine>> = wineDao.getAllWines()
 
     fun insert(wine: Wine) {
-        val insertWineAsyncTask = InsertWineAsyncTask(wineDao).execute(wine)
+        InsertWineAsyncTask(
+            wineDao
+        ).execute(wine)
     }
 
     fun deleteAllWines() {
-        val deleteAllWinesAsyncTask = DeleteAllWinesAsyncTask(
+        DeleteAllWinesAsyncTask(
             wineDao
         ).execute()
     }
@@ -35,14 +25,12 @@ class WineRepository(application: Application) {
         return allWines
     }
 
-    private class InsertWineAsyncTask(wineDao: WineDao) : AsyncTask<Wine, Unit, Unit>() {
-        val wineDao = wineDao
+    private class InsertWineAsyncTask(val wineDao: WineDao) : AsyncTask<Wine, Unit, Unit>() {
 
-        override fun doInBackground(vararg p0: Wine?) {
-            wineDao.insert(p0[0]!!)
+        override fun doInBackground(vararg wine: Wine?) {
+            wineDao.insert(wine[0]!!)
         }
     }
-
 
     private class DeleteAllWinesAsyncTask(val wineDao: WineDao) : AsyncTask<Unit, Unit, Unit>() {
 
@@ -50,5 +38,4 @@ class WineRepository(application: Application) {
             wineDao.deleteAllWines()
         }
     }
-
 }

@@ -59,6 +59,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/wine_image"
                 android:layout_width="50dp"
                 android:layout_height="100dp"
                 android:contentDescription="Wine glass"

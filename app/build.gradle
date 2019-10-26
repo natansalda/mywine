@@ -28,10 +28,19 @@ android {
 }
 
 dependencies {
-    def recyclerview_version = "1.0.0"
 
-    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
-    implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_version"
+    def androidXVersion = '1.0.0'
+    def recyclerviewVersion = "1.0.0"
+    def koinVersion = '2.0.1'
+
+    implementation "androidx.annotation:annotation:${androidXVersion}"
+
+    api "org.koin:koin-android:${koinVersion}"
+    api "org.koin:koin-java:${koinVersion}"
+    api "org.koin:koin-android-viewmodel:${koinVersion}"
+
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    implementation "androidx.recyclerview:recyclerview-selection:$recyclerviewVersion"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -43,10 +52,16 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.koin:koin-test:${koinVersion}"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // Room components
     implementation "android.arch.persistence.room:runtime:2.2.0"
     kapt "android.arch.persistence.room:compiler:2.2.0"
+}
+
+androidExtensions {
+    experimental = true
 }

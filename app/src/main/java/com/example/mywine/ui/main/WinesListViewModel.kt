@@ -9,8 +9,8 @@ class WinesListViewModel(private var repository: WineRepository) : ViewModel() {
 
     private var allWines: LiveData<List<Wine>> = repository.getAllWines()
 
-    fun insert(note: Wine) {
-        repository.insert(note)
+    fun insert(wine: Wine) {
+        repository.insert(wine)
     }
 
     fun deleteAllWines() {

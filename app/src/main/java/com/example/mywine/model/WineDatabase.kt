@@ -7,12 +7,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Wine::class], version = 1)
+@Database(entities = [Wine::class], version = 1, exportSchema = false)
 abstract class WineDatabase : RoomDatabase() {
 
     abstract fun wineDao(): WineDao
-
-    private var instance: WineDatabase? = null
 
     companion object {
         private var instance: WineDatabase? = null
@@ -52,7 +50,12 @@ abstract class WineDatabase : RoomDatabase() {
         override fun doInBackground(vararg p0: Unit?) {
             wineDao?.insert(Wine("Title 1", "red", 1987, 3.5))
             wineDao?.insert(Wine("Title 2", "white", 1999, 4.5))
-            wineDao?.insert(Wine("Title 3", "pink", 2019, 2.5))
+            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 3", "white", 1987, 4.5))
+            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
+            wineDao?.insert(Wine("Title 3", "white", 1957, 3.5))
+            wineDao?.insert(Wine("Title 3", "red", 2019, 2.5))
         }
     }
 }

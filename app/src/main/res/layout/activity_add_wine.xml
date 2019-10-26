@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.detail.AddWineActivity">
+
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:inputType="text" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/red_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <RadioButton
+            android:id="@+id/white_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="White"
+            android:textAppearance="?android:textAppearanceMedium" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edit_text_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Year of production"
+        android:inputType="text" />
+
+</LinearLayout>
