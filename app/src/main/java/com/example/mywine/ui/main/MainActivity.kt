@@ -2,9 +2,9 @@ package com.example.mywine.ui.main
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mywine.R
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setupButtonAddWine()
+        setupButtonAddWine()
         setupRecyclerView()
 
         noteViewModel.getAllWines().observe(this,
@@ -33,15 +33,14 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    //TODO
-//    private fun setupButtonAddWine() {
-//        buttonAddNote.setOnClickListener {
-//            startActivityForResult(
-//                Intent(this, AddNoteActivity::class.java),
-//                ADD_NOTE_REQUEST
-//            )
-//        }
-//    }
+    private fun setupButtonAddWine() {
+        add_wine_button.setOnClickListener {
+            startActivityForResult(
+                Intent(this, AddWineActivity::class.java),
+                ADD_WINE_REQUEST
+            )
+        }
+    }
 
     private fun setupRecyclerView() {
         recycler_view.layoutManager = LinearLayoutManager(this)

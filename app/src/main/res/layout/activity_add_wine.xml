@@ -11,7 +11,7 @@
         android:id="@+id/edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
+        android:hint="Name of wine"
         android:inputType="text" />
 
     <RadioGroup
@@ -24,14 +24,14 @@
             android:id="@+id/red_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Red"
+            android:text="Red wine"
             android:textAppearance="?android:textAppearanceMedium" />
 
         <RadioButton
             android:id="@+id/white_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="White"
+            android:text="White wine"
             android:textAppearance="?android:textAppearanceMedium" />
     </RadioGroup>
 
