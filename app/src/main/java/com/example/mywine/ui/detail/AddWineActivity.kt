@@ -3,6 +3,8 @@ package com.example.mywine.ui.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mywine.R
@@ -15,24 +17,24 @@ class AddWineActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_wine)
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.add_note_menu, menu)
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.add_wine_menu, menu)
+        return true
+    }
 
-//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-//        return when (item?.itemId) {
-//            R.id.save_note -> {
-//                saveNote()
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.save_wine -> {
+                saveWine()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
-    private fun saveNote() {
+    private fun saveWine() {
         if (edit_text_name.text.toString().trim().isBlank()) {
-            Toast.makeText(this, "Can not insert empty note!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Can not insert empty record!", Toast.LENGTH_LONG).show()
             return
         }
 

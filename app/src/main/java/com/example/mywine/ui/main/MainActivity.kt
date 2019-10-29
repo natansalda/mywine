@@ -18,7 +18,7 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val noteViewModel: WinesListViewModel by inject()
+    private val wineViewModel: WinesListViewModel by inject()
     private val adapter: WineAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setupButtonAddWine()
         setupRecyclerView()
 
-        noteViewModel.getAllWines().observe(this,
+        wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
                 list?.let {
                     adapter.setWines(it)
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all_wines -> {
-                noteViewModel.deleteAllWines()
+                wineViewModel.deleteAllWines()
                 Toast.makeText(this, "All wines deleted!", Toast.LENGTH_LONG).show()
                 true
             }
@@ -72,17 +72,17 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            val newNote = Wine(
+            val newWine = Wine(
                 data.getStringExtra(AddWineActivity.EXTRA_NAME),
                 data.getStringExtra(AddWineActivity.EXTRA_COLOR),
                 data.getIntExtra(AddWineActivity.EXTRA_YEAR, 2003),
                 data.getDoubleExtra(AddWineActivity.EXTRA_RATE, 4.5)
             )
-            noteViewModel.insert(newNote)
+            wineViewModel.insert(newWine)
 
-            Toast.makeText(this, "Note saved!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Wine added!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Note not saved!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Wine could not be added!", Toast.LENGTH_SHORT).show()
         }
     }
 
