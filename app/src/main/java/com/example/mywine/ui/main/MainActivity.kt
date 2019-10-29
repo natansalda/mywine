@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mywine.R
 import com.example.mywine.adapter.WineAdapter
 import com.example.mywine.model.Wine
+import com.example.mywine.model.WinesListViewModel
 import com.example.mywine.ui.detail.AddWineActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all_wines -> {
+                //TODO add popup to ask user if delete wines
                 wineViewModel.deleteAllWines()
                 Toast.makeText(this, "All wines deleted!", Toast.LENGTH_LONG).show()
                 true

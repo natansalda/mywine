@@ -40,6 +40,7 @@ class AddWineActivity : AppCompatActivity() {
 
         val data = Intent().apply {
             putExtra(EXTRA_NAME, edit_text_name.text.toString())
+            // TODO make if statement for color of the wine added
             putExtra(EXTRA_COLOR, "red")
             putExtra(EXTRA_YEAR, edit_text_year.text.toString())
             putExtra(EXTRA_RATE, 4.5)

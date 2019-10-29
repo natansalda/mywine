@@ -1,4 +1,4 @@
-package com.example.mywine.ui.main
+package com.example.mywine.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
