@@ -14,6 +14,10 @@ import com.example.mywine.adapter.WineAdapter
 import com.example.mywine.model.Wine
 import com.example.mywine.model.WinesListViewModel
 import com.example.mywine.ui.detail.AddWineActivity
+import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
+import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
+import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_RATE
+import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
@@ -75,10 +79,12 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val newWine = Wine(
-                data.getStringExtra(AddWineActivity.EXTRA_NAME),
-                data.getStringExtra(AddWineActivity.EXTRA_COLOR),
-                data.getIntExtra(AddWineActivity.EXTRA_YEAR, 2003),
-                data.getDoubleExtra(AddWineActivity.EXTRA_RATE, 4.5)
+                data.getStringExtra(EXTRA_NAME),
+                data.getStringExtra(EXTRA_COLOR),
+                // TODO fix for NumberFormatException
+                data.getIntExtra("year", EXTRA_YEAR.toInt()),
+                // TODO fix for NumberFormatException
+                data.getDoubleExtra("rate", EXTRA_RATE.toDouble())
             )
             wineViewModel.insert(newWine)
 
