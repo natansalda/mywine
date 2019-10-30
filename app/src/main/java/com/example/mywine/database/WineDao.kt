@@ -1,9 +1,10 @@
-package com.example.mywine.model
+package com.example.mywine.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.mywine.model.Wine
 
 @Dao
 interface WineDao {

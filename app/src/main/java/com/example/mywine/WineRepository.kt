@@ -3,7 +3,7 @@ package com.example.mywine
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.example.mywine.model.Wine
-import com.example.mywine.model.WineDao
+import com.example.mywine.database.WineDao
 
 class WineRepository(private val wineDao: WineDao) {
 
