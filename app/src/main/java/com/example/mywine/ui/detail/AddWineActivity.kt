@@ -43,9 +43,9 @@ class AddWineActivity : AppCompatActivity() {
             // TODO make if statement for color of the wine added
             putExtra(EXTRA_COLOR, "red")
             // TODO make sure year is only int
-            putExtra(EXTRA_YEAR, edit_text_year.text.toString())
+            putExtra(EXTRA_YEAR, Integer.parseInt(edit_text_year.text.toString()))
             //TODO add possibility to add rating
-            putExtra(EXTRA_RATE, 4.5)
+            putExtra(EXTRA_RATE, 4)
         }
 
         setResult(Activity.RESULT_OK, data)

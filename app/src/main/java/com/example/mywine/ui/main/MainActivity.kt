@@ -82,9 +82,9 @@ class MainActivity : AppCompatActivity() {
                 data.getStringExtra(EXTRA_NAME),
                 data.getStringExtra(EXTRA_COLOR),
                 // TODO fix for NumberFormatException
-                data.getIntExtra("year", EXTRA_YEAR.toInt()),
+                data.getIntExtra("year", 2000),
                 // TODO fix for NumberFormatException
-                data.getDoubleExtra("rate", EXTRA_RATE.toDouble())
+                data.getIntExtra("rate", 4)
             )
             wineViewModel.insert(newWine)
 
