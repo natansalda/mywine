@@ -11,7 +11,7 @@ import com.example.mywine.model.Wine
 @Database(entities = [Wine::class], version = 4, exportSchema = false)
 abstract class WineDatabase : RoomDatabase() {
 
-    abstract fun wineDao(): WineDao
+    abstract fun wineDatabaseDaoDao(): WineDatabaseDao
 
     companion object {
         private var instance: WineDatabase? = null
@@ -46,7 +46,7 @@ abstract class WineDatabase : RoomDatabase() {
     }
 
     class PopulateDbAsyncTask(db: WineDatabase?) : AsyncTask<Unit, Unit, Unit>() {
-        private val wineDao = db?.wineDao()
+        private val wineDatabaseDaoDao = db?.wineDatabaseDaoDao()
 
         override fun doInBackground(vararg p0: Unit?) {
         }

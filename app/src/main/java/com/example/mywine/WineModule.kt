@@ -12,7 +12,7 @@ val dbModule = module {
             context = get()
         )
     }
-    factory { get<WineDatabase>().wineDao() }
+    factory { get<WineDatabase>().wineDatabaseDaoDao() }
 }
 
 val repositoryModule = module {
