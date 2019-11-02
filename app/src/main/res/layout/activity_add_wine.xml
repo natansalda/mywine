@@ -11,7 +11,7 @@
         android:id="@+id/edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name of wine"
+        android:hint="@string/name_of_wine"
         android:inputType="text" />
 
     <RadioGroup
@@ -24,14 +24,14 @@
             android:id="@+id/red_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Red wine"
+            android:text="@string/red_wine"
             android:textAppearance="?android:textAppearanceMedium" />
 
         <RadioButton
             android:id="@+id/white_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="White wine"
+            android:text="@string/white_wine"
             android:textAppearance="?android:textAppearanceMedium" />
     </RadioGroup>
 
@@ -39,7 +39,7 @@
         android:id="@+id/edit_text_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Year of production"
+        android:hint="@string/year_of_production"
         android:inputType="text" />
 
 </LinearLayout>

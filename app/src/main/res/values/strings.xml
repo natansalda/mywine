@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">MyWine</string>
+    <string name="app_name">Your wine database</string>
+    <string name="name_of_wine">Name of wine</string>
+    <string name="red_wine">Red wine</string>
+    <string name="white_wine">White wine</string>
+    <string name="year_of_production">Year of production</string>
+    <string name="add_wine_button_description">add wine button</string>
+    <string name="wine_glass_image_description">Wine glass showing color of the wine</string>
+    <string name="delete_wines">Delete Wines</string>
+    <string name="save">save</string>
 </resources>

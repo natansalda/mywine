@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
@@ -35,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Sauvignon Blanc"
+                tools:text="Sauvignon Blanc"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
@@ -44,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="2011"
+                tools:text="2011"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
@@ -62,7 +63,7 @@
                 android:id="@+id/wine_image"
                 android:layout_width="50dp"
                 android:layout_height="100dp"
-                android:contentDescription="Wine glass"
+                android:contentDescription="@string/wine_glass_image_description"
                 android:src="@drawable/white_wine_glass" />
 
             <RatingBar
