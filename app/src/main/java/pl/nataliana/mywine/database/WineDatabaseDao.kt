@@ -1,8 +1,8 @@
-package com.example.mywine.database
+package pl.nataliana.mywine.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.mywine.model.Wine
+import pl.nataliana.mywine.model.Wine
 
 @Dao
 interface WineDatabaseDao {

@@ -1,4 +1,4 @@
-package com.example.mywine.model
+package pl.nataliana.mywine.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,9 +1,9 @@
-package com.example.mywine
+package pl.nataliana.mywine
 
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import com.example.mywine.model.Wine
-import com.example.mywine.database.WineDatabaseDao
+import pl.nataliana.mywine.model.Wine
+import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WineRepository(private val wineDatabaseDao: WineDatabaseDao) {
 

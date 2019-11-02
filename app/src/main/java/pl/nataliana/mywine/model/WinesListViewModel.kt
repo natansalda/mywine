@@ -1,9 +1,8 @@
-package com.example.mywine.model
+package pl.nataliana.mywine.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.mywine.WineRepository
-import com.example.mywine.model.Wine
+import pl.nataliana.mywine.WineRepository
 
 class WinesListViewModel(private var repository: WineRepository) : ViewModel() {
 

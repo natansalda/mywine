@@ -1,4 +1,4 @@
-package com.example.mywine.adapter
+package pl.nataliana.mywine.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mywine.R
-import com.example.mywine.model.Wine
+import pl.nataliana.mywine.model.Wine
 
 class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
     private var wines: List<Wine> = ArrayList()

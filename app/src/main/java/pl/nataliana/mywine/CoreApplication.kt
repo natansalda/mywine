@@ -1,4 +1,4 @@
-package com.example.mywine
+package pl.nataliana.mywine
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
@@ -10,7 +10,11 @@ class CoreApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@CoreApplication)
-            modules(listOf(dbModule, repositoryModule, uiModule))
+            modules(listOf(
+                dbModule,
+                repositoryModule,
+                uiModule
+            ))
         }
     }
 }

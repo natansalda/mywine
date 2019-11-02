@@ -1,4 +1,4 @@
-package com.example.mywine.ui.main
+package pl.nataliana.mywine.ui.main
 
 import android.app.Activity
 import android.content.Intent
@@ -10,14 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mywine.R
-import com.example.mywine.adapter.WineAdapter
-import com.example.mywine.model.Wine
-import com.example.mywine.model.WinesListViewModel
-import com.example.mywine.ui.detail.AddWineActivity
-import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
-import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
-import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_RATE
-import com.example.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
+import pl.nataliana.mywine.adapter.WineAdapter
+import pl.nataliana.mywine.model.Wine
+import pl.nataliana.mywine.model.WinesListViewModel
+import pl.nataliana.mywine.ui.detail.AddWineActivity
+import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
+import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 

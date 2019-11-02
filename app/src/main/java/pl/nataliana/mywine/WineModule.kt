@@ -1,8 +1,8 @@
-package com.example.mywine
+package pl.nataliana.mywine
 
-import com.example.mywine.adapter.WineAdapter
-import com.example.mywine.database.WineDatabase
-import com.example.mywine.model.WinesListViewModel
+import pl.nataliana.mywine.adapter.WineAdapter
+import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.model.WinesListViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

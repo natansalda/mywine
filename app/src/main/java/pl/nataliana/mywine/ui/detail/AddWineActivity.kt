@@ -1,4 +1,4 @@
-package com.example.mywine.ui.detail
+package pl.nataliana.mywine.ui.detail
 
 import android.app.Activity
 import android.content.Intent

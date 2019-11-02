@@ -1,4 +1,4 @@
-package com.example.mywine
+package pl.nataliana.mywine
 
 import org.junit.Test
 
