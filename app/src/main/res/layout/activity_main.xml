@@ -24,7 +24,7 @@
         app:fabSize="mini"
         app:pressedTranslationZ="12dp"
         android:contentDescription="@string/add_wine_button_description"
-        android:src="@drawable/ic_add_black_24dp"
+        android:src="@drawable/ic_add_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
