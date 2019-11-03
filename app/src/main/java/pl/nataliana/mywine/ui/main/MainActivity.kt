@@ -1,6 +1,7 @@
 package pl.nataliana.mywine.ui.main
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -10,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mywine.R
+import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.ui.detail.AddWineActivity
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
-import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,9 +62,25 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all_wines -> {
-                //TODO add popup to ask user if delete wines
-                wineViewModel.deleteAllWines()
-                Toast.makeText(this, "All wines deleted!", Toast.LENGTH_LONG).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage(getString(R.string.alerd_dialog_delete_wines))
+                builder.setPositiveButton(android.R.string.ok) { _, _ ->
+                    wineViewModel.deleteAllWines()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.wines_deleted_confirmation),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                builder.setNegativeButton(android.R.string.cancel) { _, _ ->
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                builder.show()
                 true
             }
             else -> {
@@ -77,6 +94,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val newWine = Wine(
+                // TODO type mismatch
                 data.getStringExtra(EXTRA_NAME),
                 data.getStringExtra(EXTRA_COLOR),
                 // TODO fix for NumberFormatException
