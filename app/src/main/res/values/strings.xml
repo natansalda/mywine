@@ -8,4 +8,7 @@
     <string name="wine_glass_image_description">Wine glass showing color of the wine</string>
     <string name="delete_wines">Delete Wines</string>
     <string name="save">save</string>
+    <string name="wines_deleted_confirmation">All wines deleted!</string>
+    <string name="wines_deleted_cancelled">Your wine data is still here</string>
+    <string name="alerd_dialog_delete_wines">You are about to delete all your wine data</string>
 </resources>
