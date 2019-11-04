@@ -47,11 +47,13 @@ class AddWineActivity : AppCompatActivity() {
                     else -> null
                 }
 
+            var rating: Int = Integer.valueOf(edit_text_rate.text.toString())
+
             putExtra(EXTRA_NAME, edit_text_name.text.toString())
             putExtra(EXTRA_COLOR, color)
             putExtra(EXTRA_YEAR, Integer.valueOf(edit_text_year.text.toString()))
             //TODO add possibility to add rating
-            putExtra(EXTRA_RATE, Integer.valueOf(edit_text_year.text.toString()))
+            putExtra(EXTRA_RATE, rating)
         }
 
         setResult(Activity.RESULT_OK, data)

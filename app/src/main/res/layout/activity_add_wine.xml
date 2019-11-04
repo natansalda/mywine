@@ -40,13 +40,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/year_of_production"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/edit_text_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/rate_the_wine"
-        android:inputType="number" />
+        android:inputType="text" />
 
 </LinearLayout>
