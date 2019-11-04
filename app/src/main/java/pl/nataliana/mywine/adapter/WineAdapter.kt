@@ -23,13 +23,13 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
     override fun onBindViewHolder(holder: WineHolder, position: Int) {
         val currentWine = wines[position]
         holder.textViewName.text = currentWine.name
-        holder.textViewYear.text = currentWine.year.toString()
         if (currentWine.color == "red") {
             holder.wineImage.setImageResource(R.drawable.red_wine_glass)
         } else {
             holder.wineImage.setImageResource(R.drawable.white_wine_glass)
         }
-        holder.ratingBar.numStars = currentWine.rate.toInt()
+        holder.textViewYear.text = currentWine.year.toString()
+        holder.ratingBar.numStars = currentWine.rate!!
     }
 
     override fun getItemCount(): Int {

@@ -19,6 +19,8 @@ import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.ui.detail.AddWineActivity
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
+import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_RATE
+import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
 
 class MainActivity : AppCompatActivity() {
 
@@ -94,13 +96,12 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val newWine = Wine(
-                // TODO type mismatch
+                // TODO type mismatch null and not null
                 data.getStringExtra(EXTRA_NAME),
                 data.getStringExtra(EXTRA_COLOR),
-                // TODO fix for NumberFormatException
-                data.getIntExtra("year", 2000),
-                // TODO fix for NumberFormatException
-                data.getIntExtra("rate", 4)
+                data.getIntExtra(EXTRA_YEAR, 0),
+                // TODO fix for proper showing of rating
+                data.getIntExtra(EXTRA_RATE, 0)
             )
             wineViewModel.insert(newWine)
 

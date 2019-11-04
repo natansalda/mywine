@@ -11,4 +11,7 @@
     <string name="wines_deleted_confirmation">All wines deleted!</string>
     <string name="wines_deleted_cancelled">Your wine data is still here</string>
     <string name="alerd_dialog_delete_wines">You are about to delete all your wine data</string>
+    <string name="rate_the_wine">Rate the wine 1 to 5</string>
+    <string name="red">red</string>
+    <string name="white">white</string>
 </resources>

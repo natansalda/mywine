@@ -39,13 +39,19 @@ class AddWineActivity : AppCompatActivity() {
         }
 
         val data = Intent().apply {
+            val color =
+                when {
+                    red_radio_button.isChecked -> getString(R.string.red)
+                    white_radio_button.isChecked -> getString(R.string.white)
+                    // will never happen
+                    else -> null
+                }
+
             putExtra(EXTRA_NAME, edit_text_name.text.toString())
-            // TODO make if statement for color of the wine added
-            putExtra(EXTRA_COLOR, "red")
-            // TODO make sure year is only int
-            putExtra(EXTRA_YEAR, Integer.parseInt(edit_text_year.text.toString()))
+            putExtra(EXTRA_COLOR, color)
+            putExtra(EXTRA_YEAR, Integer.valueOf(edit_text_year.text.toString()))
             //TODO add possibility to add rating
-            putExtra(EXTRA_RATE, 4)
+            putExtra(EXTRA_RATE, Integer.valueOf(edit_text_year.text.toString()))
         }
 
         setResult(Activity.RESULT_OK, data)

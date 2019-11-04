@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Wine(
     val name: String,
     val color: String,
-    val year: Int,
-    val rate: Int = -1
+    val year: Int?,
+    val rate: Int?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
