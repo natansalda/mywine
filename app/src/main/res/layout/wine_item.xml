@@ -76,31 +76,31 @@
                     android:id="@+id/grape_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_grape_rate_icon_checked" />
+                    tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_grape_rate_icon_checked" />
+                    tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_grape_rate_icon_checked" />
+                    tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_grape_rate_icon_checked" />
+                    tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_grape_rate_icon_checked" />
+                    tools:src="@drawable/ic_grape_rate_icon_checked" />
 
             </LinearLayout>
 

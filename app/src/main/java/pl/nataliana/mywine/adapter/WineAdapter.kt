@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mywine.R
@@ -30,8 +28,44 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
             holder.wineImage.setImageResource(R.drawable.white_wine_glass)
         }
         holder.textViewYear.text = currentWine.year.toString()
-        holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
-        holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+
+        when (currentWine.rate) {
+            4 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+            }
+            3 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+            }
+            2 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+            }
+            1 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+            }
+            0 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
