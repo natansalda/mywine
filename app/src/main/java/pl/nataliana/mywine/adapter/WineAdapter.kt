@@ -24,25 +24,21 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
         holder.textViewName.text = currentWine.name
         setupColorHolder(currentWine, holder)
         holder.textViewYear.text = currentWine.year.toString()
-        setupRatingHolder(currentWine, holder)
+        setupRateHolder(currentWine, holder)
     }
 
-    private fun setupColorHolder(
-        currentWine: Wine,
-        holder: WineHolder
-    ) {
-        if (currentWine.color == "red") {
-            holder.wineImage.setImageResource(R.drawable.red_wine_glass)
-        } else {
-            holder.wineImage.setImageResource(R.drawable.white_wine_glass)
-        }
-    }
-
-    private fun setupRatingHolder(
+    private fun setupRateHolder(
         currentWine: Wine,
         holder: WineHolder
     ) {
         when (currentWine.rate) {
+            5 -> {
+                holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape3.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+                holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_checked)
+            }
             4 -> {
                 holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)
                 holder.grape2.setImageResource(R.drawable.ic_grape_rate_icon_checked)
@@ -78,6 +74,17 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
                 holder.grape4.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
                 holder.grape5.setImageResource(R.drawable.ic_grape_rate_icon_unchecked)
             }
+        }
+    }
+
+    private fun setupColorHolder(
+        currentWine: Wine,
+        holder: WineHolder
+    ) {
+        if (currentWine.color == "red") {
+            holder.wineImage.setImageResource(R.drawable.red_wine_glass)
+        } else {
+            holder.wineImage.setImageResource(R.drawable.white_wine_glass)
         }
     }
 

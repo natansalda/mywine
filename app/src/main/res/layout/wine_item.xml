@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginStart="@dimen/default_card_view_margin"
+    android:layout_marginEnd="@dimen/default_card_view_margin"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/colorPrimary"
     app:cardElevation="4dp"
@@ -18,7 +17,6 @@
         android:id="@+id/linear_layout_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -35,7 +33,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:textStyle="bold"
                 tools:text="Sauvignon Blanc"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -44,6 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="monospace"
+                android:textStyle="italic"
                 android:maxLines="1"
                 tools:text="2011"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
