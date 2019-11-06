@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity() {
                 data.getStringExtra(EXTRA_NAME),
                 data.getStringExtra(EXTRA_COLOR),
                 data.getIntExtra(EXTRA_YEAR, 0),
-                // TODO fix for proper showing of rating
                 data.getIntExtra(EXTRA_RATE, 0)
             )
             wineViewModel.insert(newWine)
