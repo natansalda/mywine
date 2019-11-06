@@ -22,13 +22,26 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
     override fun onBindViewHolder(holder: WineHolder, position: Int) {
         val currentWine = wines[position]
         holder.textViewName.text = currentWine.name
+        setupColorHolder(currentWine, holder)
+        holder.textViewYear.text = currentWine.year.toString()
+        setupRatingHolder(currentWine, holder)
+    }
+
+    private fun setupColorHolder(
+        currentWine: Wine,
+        holder: WineHolder
+    ) {
         if (currentWine.color == "red") {
             holder.wineImage.setImageResource(R.drawable.red_wine_glass)
         } else {
             holder.wineImage.setImageResource(R.drawable.white_wine_glass)
         }
-        holder.textViewYear.text = currentWine.year.toString()
+    }
 
+    private fun setupRatingHolder(
+        currentWine: Wine,
+        holder: WineHolder
+    ) {
         when (currentWine.rate) {
             4 -> {
                 holder.grape1.setImageResource(R.drawable.ic_grape_rate_icon_checked)

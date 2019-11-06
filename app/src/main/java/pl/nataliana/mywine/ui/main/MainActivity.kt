@@ -64,31 +64,35 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all_wines -> {
-                val builder = AlertDialog.Builder(this)
-                builder.setMessage(getString(R.string.alerd_dialog_delete_wines))
-                builder.setPositiveButton(android.R.string.ok) { _, _ ->
-                    wineViewModel.deleteAllWines()
-                    Toast.makeText(
-                        this,
-                        getString(R.string.wines_deleted_confirmation),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-                builder.setNegativeButton(android.R.string.cancel) { _, _ ->
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                builder.show()
-                true
+                confirmDeletion()
             }
             else -> {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun confirmDeletion(): Boolean {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(getString(R.string.alerd_dialog_delete_wines))
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            wineViewModel.deleteAllWines()
+            Toast.makeText(
+                this,
+                getString(R.string.wines_deleted_confirmation),
+                Toast.LENGTH_LONG
+            ).show()
+        }
+
+        builder.setNegativeButton(android.R.string.cancel) { _, _ ->
+            Toast.makeText(
+                applicationContext,
+                getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        builder.show()
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -105,9 +109,9 @@ class MainActivity : AppCompatActivity() {
             )
             wineViewModel.insert(newWine)
 
-            Toast.makeText(this, "Wine added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Wine could not be added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT).show()
         }
     }
 

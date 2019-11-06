@@ -14,4 +14,7 @@
     <string name="rate_the_wine">Rate wine with number from 1 to 5</string>
     <string name="red">red</string>
     <string name="white">white</string>
+    <string name="cant_set_empty_record">Can not insert empty record!</string>
+    <string name="wine_added_toast">Wine added!</string>
+    <string name="wine_could_not_be_added">Wine could not be added!</string>
 </resources>

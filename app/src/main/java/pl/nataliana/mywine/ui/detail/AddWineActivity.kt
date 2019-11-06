@@ -34,7 +34,7 @@ class AddWineActivity : AppCompatActivity() {
 
     private fun saveWine() {
         if (edit_text_name.text.toString().trim().isBlank()) {
-            Toast.makeText(this, "Can not insert empty record!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG).show()
             return
         }
 
@@ -47,7 +47,7 @@ class AddWineActivity : AppCompatActivity() {
                     else -> null
                 }
 
-            var rating: Int = Integer.valueOf(edit_text_rate.text.toString())
+            val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
 
             putExtra(EXTRA_NAME, edit_text_name.text.toString())
             putExtra(EXTRA_COLOR, color)
