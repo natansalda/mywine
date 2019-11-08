@@ -4,49 +4,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/default_padding_medium"
     tools:context="pl.nataliana.mywine.ui.detail.AddWineActivity">
 
     <EditText
         android:id="@+id/edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin_small"
+        android:inputType="text"
         android:hint="@string/name_of_wine"
-        android:inputType="text" />
+        android:padding="@dimen/default_padding_small"
+        android:textSize="@dimen/default_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/label_text_year"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/default_padding_small"
+            android:text="@string/year_of_production"
+            android:textSize="@dimen/default_text_size_small"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_text_year"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/year_of_production_hint"
+            android:inputType="number"
+            android:textSize="@dimen/default_text_size_small" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/label_text_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/default_padding_small"
+            android:text="@string/what_s_the_usual_price"
+            android:textSize="@dimen/default_text_size_small"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_text_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/price_hint"
+            android:inputType="number" />
+
+    </LinearLayout>
 
     <RadioGroup
         android:id="@+id/radio_group_color"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <RadioButton
             android:id="@+id/red_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/red_wine"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textStyle="bold"
             android:textAppearance="?android:textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/or"
+            android:textSize="@dimen/default_text_size_small" />
 
         <RadioButton
             android:id="@+id/white_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/white_wine"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textStyle="bold"
             android:textAppearance="?android:textAppearanceMedium" />
+
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/edit_text_year"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/year_of_production"
-        android:inputType="text" />
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <EditText
-        android:id="@+id/edit_text_rate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/rate_the_wine"
-        android:inputType="text" />
+        <TextView
+            android:id="@+id/label_text_rate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/default_padding_small"
+            android:text="@string/rate_the_wine"
+            android:textSize="@dimen/default_text_size_small"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_text_rate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/_1_to_5"
+            android:inputType="number" />
+
+    </LinearLayout>
 
 </LinearLayout>
