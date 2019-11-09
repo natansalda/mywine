@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Twoja baza win</string>
+    <string name="app_name">Winnica</string>
     <string name="_1_to_5">Od 1 do 5</string>
     <string name="add_new_wine">Dodaj nowe wino</string>
     <string name="add_wine_button_description">przycisk dodaj wino</string>

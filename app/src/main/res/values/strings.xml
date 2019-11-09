@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Your wine database</string>
+    <string name="app_name">Vineyard</string>
     <string name="name_of_wine">Brand of the wine</string>
     <string name="red_wine">Red wine</string>
     <string name="white_wine">White wine</string>
