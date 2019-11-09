@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mywine.R
 import pl.nataliana.mywine.model.Wine
 
-class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
+class WineAdapter : ListAdapter<Wine, WineAdapter.WineHolder>(WineDiffCallback()) {
     private var wines: List<Wine> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WineHolder {
@@ -20,7 +22,7 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
     }
 
     override fun onBindViewHolder(holder: WineHolder, position: Int) {
-        val currentWine = wines[position]
+        val currentWine = getItem(position)
         holder.textViewName.text = currentWine.name
         setupColorHolder(currentWine, holder)
         holder.textViewYear.text = currentWine.year.toString()
@@ -88,16 +90,6 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
         }
     }
 
-    override fun getItemCount(): Int {
-        Log.v("WineAdapter", "there is ${wines.size} wines in db")
-        return wines.size
-    }
-
-    fun setWines(wines: List<Wine>) {
-        this.wines = wines
-        notifyDataSetChanged()
-    }
-
     inner class WineHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textViewName: TextView = itemView.findViewById(R.id.text_view_name)
         var textViewYear: TextView = itemView.findViewById(R.id.text_view_year)
@@ -107,5 +99,16 @@ class WineAdapter : RecyclerView.Adapter<WineAdapter.WineHolder>() {
         var grape3: ImageView = itemView.findViewById(R.id.grape_3)
         var grape4: ImageView = itemView.findViewById(R.id.grape_4)
         var grape5: ImageView = itemView.findViewById(R.id.grape_5)
+    }
+}
+
+class WineDiffCallback :
+    DiffUtil.ItemCallback<Wine>() {
+    override fun areItemsTheSame(oldItem: Wine, newItem: Wine): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Wine, newItem: Wine): Boolean {
+        return oldItem == newItem
     }
 }

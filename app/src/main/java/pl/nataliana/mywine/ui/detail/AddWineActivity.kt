@@ -15,6 +15,7 @@ class AddWineActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_wine)
+        title = getString(R.string.add_new_wine)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

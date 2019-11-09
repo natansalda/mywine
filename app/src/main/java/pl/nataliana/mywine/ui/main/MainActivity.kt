@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
                 list?.let {
-                    adapter.setWines(it)
+                    adapter.submitList(it)
                 }
             })
     }
