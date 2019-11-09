@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Twoja baza win</string>
+    <string name="_1_to_5">Od 1 do 5</string>
+    <string name="add_new_wine">Dodaj nowe wino</string>
+    <string name="add_wine_button_description">przycisk dodaj wino</string>
+    <string name="alerd_dialog_delete_wines">Za chwilę usuniesz wszystkie swoje wina</string>
+    <string name="cant_set_empty_record">Nie można dodać pustego rekordu</string>
+    <string name="delete_wines">Usuń wina</string>
+    <string name="name_of_wine">Marka wina</string>
+    <string name="or">lub</string>
+    <string name="price_hint">np. 29zł</string>
+    <string name="rate_the_wine">Oceń wino od 1 do 5</string>
+    <string name="red">czerwone</string>
+    <string name="red_wine">Czerwone wino</string>
+    <string name="save">zapisz</string>
+    <string name="what_s_the_usual_price">Jaka jest zwykle cena?</string>
+    <string name="white">białe</string>
+    <string name="white_wine">Białe wino</string>
+    <string name="wine_added_toast">Wino dodane!</string>
+    <string name="wine_could_not_be_added">Nie udało się dodać wina</string>
+    <string name="wine_glass_image_description">Butelka wina demonstrująca kolor wina</string>
+    <string name="wines_deleted_cancelled">Dane win zachowane</string>
+    <string name="wines_deleted_confirmation">Wszystkie wina zostały usunięte!</string>
+    <string name="year_of_production">Rok produkcji:</string>
+    <string name="year_of_production_hint">np. 2017</string>
+</resources>
