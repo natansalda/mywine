@@ -147,4 +147,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/add_wine_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin_large"
+        android:background="@drawable/button_shape"
+        android:padding="@dimen/default_padding_medium"
+        android:text="@string/add"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/default_text_size_small" />
+
 </LinearLayout>
