@@ -3,8 +3,6 @@ package pl.nataliana.mywine.ui.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mywine.R
@@ -16,20 +14,9 @@ class AddWineActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_wine)
         title = getString(R.string.add_new_wine)
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.add_wine_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.save_wine -> {
-                saveWine()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+        add_wine_button.setOnClickListener {
+            saveWine()
         }
     }
 
