@@ -35,6 +35,7 @@ class AddWineActivity : AppCompatActivity() {
             val name = edit_text_name.text.toString()
             val color = determineWineColor()
             val year: Int = Integer.valueOf(edit_text_year.text.toString())
+            // TODO add price
             val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
 
             putExtra(EXTRA_NAME, name)
