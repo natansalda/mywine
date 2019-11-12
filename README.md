@@ -13,7 +13,7 @@ Please note that the app is in the early stage of development.
 * MVVM pattern
 * JUnit
 
-# Lnguages availible for now
+# Languages availible
 * EN
 * PL
 
