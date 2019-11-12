@@ -13,6 +13,10 @@ Please note that the app is in the early stage of development.
 * MVVM pattern
 * JUnit
 
+# Lnguages availible for now
+* EN
+* PL
+
 # Screenshots
 
 ![alt text](https://github.com/natansalda/mywine/blob/master/Screenshots/Zrzut%20ekranu%202019-11-12%20o%2016.43.28.png)
