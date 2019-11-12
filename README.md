@@ -5,6 +5,7 @@ You can add wines with: name, year, rate, color etc., and then search for it whe
 Please note that the app is in the early stage of development. 
 
 # In the app I use:
+* Kotlin
 * Room
 * LiveData
 * Koin dependency injection
