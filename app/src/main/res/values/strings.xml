@@ -20,8 +20,9 @@
     <string name="year_of_production_hint">i.e. 2017</string>
     <string name="what_s_the_usual_price">What\'s the usual price?</string>
     <string name="price_hint">i.e. 29$</string>
-    <string name="or">or</string>
+    <string name="choose_wine_color">What\s wine color?</string>
     <string name="_1_to_5">1 to 5</string>
     <string name="add_new_wine">Add new wine</string>
     <string name="add">Add</string>
+    <string name="pink_wine">Pink wine</string>
 </resources>

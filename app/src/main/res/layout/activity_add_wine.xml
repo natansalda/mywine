@@ -82,8 +82,17 @@
         android:id="@+id/radio_group_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/choose_wine_color"
+            android:textSize="@dimen/default_text_size_small" />
 
         <RadioButton
             android:id="@+id/red_radio_button"
@@ -96,20 +105,22 @@
             android:textStyle="bold"
             android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin_small"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/or"
-            android:textSize="@dimen/default_text_size_small" />
-
         <RadioButton
             android:id="@+id/white_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/white_wine"
+            android:layout_margin="@dimen/default_margin_small"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <RadioButton
+            android:id="@+id/pink_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pink_wine"
             android:layout_margin="@dimen/default_margin_small"
             android:layout_weight="1"
             android:gravity="start"

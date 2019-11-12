@@ -8,7 +8,7 @@
     <string name="cant_set_empty_record">Nie można dodać pustego rekordu</string>
     <string name="delete_wines">Usuń wina</string>
     <string name="name_of_wine">Marka wina</string>
-    <string name="or">lub</string>
+    <string name="choose_wine_color">Jaki jest kolor wina?</string>
     <string name="price_hint">np. 29zł</string>
     <string name="rate_the_wine">Oceń wino od 1 do 5</string>
     <string name="red">czerwone</string>
@@ -25,4 +25,5 @@
     <string name="year_of_production">Rok produkcji:</string>
     <string name="year_of_production_hint">np. 2017</string>
     <string name="add">Dodaj</string>
+    <string name="pink_wine">Różowe wino</string>
 </resources>
