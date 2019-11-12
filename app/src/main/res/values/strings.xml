@@ -12,8 +12,8 @@
     <string name="wines_deleted_cancelled">Your wine data is still here</string>
     <string name="alerd_dialog_delete_wines">You are about to delete all your wine data</string>
     <string name="rate_the_wine">Rate wine with number from 1 to 5</string>
-    <string name="red">red</string>
-    <string name="white">white</string>
+    <string name="red" translatable="false">red</string>
+    <string name="white" translatable="false">white</string>
     <string name="cant_set_empty_record">Can not insert empty record!</string>
     <string name="wine_added_toast">Wine added!</string>
     <string name="wine_could_not_be_added">Wine could not be added!</string>
@@ -25,4 +25,5 @@
     <string name="add_new_wine">Add new wine</string>
     <string name="add">Add</string>
     <string name="pink_wine">Pink wine</string>
+    <string name="pink" translatable="false">pink</string>
 </resources>

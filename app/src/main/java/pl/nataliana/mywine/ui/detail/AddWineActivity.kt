@@ -46,7 +46,7 @@ class AddWineActivity : AppCompatActivity() {
 
     private fun determineWineColor(): String? {
         return when {
-            // TODO add rose wine
+            pink_radio_button.isChecked ->getString(R.string.pink)
             red_radio_button.isChecked -> getString(R.string.red)
             white_radio_button.isChecked -> getString(R.string.white)
             // will never happen

@@ -11,11 +11,9 @@
     <string name="choose_wine_color">Jaki jest kolor wina?</string>
     <string name="price_hint">np. 29zł</string>
     <string name="rate_the_wine">Oceń wino od 1 do 5</string>
-    <string name="red">czerwone</string>
     <string name="red_wine">Czerwone wino</string>
     <string name="save">zapisz</string>
     <string name="what_s_the_usual_price">Jaka jest zwykle cena?</string>
-    <string name="white">białe</string>
     <string name="white_wine">Białe wino</string>
     <string name="wine_added_toast">Wino dodane!</string>
     <string name="wine_could_not_be_added">Nie udało się dodać wina</string>

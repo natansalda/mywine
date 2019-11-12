@@ -82,10 +82,10 @@ class WineAdapter : ListAdapter<Wine, WineAdapter.WineHolder>(WineDiffCallback()
         currentWine: Wine,
         holder: WineHolder
     ) {
-        if (currentWine.color == "red") {
-            holder.wineImage.setImageResource(R.drawable.red_wine_glass)
-        } else {
-            holder.wineImage.setImageResource(R.drawable.white_wine_glass)
+        when (currentWine.color) {
+            RED -> holder.wineImage.setImageResource(R.drawable.red_wine_glass)
+            WHITE -> holder.wineImage.setImageResource(R.drawable.white_wine_glass)
+            PINK -> holder.wineImage.setImageResource(R.drawable.pink_wine_glass)
         }
     }
 
@@ -98,6 +98,13 @@ class WineAdapter : ListAdapter<Wine, WineAdapter.WineHolder>(WineDiffCallback()
         var grape3: ImageView = itemView.findViewById(R.id.grape_3)
         var grape4: ImageView = itemView.findViewById(R.id.grape_4)
         var grape5: ImageView = itemView.findViewById(R.id.grape_5)
+    }
+
+    companion object {
+        private const val RED = "red"
+        private const val PINK = "pink"
+        private const val WHITE = "white"
+
     }
 }
 
