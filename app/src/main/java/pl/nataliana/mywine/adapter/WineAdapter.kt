@@ -118,3 +118,9 @@ class WineDiffCallback :
         return oldItem == newItem
     }
 }
+
+// TODO continue by creating data binding
+class WineListener(val clickListener: (id: Long) -> Unit) {
+    fun onClick(wine: Wine) = clickListener(wine.id)
+
+}
