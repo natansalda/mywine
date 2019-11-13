@@ -12,6 +12,7 @@
         android:padding="@dimen/default_padding_medium">
 
         <EditText
+            tools:ignore="Autofill"
             android:id="@+id/edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                tools:ignore="Autofill"
                 android:id="@+id/edit_text_year"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -71,6 +73,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                tools:ignore="Autofill"
                 android:id="@+id/edit_text_price"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -156,6 +159,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                tools:ignore="Autofill"
                 android:id="@+id/edit_text_rate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

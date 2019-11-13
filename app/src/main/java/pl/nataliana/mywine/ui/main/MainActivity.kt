@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun confirmDeletion(): Boolean {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage(getString(R.string.alerd_dialog_delete_wines))
+        builder.setMessage(getString(R.string.alert_dialog_delete_wines))
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             wineViewModel.deleteAllWines()
             Toast.makeText(

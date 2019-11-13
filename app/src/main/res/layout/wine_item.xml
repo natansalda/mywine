@@ -17,7 +17,8 @@
         android:id="@+id/linear_layout_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:id="@+id/linear_layout_left"
@@ -80,30 +81,35 @@
                     android:id="@+id/grape_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     tools:src="@drawable/ic_grape_rate_icon_checked" />
 
                 <ImageView
                     android:id="@+id/grape_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     tools:src="@drawable/ic_grape_rate_icon_checked" />
 
             </LinearLayout>
