@@ -1,119 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="@dimen/default_card_view_margin"
-    android:layout_marginEnd="@dimen/default_card_view_margin"
-    android:orientation="vertical"
-    app:cardBackgroundColor="@color/colorPrimary"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="20dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/linear_layout_main"
+    <data>
+
+        <variable
+            name="wine"
+            type="pl.nataliana.mywine.model.Wine" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:layout_marginStart="@dimen/default_card_view_margin"
+        android:layout_marginEnd="@dimen/default_card_view_margin"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:id="@+id/linear_layout_left"
+            android:id="@+id/linear_layout_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_view_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:maxLines="2"
-                android:padding="8dp"
-                android:textStyle="bold"
-                tools:text="Sauvignon Blanc"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/text_view_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="monospace"
-                android:textStyle="italic"
-                android:maxLines="1"
-                tools:text="2011"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_layout_right"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/wine_image"
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:contentDescription="@string/wine_glass_image_description"
-                tools:src="@drawable/white_wine_glass" />
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/rating_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/linear_layout_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/grape_1"
+                <TextView
+                    android:id="@+id/text_view_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    tools:src="@drawable/ic_grape_rate_icon_checked" />
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    tools:text="Sauvignon Blanc" />
 
-                <ImageView
-                    android:id="@+id/grape_2"
+                <TextView
+                    android:id="@+id/text_view_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    tools:src="@drawable/ic_grape_rate_icon_checked" />
-
-                <ImageView
-                    android:id="@+id/grape_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    tools:src="@drawable/ic_grape_rate_icon_checked" />
-
-                <ImageView
-                    android:id="@+id/grape_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    tools:src="@drawable/ic_grape_rate_icon_checked" />
-
-                <ImageView
-                    android:id="@+id/grape_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    tools:src="@drawable/ic_grape_rate_icon_checked" />
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="italic"
+                    tools:text="2011" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linear_layout_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/wine_image"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/wine_glass_image_description"
+                    tools:src="@drawable/white_wine_glass" />
+
+                <LinearLayout
+                    android:id="@+id/rating_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/grape_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        tools:src="@drawable/ic_grape_rate_icon_checked" />
+
+                    <ImageView
+                        android:id="@+id/grape_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        tools:src="@drawable/ic_grape_rate_icon_checked" />
+
+                    <ImageView
+                        android:id="@+id/grape_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        tools:src="@drawable/ic_grape_rate_icon_checked" />
+
+                    <ImageView
+                        android:id="@+id/grape_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        tools:src="@drawable/ic_grape_rate_icon_checked" />
+
+                    <ImageView
+                        android:id="@+id/grape_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        tools:src="@drawable/ic_grape_rate_icon_checked" />
+
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
