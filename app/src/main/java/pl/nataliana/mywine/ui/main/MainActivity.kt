@@ -14,6 +14,7 @@ import com.example.mywine.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.adapter.WineAdapter
+import pl.nataliana.mywine.adapter.WineListener
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.ui.detail.AddWineActivity
@@ -25,13 +26,17 @@ import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
 class MainActivity : AppCompatActivity() {
 
     private val wineViewModel: WinesListViewModel by inject()
-    private val adapter: WineAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val adapter = WineAdapter(WineListener { id ->
+            Toast.makeText(applicationContext, "$id", Toast.LENGTH_LONG).show()
+        })
+
         setContentView(R.layout.activity_main)
         setupButtonAddWine()
-        setupRecyclerView()
+        setupRecyclerView(adapter)
 
         wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
@@ -50,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupRecyclerView() {
+    private fun setupRecyclerView(adapter: WineAdapter) {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(false)
         recycler_view.adapter = adapter

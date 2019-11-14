@@ -1,10 +1,9 @@
 package pl.nataliana.mywine
 
-import pl.nataliana.mywine.adapter.WineAdapter
-import pl.nataliana.mywine.database.WineDatabase
-import pl.nataliana.mywine.model.WinesListViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.model.WinesListViewModel
 
 val dbModule = module {
     single {
@@ -20,6 +19,5 @@ val repositoryModule = module {
 }
 
 val uiModule = module {
-    factory { WineAdapter() }
     viewModel { WinesListViewModel(get()) }
 }

@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mywine.databinding.WineItemBinding
 import pl.nataliana.mywine.model.Wine
 
-class WineAdapter : ListAdapter<Wine, WineAdapter.ViewHolder>(WineDiffCallback()) {
+class WineAdapter(private val clickListener: WineListener) :
+    ListAdapter<Wine, WineAdapter.ViewHolder>(WineDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(clickListener, getItem(position)!!)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,8 +23,9 @@ class WineAdapter : ListAdapter<Wine, WineAdapter.ViewHolder>(WineDiffCallback()
     class ViewHolder private constructor(private val binding: WineItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Wine) {
+        fun bind(clickListener: WineListener, item: Wine) {
             binding.wine = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -50,7 +52,6 @@ class WineDiffCallback :
     }
 }
 
-// TODO continue by creating data binding
 class WineListener(val clickListener: (id: Long) -> Unit) {
     fun onClick(wine: Wine) = clickListener(wine.id)
 }
