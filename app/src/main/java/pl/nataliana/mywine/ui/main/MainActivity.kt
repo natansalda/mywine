@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val adapter = WineAdapter(WineListener { id ->
+            // TODO open detail view onClick
             Toast.makeText(applicationContext, "$id", Toast.LENGTH_LONG).show()
         })
 
