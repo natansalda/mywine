@@ -70,6 +70,7 @@
                 android:id="@+id/rating_layout_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_small"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -114,6 +115,37 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding_large">
+
+                <TextView
+                    android:id="@+id/text_view_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    app:textViewYear="@{wine}"
+                    tools:text="@string/usual_price" />
+
+                <TextView
+                    android:id="@+id/text_view_text_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="normal"
+                    app:textViewYear="@{wine}"
+                    tools:text="29$" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

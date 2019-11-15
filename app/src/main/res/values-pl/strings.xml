@@ -23,4 +23,5 @@
     <string name="year_of_production_hint">np. 2017</string>
     <string name="add">Dodaj</string>
     <string name="pink_wine">Różowe wino</string>
+    <string name="usual_price">"Cena: "</string>
 </resources>
