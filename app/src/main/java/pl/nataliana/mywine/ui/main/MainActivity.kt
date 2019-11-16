@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val adapter = WineAdapter(WineListener { id ->
-            // TODO open detail view onClick
             Toast.makeText(applicationContext, "$id", Toast.LENGTH_LONG).show()
+            wineViewModel.onWineClicked(id)
         })
 
         setContentView(R.layout.activity_main)
@@ -45,6 +45,15 @@ class MainActivity : AppCompatActivity() {
                     adapter.submitList(it)
                 }
             })
+
+        // TODO add navigation
+//        wineViewModel.navigateToWineDetail.observe(this, Observer {wine ->
+//            wine?.let {
+//                this.findNavController().navigate(MainActivityDirections
+//                    .actionMainActivityToDetailActivity(wine))
+//                wineViewModel.onWineDetailNavigated()
+//            }
+//        })
     }
 
     private fun setupButtonAddWine() {

@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mywine.databinding.WineItemBinding
 import pl.nataliana.mywine.model.Wine
 
-class WineAdapter(private val clickListener: WineListener) :
+class WineAdapter(val clickListener: WineListener) :
     ListAdapter<Wine, WineAdapter.ViewHolder>(WineDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
         holder.bind(clickListener, getItem(position)!!)
     }
 
