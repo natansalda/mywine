@@ -31,6 +31,7 @@ class AddWineFragment : Fragment() {
         activity?.title = getString(R.string.add_new_wine)
 
         val application = requireNotNull(this.activity).application
+        //        val arguments = AddWineFragmentArgs.fromBundle(arguments!!)
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
