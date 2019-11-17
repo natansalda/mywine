@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="pl.nataliana.mywine.CoreApplication"
+        android:name="pl.nataliana.mywine.di.CoreApplication"
         android:theme="@style/AppTheme">
-        <activity android:name="pl.nataliana.mywine.ui.main.MainActivity">
+        <activity android:name="pl.nataliana.mywine.ui.main.MainFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

@@ -23,7 +23,7 @@ import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_RATE
 import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
 
-class MainActivity : AppCompatActivity() {
+class MainFragment : AppCompatActivity() {
 
     private val wineViewModel: WinesListViewModel by inject()
 
