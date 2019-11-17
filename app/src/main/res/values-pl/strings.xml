@@ -27,4 +27,5 @@
     <string name="main_fragment">MainFragment</string>
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
+    <string name="no_wines_yet">"Twoja baza danych jest jeszcze pusta. "</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.view.isEmpty
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentMainBinding
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.adapter.WineAdapter
@@ -106,30 +108,37 @@ class MainFragment : Fragment() {
     }
 
     private fun confirmDeletion(): Boolean {
-        val builder = AlertDialog.Builder(context)
-        builder.setMessage(getString(R.string.alert_dialog_delete_wines))
-        builder.setPositiveButton(android.R.string.ok) { _, _ ->
-            uiScope.launch {
-                async(bgDispatcher) {
-                    // background thread
-                    wineViewModel.deleteAllWines()
+        if (!recycler_view.isEmpty()) {
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage(getString(R.string.alert_dialog_delete_wines))
+            builder.setPositiveButton(android.R.string.ok) { _, _ ->
+                uiScope.launch {
+                    async(bgDispatcher) {
+                        // background thread
+                        wineViewModel.deleteAllWines()
+                    }
                 }
+                Toast.makeText(
+                    context,
+                    getString(R.string.wines_deleted_confirmation),
+                    Toast.LENGTH_LONG
+                ).show()
             }
+
+            builder.setNegativeButton(android.R.string.cancel) { _, _ ->
+                Toast.makeText(
+                    context,
+                    getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            builder.show()
+        } else {
             Toast.makeText(
                 context,
-                getString(R.string.wines_deleted_confirmation),
-                Toast.LENGTH_LONG
+                getString(R.string.no_wines_yet), Toast.LENGTH_SHORT
             ).show()
         }
-
-        builder.setNegativeButton(android.R.string.cancel) { _, _ ->
-            Toast.makeText(
-                context,
-                getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        builder.show()
         return true
     }
 
