@@ -1,7 +1,8 @@
-package pl.nataliana.mywine
+package pl.nataliana.mywine.di
 
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import pl.nataliana.mywine.WineRepository
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.WinesListViewModel
 

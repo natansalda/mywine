@@ -1,4 +1,4 @@
-package pl.nataliana.mywine
+package pl.nataliana.mywine.ui
 
 import android.widget.ImageView
 import android.widget.TextView
