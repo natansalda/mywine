@@ -24,4 +24,7 @@
     <string name="add">Dodaj</string>
     <string name="pink_wine">Różowe wino</string>
     <string name="usual_price">"Cena: "</string>
+    <string name="main_fragment">MainFragment</string>
+    <string name="detail_fragment">DetailFragment</string>
+    <string name="add_wine_fragment">AddWineFragment</string>
 </resources>

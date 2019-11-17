@@ -4,40 +4,65 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.mywine.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.mywine.databinding.FragmentMainBinding
+import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.adapter.WineListener
+import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
-import pl.nataliana.mywine.ui.detail.AddWineActivity
-import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_COLOR
-import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_NAME
-import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_RATE
-import pl.nataliana.mywine.ui.detail.AddWineActivity.Companion.EXTRA_YEAR
+import pl.nataliana.mywine.model.WinesListViewModelFactory
+import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_COLOR
+import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_NAME
+import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_RATE
+import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_YEAR
 
-class MainFragment : AppCompatActivity() {
+class MainFragment : Fragment() {
 
     private val wineViewModel: WinesListViewModel by inject()
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentMainBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_main, container, false
+        )
+
+        val application = requireNotNull(this.activity).application
+
+        val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
+
+        val viewModelFactory = WinesListViewModelFactory(dataSource, application)
+
+        val wineViewModel =
+            ViewModelProviders.of(
+                this, viewModelFactory
+            ).get(WinesListViewModel::class.java)
+
+        binding.winesListViewModel = wineViewModel
+        binding.lifecycleOwner = this
+        binding.addWineButton.setOnClickListener {
+            setupButtonAddWine()
+        }
 
         val adapter = WineAdapter(WineListener { id ->
-            Toast.makeText(applicationContext, "$id", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
             wineViewModel.onWineClicked(id)
         })
 
-        setContentView(R.layout.activity_main)
-        setupButtonAddWine()
-        setupRecyclerView(adapter)
+        binding.recyclerView.adapter = adapter
 
         wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
@@ -54,26 +79,19 @@ class MainFragment : AppCompatActivity() {
 //                wineViewModel.onWineDetailNavigated()
 //            }
 //        })
+
+        setHasOptionsMenu(true)
+
+        return binding.root
     }
 
     private fun setupButtonAddWine() {
-        add_wine_button.setOnClickListener {
-            startActivityForResult(
-                Intent(this, AddWineActivity::class.java),
-                ADD_WINE_REQUEST
-            )
-        }
+        view?.findNavController()?.navigate(R.id.action_mainFragment_to_addWineFragment)
+        // TODO how to retrieve data from AddWineFragment
     }
 
-    private fun setupRecyclerView(adapter: WineAdapter) {
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(false)
-        recycler_view.adapter = adapter
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -88,12 +106,17 @@ class MainFragment : AppCompatActivity() {
     }
 
     private fun confirmDeletion(): Boolean {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(context)
         builder.setMessage(getString(R.string.alert_dialog_delete_wines))
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
-            wineViewModel.deleteAllWines()
+            uiScope.launch {
+                async(bgDispatcher) {
+                    // background thread
+                    wineViewModel.deleteAllWines()
+                }
+            }
             Toast.makeText(
-                this,
+                context,
                 getString(R.string.wines_deleted_confirmation),
                 Toast.LENGTH_LONG
             ).show()
@@ -101,7 +124,7 @@ class MainFragment : AppCompatActivity() {
 
         builder.setNegativeButton(android.R.string.cancel) { _, _ ->
             Toast.makeText(
-                applicationContext,
+                context,
                 getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
             ).show()
         }
@@ -112,7 +135,6 @@ class MainFragment : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val newWine = Wine(
                 // TODO type mismatch null and not null
@@ -123,9 +145,10 @@ class MainFragment : AppCompatActivity() {
             )
             wineViewModel.insert(newWine)
 
-            Toast.makeText(this, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

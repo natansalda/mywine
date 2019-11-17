@@ -10,14 +10,12 @@
         android:supportsRtl="true"
         android:name="pl.nataliana.mywine.di.CoreApplication"
         android:theme="@style/AppTheme">
-        <activity android:name="pl.nataliana.mywine.ui.main.MainFragment">
+        <activity android:name="pl.nataliana.mywine.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="pl.nataliana.mywine.ui.detail.AddWineActivity">
         </activity>
     </application>
 
