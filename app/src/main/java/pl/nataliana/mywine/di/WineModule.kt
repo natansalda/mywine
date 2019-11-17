@@ -20,5 +20,5 @@ val repositoryModule = module {
 }
 
 val uiModule = module {
-    viewModel { WinesListViewModel(get()) }
+    viewModel { WinesListViewModel(get(), get()) }
 }

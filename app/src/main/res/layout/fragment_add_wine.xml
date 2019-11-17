@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="winesListViewModel"
+            type="pl.nataliana.mywine.model.WinesListViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="pl.nataliana.mywine.ui.detail.AddWineFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding_medium">
+
+            <EditText
+                tools:ignore="Autofill"
+                android:id="@+id/edit_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_small"
+                android:hint="@string/name_of_wine"
+                android:inputType="text"
+                android:padding="@dimen/default_padding_small"
+                android:textSize="@dimen/default_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/label_text_year"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding_small"
+                    android:text="@string/year_of_production"
+                    android:textSize="@dimen/default_text_size_small"
+                    android:textStyle="bold" />
+
+                <EditText
+                    tools:ignore="Autofill"
+                    android:id="@+id/edit_text_year"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/year_of_production_hint"
+                    android:inputType="number"
+                    android:textSize="@dimen/default_text_size_small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/label_text_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding_small"
+                    android:text="@string/what_s_the_usual_price"
+                    android:textSize="@dimen/default_text_size_small"
+                    android:textStyle="bold" />
+
+                <EditText
+                    tools:ignore="Autofill"
+                    android:id="@+id/edit_text_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/price_hint"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/radio_group_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/choose_wine_color"
+                    android:textSize="@dimen/default_text_size_small"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/red_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/red_wine"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/white_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/white_wine"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/pink_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/pink_wine"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/label_text_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding_small"
+                    android:text="@string/rate_the_wine"
+                    android:textSize="@dimen/default_text_size_small"
+                    android:textStyle="bold" />
+
+                <EditText
+                    tools:ignore="Autofill"
+                    android:id="@+id/edit_text_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/_1_to_5"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_wine_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/default_margin_large"
+                android:background="@drawable/button_shape"
+                android:padding="@dimen/default_padding_medium"
+                android:text="@string/add"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/default_text_size_small" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

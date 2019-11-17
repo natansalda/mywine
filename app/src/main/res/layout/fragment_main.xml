@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="winesListViewModel"
+            type="pl.nataliana.mywine.model.WinesListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="pl.nataliana.mywine.ui.main.MainFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/wine_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_wine_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/add_wine_button_description"
+            android:src="@drawable/ic_add_24dp"
+            app:elevation="6dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:pressedTranslationZ="12dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
+

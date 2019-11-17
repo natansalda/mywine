@@ -26,4 +26,8 @@
     <string name="pink_wine">Pink wine</string>
     <string name="pink" translatable="false">pink</string>
     <string name="usual_price">Usual price:</string>
+    <string name="main_fragment">MainFragment</string>
+    <string name="detail_fragment">DetailFragment</string>
+    <string name="add_wine_fragment">AddWineFragment</string>
+    <string name="no_wines_yet">You have no wines added yet.</string>
 </resources>

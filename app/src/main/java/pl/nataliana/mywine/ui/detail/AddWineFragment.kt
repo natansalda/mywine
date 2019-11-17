@@ -3,21 +3,51 @@ package pl.nataliana.mywine.ui.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.mywine.R
-import kotlinx.android.synthetic.main.activity_add_wine.*
+import com.example.mywine.databinding.FragmentAddWineBinding
+import kotlinx.android.synthetic.main.fragment_add_wine.*
+import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.model.WinesListViewModel
+import pl.nataliana.mywine.model.WinesListViewModelFactory
 
-class AddWineActivity : AppCompatActivity() {
+class AddWineFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_wine)
-        title = getString(R.string.add_new_wine)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentAddWineBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_add_wine, container, false
+        )
 
-        add_wine_button.setOnClickListener {
+        activity?.title = getString(R.string.add_new_wine)
+
+        val application = requireNotNull(this.activity).application
+
+        val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
+        val viewModelFactory = WinesListViewModelFactory(dataSource, application)
+
+        val wineViewModel =
+            ViewModelProviders.of(
+                this, viewModelFactory
+            ).get(WinesListViewModel::class.java)
+
+        binding.winesListViewModel = wineViewModel
+        binding.lifecycleOwner = this
+
+        binding.addWineButton.setOnClickListener {
             saveWine()
         }
+
+        return binding.root
     }
 
     private fun saveWine() {
@@ -26,8 +56,10 @@ class AddWineActivity : AppCompatActivity() {
 
         val data = applyWineData()
 
-        setResult(Activity.RESULT_OK, data)
-        finish()
+        activity?.run {
+            setResult(Activity.RESULT_OK, data)
+        }
+        view?.findNavController()?.navigate(R.id.action_addWineFragment_to_mainFragment)
     }
 
     private fun applyWineData(): Intent {
@@ -57,7 +89,7 @@ class AddWineActivity : AppCompatActivity() {
 
     private fun checkIfNameNotEmpty(): Boolean {
         if (edit_text_name.text.toString().trim().isBlank()) {
-            Toast.makeText(this, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
+            Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
                 .show()
             return true
         }
@@ -66,7 +98,7 @@ class AddWineActivity : AppCompatActivity() {
 
     private fun checkIfColorNotEmpty(): Boolean {
         if (determineWineColor() == null) {
-            Toast.makeText(this, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
+            Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
                 .show()
             return true
         }

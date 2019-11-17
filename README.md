@@ -12,6 +12,7 @@ Please note that the app is in the early stage of development.
 * RecyclerView
 * MVVM pattern
 * JUnit
+* Coroutines
 
 # Languages availible
 * EN

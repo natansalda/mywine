@@ -1,11 +1,16 @@
 package pl.nataliana.mywine.model
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import pl.nataliana.mywine.WineRepository
+import pl.nataliana.mywine.database.WineDatabaseDao
 
-class WinesListViewModel(private var repository: WineRepository) : ViewModel() {
+class WinesListViewModel(
+    private var repository: WineDatabaseDao,
+    application: Application
+) : AndroidViewModel(application) {
 
     private var allWines: LiveData<List<Wine>> = repository.getAllWines()
 
