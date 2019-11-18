@@ -8,6 +8,10 @@
         <variable
             name="wine"
             type="pl.nataliana.mywine.model.Wine" />
+
+        <variable
+            name="winesListViewModel"
+            type="pl.nataliana.mywine.model.WinesListViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
