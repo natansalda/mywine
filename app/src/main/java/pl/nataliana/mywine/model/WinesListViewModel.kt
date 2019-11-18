@@ -37,8 +37,9 @@ class WinesListViewModel(
         return allWines
     }
 
-    fun onWineClicked(id: Long) {
+    fun getWineDetail(id: Long) {
         _navigateToWineDetail.value = id
+        repository.getWineDetails(id)
     }
 
     fun onWineDetailNavigated() {

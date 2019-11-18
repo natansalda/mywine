@@ -1,8 +1,6 @@
 package pl.nataliana.mywine.ui.main
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -23,10 +21,6 @@ import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
-import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_COLOR
-import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_NAME
-import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_RATE
-import pl.nataliana.mywine.ui.detail.AddWineFragment.Companion.EXTRA_YEAR
 
 class MainFragment : Fragment() {
 
@@ -60,7 +54,11 @@ class MainFragment : Fragment() {
 
         val adapter = WineAdapter(WineListener { id ->
             Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
-            wineViewModel.onWineClicked(id)
+            uiScope.launch {
+                async(bgDispatcher) {
+                    wineViewModel.getWineDetail(id)
+                }
+            }
         })
 
         binding.recyclerView.adapter = adapter
