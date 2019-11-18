@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentMainBinding
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -36,9 +37,7 @@ class MainFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         val application = requireNotNull(this.activity).application
-
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
-
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
 
         val wineViewModel =
@@ -52,13 +51,17 @@ class MainFragment : Fragment() {
             setupButtonAddWine()
         }
 
-        val adapter = WineAdapter(WineListener { id ->
-            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
-            uiScope.launch {
-                async(bgDispatcher) {
-                    wineViewModel.getWineDetail(id)
+        val adapter = WineAdapter(WineListener { clickedWineId ->
+            Toast.makeText(context, "$clickedWineId", Toast.LENGTH_LONG).show()
+            wineViewModel.navigateToWineDetail.observe(this, Observer { id ->
+                id?.let {
+                    this.findNavController().navigate(
+                        MainFragmentDirections
+                            .actionMainFragmentToDetailFragment(id)
+                    )
+                    wineViewModel.onWineDetailNavigated()
                 }
-            }
+            })
         })
 
         binding.recyclerView.adapter = adapter
@@ -70,15 +73,6 @@ class MainFragment : Fragment() {
                 }
             })
 
-        // TODO add navigation
-//        wineViewModel.navigateToWineDetail.observe(this, Observer {wine ->
-//            wine?.let {
-//                this.findNavController().navigate(MainActivityDirections
-//                    .actionMainActivityToDetailActivity(wine))
-//                wineViewModel.onWineDetailNavigated()
-//            }
-//        })
-
         setHasOptionsMenu(true)
 
         return binding.root
@@ -87,7 +81,6 @@ class MainFragment : Fragment() {
     private fun setupButtonAddWine() {
         view?.findNavController()
             ?.navigate(MainFragmentDirections.actionMainFragentToAddWineFragment())
-        // TODO how to retrieve data from AddWineFragment
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

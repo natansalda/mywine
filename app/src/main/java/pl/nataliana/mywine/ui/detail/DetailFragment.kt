@@ -11,11 +11,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentWineDetailBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
 class DetailFragment : Fragment() {
+
+    private val wineViewModel: WinesListViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,5 +54,14 @@ class DetailFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                wineViewModel.getWineDetail(id.toLong())
+            }
+        }
     }
 }
