@@ -29,6 +29,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // TODO check binding with layout
         val binding: FragmentWineDetailBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_wine_detail, container, false
         )
