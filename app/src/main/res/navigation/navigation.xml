@@ -12,14 +12,10 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
-            app:destination="@id/detail_fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:destination="@id/detail_fragment" />
         <action
-            android:id="@+id/action_mainFragment_to_addWineFragment"
-            app:destination="@id/add_wine_fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            android:id="@+id/action_mainFragent_to_addWineFragment"
+            app:destination="@id/add_wine_fragment" />
     </fragment>
     <fragment
         android:id="@+id/detail_fragment"
@@ -27,7 +23,7 @@
         android:label="@string/detail_fragment"
         tools:layout="@layout/fragment_wine_detail">
         <argument
-            android:name="wineKey"
+            android:name="id"
             app:argType="long" />
         <action
             android:id="@+id/action_detailFragment_to_mainFragment"
@@ -41,9 +37,6 @@
         android:name="pl.nataliana.mywine.ui.detail.AddWineFragment"
         android:label="@string/add_wine_fragment"
         tools:layout="@layout/fragment_add_wine" >
-        <argument
-            android:name="wineKey"
-            app:argType="long" />
         <action
             android:id="@+id/action_addWineFragment_to_mainFragment"
             app:destination="@id/main_fragment"
