@@ -32,15 +32,14 @@ class MainFragment : Fragment() {
 
     private val wineViewModel: WinesListViewModel by inject()
     private val uiScope = CoroutineScope(Dispatchers.Main)
-    val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentMainBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_main, container, false
-        )
+        val binding: FragmentMainBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         val application = requireNotNull(this.activity).application
 
@@ -53,8 +52,8 @@ class MainFragment : Fragment() {
                 this, viewModelFactory
             ).get(WinesListViewModel::class.java)
 
-        binding.winesListViewModel = wineViewModel
         binding.lifecycleOwner = this
+        binding.winesListViewModel = wineViewModel
         binding.addWineButton.setOnClickListener {
             setupButtonAddWine()
         }
@@ -88,7 +87,8 @@ class MainFragment : Fragment() {
     }
 
     private fun setupButtonAddWine() {
-        view?.findNavController()?.navigate(R.id.action_mainFragment_to_addWineFragment)
+        view?.findNavController()
+            ?.navigate(MainFragmentDirections.actionMainFragentToAddWineFragment())
         // TODO how to retrieve data from AddWineFragment
     }
 

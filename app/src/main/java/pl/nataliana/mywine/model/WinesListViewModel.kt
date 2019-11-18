@@ -18,6 +18,10 @@ class WinesListViewModel(
     val navigateToWineDetail
         get() = _navigateToWineDetail
 
+    private val _navigateToAddWine = MutableLiveData<Long>()
+    val navigateToAddWine
+        get() = _navigateToAddWine
+
     fun insert(wine: Wine) {
         repository.insert(wine)
     }
@@ -36,5 +40,9 @@ class WinesListViewModel(
 
     fun onWineDetailNavigated() {
         _navigateToWineDetail.value = null
+    }
+
+    fun onAddWineNavigated() {
+        _navigateToAddWine.value = null
     }
 }

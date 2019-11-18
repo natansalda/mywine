@@ -31,7 +31,6 @@ class AddWineFragment : Fragment() {
         activity?.title = getString(R.string.add_new_wine)
 
         val application = requireNotNull(this.activity).application
-        //        val arguments = AddWineFragmentArgs.fromBundle(arguments!!)
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
@@ -60,7 +59,8 @@ class AddWineFragment : Fragment() {
         activity?.run {
             setResult(Activity.RESULT_OK, data)
         }
-        view?.findNavController()?.navigate(R.id.action_addWineFragment_to_mainFragment)
+        view?.findNavController()
+            ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
     }
 
     private fun applyWineData(): Intent {
