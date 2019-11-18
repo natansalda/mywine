@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentMainBinding
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -51,17 +50,24 @@ class MainFragment : Fragment() {
             setupButtonAddWine()
         }
 
+        // TODO open DetailFragment with proper wine item
         val adapter = WineAdapter(WineListener { clickedWineId ->
             Toast.makeText(context, "$clickedWineId", Toast.LENGTH_LONG).show()
-            wineViewModel.navigateToWineDetail.observe(this, Observer { id ->
-                id?.let {
-                    this.findNavController().navigate(
+//            wineViewModel.navigateToWineDetail.observe(this, Observer { id ->
+            view?.findNavController()
+                ?.navigate(
                         MainFragmentDirections
-                            .actionMainFragmentToDetailFragment(id)
-                    )
-                    wineViewModel.onWineDetailNavigated()
-                }
-            })
+                            .actionMainFragmentToDetailFragment(clickedWineId)
+                )
+//                id?.let {
+//                    view?.findNavController()
+//                        ?.navigate(
+//                        MainFragmentDirections
+//                            .actionMainFragmentToDetailFragment(id)
+//                    )
+//                    wineViewModel.onWineDetailNavigated()
+//                }
+//            })
         })
 
         binding.recyclerView.adapter = adapter
@@ -133,9 +139,5 @@ class MainFragment : Fragment() {
                 getString(R.string.no_wines_yet), Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    companion object{
-        private const val ADD_WINE_REQUEST = 1
     }
 }
