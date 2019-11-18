@@ -108,6 +108,11 @@ class MainFragment : Fragment() {
     }
 
     private fun confirmDeletion(): Boolean {
+        showDeleteAlertDialog()
+        return true
+    }
+
+    private fun showDeleteAlertDialog() {
         if (!recycler_view.isEmpty()) {
             val builder = AlertDialog.Builder(context)
             builder.setMessage(getString(R.string.alert_dialog_delete_wines))
@@ -124,40 +129,18 @@ class MainFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             }
-
             builder.setNegativeButton(android.R.string.cancel) { _, _ ->
                 Toast.makeText(
                     context,
                     getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
                 ).show()
             }
-
             builder.show()
         } else {
             Toast.makeText(
                 context,
                 getString(R.string.no_wines_yet), Toast.LENGTH_SHORT
             ).show()
-        }
-        return true
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_WINE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            val newWine = Wine(
-                // TODO type mismatch null and not null
-                data.getStringExtra(EXTRA_NAME),
-                data.getStringExtra(EXTRA_COLOR),
-                data.getIntExtra(EXTRA_YEAR, 0),
-                data.getIntExtra(EXTRA_RATE, 0)
-            )
-            wineViewModel.insert(newWine)
-
-            Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
-                .show()
         }
     }
 

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WinesListViewModel(
@@ -21,6 +20,10 @@ class WinesListViewModel(
     private val _navigateToAddWine = MutableLiveData<Long>()
     val navigateToAddWine
         get() = _navigateToAddWine
+
+    private val _navigateToMainFragment = MutableLiveData<Long>()
+    val navigateToMainFragment
+        get() = _navigateToMainFragment
 
     fun insert(wine: Wine) {
         repository.insert(wine)
@@ -44,5 +47,9 @@ class WinesListViewModel(
 
     fun onAddWineNavigated() {
         _navigateToAddWine.value = null
+    }
+
+    fun onMainFragmentNavigated() {
+        _navigateToMainFragment.value = null
     }
 }
