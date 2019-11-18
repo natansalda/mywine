@@ -1,6 +1,5 @@
 package pl.nataliana.mywine.ui.detail
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,11 +13,18 @@ import androidx.navigation.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentAddWineBinding
 import kotlinx.android.synthetic.main.fragment_add_wine.*
+import kotlinx.coroutines.*
+import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
 class AddWineFragment : Fragment() {
+
+    private val wineViewModel: WinesListViewModel by inject()
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,13 +57,27 @@ class AddWineFragment : Fragment() {
     }
 
     private fun saveWine() {
-        if (checkIfNameNotEmpty()) return
-        if (checkIfColorNotEmpty()) return
+        if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
+            Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
 
         val data = applyWineData()
+        val newWine = Wine(
+            // TODO type mismatch null and not null
+            data.getStringExtra(EXTRA_NAME),
+            data.getStringExtra(EXTRA_COLOR),
+            data.getIntExtra(EXTRA_YEAR, 0),
+            data.getIntExtra(EXTRA_RATE, 0)
+        )
 
-        activity?.run {
-            setResult(Activity.RESULT_OK, data)
+        uiScope.launch {
+            async(bgDispatcher) {
+                // background thread
+                wineViewModel.insert(newWine)
+            }
+            Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
         }
         view?.findNavController()
             ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
