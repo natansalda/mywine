@@ -30,4 +30,7 @@
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">You have no wines added yet.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

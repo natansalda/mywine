@@ -50,38 +50,30 @@ class MainFragment : Fragment() {
             setupButtonAddWine()
         }
 
-        // TODO open DetailFragment with proper wine item
-        val adapter = WineAdapter(WineListener { clickedWineId ->
-            Toast.makeText(context, "$clickedWineId", Toast.LENGTH_LONG).show()
-//            wineViewModel.navigateToWineDetail.observe(this, Observer { id ->
-            view?.findNavController()
-                ?.navigate(
-                        MainFragmentDirections
-                            .actionMainFragmentToDetailFragment(clickedWineId)
-                )
-//                id?.let {
-//                    view?.findNavController()
-//                        ?.navigate(
-//                        MainFragmentDirections
-//                            .actionMainFragmentToDetailFragment(id)
-//                    )
-//                    wineViewModel.onWineDetailNavigated()
-//                }
-//            })
-        })
-
-        binding.recyclerView.adapter = adapter
+        val mainAdapter = WineAdapter(WineListener { id -> setClick(id) })
 
         wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
                 list?.let {
-                    adapter.submitList(it)
+                    mainAdapter.submitList(it)
                 }
             })
+
+        binding.recyclerView.adapter = mainAdapter
 
         setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    private fun setClick(id: Long) {
+        // TODO open DetailFragment with proper wine item
+        Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
+        view?.findNavController()?.navigate(
+            MainFragmentDirections
+                .actionMainFragmentToDetailFragment(id)
+        )
+        wineViewModel.onWineDetailNavigated()
     }
 
     private fun setupButtonAddWine() {

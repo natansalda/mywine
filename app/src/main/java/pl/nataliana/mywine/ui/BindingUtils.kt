@@ -100,3 +100,98 @@ fun ImageView.setGrape5Image(item: Wine) {
         }
     )
 }
+
+@BindingAdapter("textViewNameDetail")
+fun TextView.setTextViewNameDetail(item: Wine?) {
+    item?.let {
+        text = item.name
+    }
+}
+
+@BindingAdapter("textViewYearDetail")
+fun TextView.setTextWineYearDetail(item: Wine?) {
+    item?.let {
+        text = item.year.toString()
+    }
+}
+
+@BindingAdapter("wineImageDetail")
+fun ImageView.setWineImageDetail(item: Wine) {
+    setImageResource(
+        when (item.color) {
+            "red" -> R.drawable.red_wine_glass
+            "white" -> R.drawable.white_wine_glass
+            else -> R.drawable.pink_wine_glass
+        }
+    )
+}
+
+@BindingAdapter("grape1ImageDetail")
+fun ImageView.setGrape1ImageDetail(item: Wine) {
+    setImageResource(
+        when (item.rate) {
+            5 -> R.drawable.ic_grape_rate_icon_checked
+            4 -> R.drawable.ic_grape_rate_icon_checked
+            3 -> R.drawable.ic_grape_rate_icon_checked
+            2 -> R.drawable.ic_grape_rate_icon_checked
+            1 -> R.drawable.ic_grape_rate_icon_checked
+            else -> R.drawable.ic_grape_rate_icon_unchecked
+        }
+    )
+}
+
+@BindingAdapter("grape2ImageDetail")
+fun ImageView.setGrape2ImageDetail(item: Wine) {
+    setImageResource(
+        when (item.rate) {
+            5 -> R.drawable.ic_grape_rate_icon_checked
+            4 -> R.drawable.ic_grape_rate_icon_checked
+            3 -> R.drawable.ic_grape_rate_icon_checked
+            2 -> R.drawable.ic_grape_rate_icon_checked
+            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            else -> R.drawable.ic_grape_rate_icon_unchecked
+        }
+    )
+}
+
+@BindingAdapter("grape3ImageDetail")
+fun ImageView.setGrape3ImageDetail(item: Wine) {
+    setImageResource(
+        when (item.rate) {
+            5 -> R.drawable.ic_grape_rate_icon_checked
+            4 -> R.drawable.ic_grape_rate_icon_checked
+            3 -> R.drawable.ic_grape_rate_icon_checked
+            2 -> R.drawable.ic_grape_rate_icon_unchecked
+            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            else -> R.drawable.ic_grape_rate_icon_unchecked
+        }
+    )
+}
+
+@BindingAdapter("grape4ImageDetail")
+fun ImageView.setGrape4ImageDetail(item: Wine) {
+    setImageResource(
+        when (item.rate) {
+            5 -> R.drawable.ic_grape_rate_icon_checked
+            4 -> R.drawable.ic_grape_rate_icon_checked
+            3 -> R.drawable.ic_grape_rate_icon_unchecked
+            2 -> R.drawable.ic_grape_rate_icon_unchecked
+            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            else -> R.drawable.ic_grape_rate_icon_unchecked
+        }
+    )
+}
+
+@BindingAdapter("grape5ImageDetail")
+fun ImageView.setGrape5ImageDetail(item: Wine) {
+    setImageResource(
+        when (item.rate) {
+            5 -> R.drawable.ic_grape_rate_icon_checked
+            4 -> R.drawable.ic_grape_rate_icon_unchecked
+            3 -> R.drawable.ic_grape_rate_icon_unchecked
+            2 -> R.drawable.ic_grape_rate_icon_unchecked
+            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            else -> R.drawable.ic_grape_rate_icon_unchecked
+        }
+    )
+}

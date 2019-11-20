@@ -4,12 +4,16 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.*
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WinesListViewModel(
     private var repository: WineDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
+
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     private var allWines: LiveData<List<Wine>> = repository.getAllWines()
 
@@ -39,7 +43,11 @@ class WinesListViewModel(
 
     fun getWineDetail(id: Long) {
         _navigateToWineDetail.value = id
-        repository.getWineDetails(id)
+        uiScope.launch {
+            async(bgDispatcher) {
+                repository.getWineDetails(id)
+            }
+        }
     }
 
     fun onWineDetailNavigated() {
