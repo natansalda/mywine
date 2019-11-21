@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WinesListViewModel(
@@ -41,13 +43,9 @@ class WinesListViewModel(
         return allWines
     }
 
-    fun getWineDetail(id: Long) {
+    fun getWineDetail(id: Long): Wine? {
         _navigateToWineDetail.value = id
-        uiScope.launch {
-            async(bgDispatcher) {
-                repository.getWineDetails(id)
-            }
-        }
+        return repository.getWineDetails(id)
     }
 
     fun onWineDetailNavigated() {
