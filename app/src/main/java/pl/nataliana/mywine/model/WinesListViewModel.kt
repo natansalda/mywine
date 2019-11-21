@@ -4,18 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WinesListViewModel(
     private var repository: WineDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
-
-    private val uiScope = CoroutineScope(Dispatchers.Main)
-    private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     private var allWines: LiveData<List<Wine>> = repository.getAllWines()
 
@@ -31,13 +25,9 @@ class WinesListViewModel(
     val navigateToMainFragment
         get() = _navigateToMainFragment
 
-    fun insert(wine: Wine) {
-        repository.insert(wine)
-    }
+    fun insert(wine: Wine) = repository.insert(wine)
 
-    fun deleteAllWines() {
-        repository.deleteAllWines()
-    }
+    fun deleteAllWines() = repository.deleteAllWines()
 
     fun getAllWines(): LiveData<List<Wine>> {
         return allWines
