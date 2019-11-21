@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentWineDetailBinding
 import org.koin.android.ext.android.inject
@@ -17,6 +18,7 @@ import pl.nataliana.mywine.model.WinesListViewModelFactory
 class DetailFragment : Fragment() {
 
     private val winesListViewModel: WinesListViewModel by inject()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
