@@ -25,15 +25,10 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // TODO check binding with layout
-        val binding: FragmentWineDetailBinding =
-            DataBindingUtil.inflate(
-                inflater, R.layout.fragment_wine_detail, container, false
-        )
-
         val application = requireNotNull(this.activity).application
-        val arguments = DetailFragmentArgs.fromBundle(arguments!!)
-        val id = arguments.id
+        val id = args.id
+
+        winesListViewModel.getWineDetail(id)
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
@@ -43,10 +38,14 @@ class DetailFragment : Fragment() {
                 this, viewModelFactory
             ).get(WinesListViewModel::class.java)
 
+        // TODO check binding with layout
+        val binding: FragmentWineDetailBinding =
+            DataBindingUtil.inflate(
+                inflater, R.layout.fragment_wine_detail, container, false
+            )
+
         binding.winesListViewModel = wineListViewModel
         binding.lifecycleOwner = this
-
-        winesListViewModel.getWineDetail(id)
 
         return binding.root
     }
