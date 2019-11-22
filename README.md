@@ -8,9 +8,11 @@ Please note that the app is in the early stage of development.
 * Kotlin
 * Room
 * LiveData
+* Navigation Component
 * Koin dependency injection
 * RecyclerView
 * MVVM pattern
+* Data Binding
 * JUnit
 * Coroutines
 
