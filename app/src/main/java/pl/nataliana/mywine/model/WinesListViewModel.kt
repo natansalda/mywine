@@ -4,17 +4,22 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.*
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WinesListViewModel(
-    private var repository: WineDatabaseDao,
+    val database: WineDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
-    private var allWines: LiveData<List<Wine>> = repository.getAllWines()
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _navigateToWineDetail = MutableLiveData<Long>()
-    val navigateToWineDetail
+    private var particularWine = MutableLiveData<Wine?>()
+    private var allWines = database.getAllWines()
+
+    private val _navigateToWineDetail = MutableLiveData<Wine>()
+    val navigateToWineDetail: LiveData<Wine>
         get() = _navigateToWineDetail
 
     private val _navigateToAddWine = MutableLiveData<Long>()
@@ -25,17 +30,25 @@ class WinesListViewModel(
     val navigateToMainFragment
         get() = _navigateToMainFragment
 
-    fun insert(wine: Wine) = repository.insert(wine)
+    fun insert(wine: Wine) = database.insert(wine)
 
-    fun deleteAllWines() = repository.deleteAllWines()
+    fun deleteAllWines() = database.deleteAllWines()
 
     fun getAllWines(): LiveData<List<Wine>> {
         return allWines
     }
 
-    fun getWineDetail(id: Long): Wine? {
-        _navigateToWineDetail.value = id
-        return repository.getWineDetails(id)
+    fun initializeThisWine(id: Long) {
+        uiScope.launch {
+            particularWine.value = getWineFromDatabase(id)
+        }
+    }
+
+    private suspend fun getWineFromDatabase(id: Long): Wine? {
+        return withContext(Dispatchers.IO) {
+            val wine = id.let { database.getWineDetails(it) }
+            wine
+        }
     }
 
     fun onWineDetailNavigated() {
@@ -48,5 +61,10 @@ class WinesListViewModel(
 
     fun onMainFragmentNavigated() {
         _navigateToMainFragment.value = null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
