@@ -11,7 +11,7 @@
 
         <variable
             name="winesListViewModel"
-            type="pl.nataliana.mywine.model.WinesListViewModel" />
+            type="pl.nataliana.mywine.model.WineDetailViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
