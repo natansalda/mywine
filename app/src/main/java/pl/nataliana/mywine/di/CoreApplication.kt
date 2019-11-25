@@ -12,7 +12,6 @@ class CoreApplication : Application() {
             androidContext(this@CoreApplication)
             modules(listOf(
                 dbModule,
-                repositoryModule,
                 uiModule
             ))
         }

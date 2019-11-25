@@ -40,8 +40,6 @@ class DetailFragment : Fragment() {
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
 
-        wineDetailViewModel.onWineDetailDisplay(id)
-
         return binding.root
     }
 }
