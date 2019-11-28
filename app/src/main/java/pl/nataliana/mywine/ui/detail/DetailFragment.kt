@@ -47,8 +47,6 @@ class DetailFragment : Fragment() {
         binding.wine = wineDetailViewModel.thisWine
         Log.d("Wine object in frag: ", binding.wine.toString())
 
-        wineDetailViewModel.onWineDetailDisplay(id)
-
         return binding.root
     }
 }

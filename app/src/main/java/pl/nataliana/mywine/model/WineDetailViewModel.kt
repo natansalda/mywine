@@ -44,8 +44,7 @@ class WineDetailViewModel(
 
     private suspend fun getWineFromDatabase(): Wine {
         return withContext(Dispatchers.IO) {
-//            val wine = database.getWineDetails(wineKey)
-            thisWine = wine.value!!
+            thisWine = database.getWineDetails(wineKey)!!
             Log.d("Wine object in VM:", wine.toString())
             thisWine
         }
