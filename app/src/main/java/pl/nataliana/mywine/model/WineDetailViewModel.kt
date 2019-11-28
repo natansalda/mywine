@@ -1,5 +1,6 @@
 package pl.nataliana.mywine.model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
@@ -12,7 +13,8 @@ class WineDetailViewModel(
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private var wine = MutableLiveData<Wine?>()
+    var wine = MutableLiveData<Wine>()
+    lateinit var thisWine: Wine
 
     override fun onCleared() {
         super.onCleared()
@@ -26,7 +28,6 @@ class WineDetailViewModel(
             withContext(Dispatchers.IO) {
                 val thisWine = database.getWineDetails(wineKey) ?: return@withContext
                 thisWine.id = id
-                database.update(thisWine)
             }
         }
     }
@@ -35,16 +36,18 @@ class WineDetailViewModel(
         initializeWine()
     }
 
-    private fun initializeWine() {
-        uiScope.launch {
-            wine.value = getWineFromDatabase()
+    private fun initializeWine(){
+         uiScope.launch {
+             getWineFromDatabase()
         }
     }
 
-    private suspend fun getWineFromDatabase(): Wine? {
+    private suspend fun getWineFromDatabase(): Wine {
         return withContext(Dispatchers.IO) {
-            val wine = database.getWineDetails(wineKey)
-            wine
+//            val wine = database.getWineDetails(wineKey)
+            thisWine = wine.value!!
+            Log.d("Wine object in VM:", wine.toString())
+            thisWine
         }
     }
 }

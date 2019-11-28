@@ -1,6 +1,7 @@
 package pl.nataliana.mywine.ui.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,9 @@ import pl.nataliana.mywine.model.WineDetailViewModelFactory
 
 class DetailFragment : Fragment() {
 
+    lateinit var wineDetailViewModel: WineDetailViewModel
+    var id: Long = 0L
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,18 +31,23 @@ class DetailFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val arguments = DetailFragmentArgs.fromBundle(arguments!!)
-        val id = arguments.id
+        id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WineDetailViewModelFactory(id, dataSource)
 
-        val wineDetailViewModel =
+        wineDetailViewModel =
             ViewModelProviders.of(
                 this, viewModelFactory
             ).get(WineDetailViewModel::class.java)
 
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
+
+        binding.wine = wineDetailViewModel.thisWine
+        Log.d("Wine object in frag: ", binding.wine.toString())
+
+        wineDetailViewModel.onWineDetailDisplay(id)
 
         return binding.root
     }
