@@ -15,10 +15,6 @@ interface WineDatabaseDao {
     @Update
     fun update(wine: Wine)
 
-    // delete particular wine
-    @Delete
-    fun delete(wine: Wine)
-
     // delete all wines in database
     @Query("DELETE FROM wines_table")
     fun deleteAllWines()
