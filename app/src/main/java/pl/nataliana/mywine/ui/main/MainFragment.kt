@@ -67,8 +67,6 @@ class MainFragment : Fragment() {
     }
 
     private fun setClick(id: Long) {
-        // TODO open DetailFragment with proper wine item
-        Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
         view?.findNavController()?.navigate(
             MainFragmentDirections
                 .actionMainFragmentToDetailFragment(id)

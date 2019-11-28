@@ -27,7 +27,7 @@ interface WineDatabaseDao {
     @Query("SELECT * FROM wines_table ORDER BY id DESC")
     fun getAllWines(): LiveData<List<Wine>>
 
-    // access all wines in database
+    // access all wines in database by rating descending
     @Query("SELECT * FROM wines_table ORDER BY rate DESC")
     fun getAllWinesByRating(): LiveData<List<Wine>>
 
