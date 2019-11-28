@@ -28,4 +28,7 @@
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">"Twoja baza danych jest jeszcze pusta. "</string>
+    <string name="alert_dialog_delete_this_wine">Za chwilę usuniesz to wino z bazy</string>
+    <string name="wine_deleted_cancelled">Twoje wino wciąż tu jest</string>
+    <string name="wine_deleted_confirmation">Wino zostało usunięte!</string>
 </resources>

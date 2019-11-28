@@ -37,4 +37,6 @@ class WineDetailViewModel(
             thisWine
         }
     }
+
+    fun deleteThisWine() = database.deleteThisWine(wineKey)
 }

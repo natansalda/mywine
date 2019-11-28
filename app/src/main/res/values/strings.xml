@@ -8,8 +8,11 @@
     <string name="wine_glass_image_description">Wine glass showing color of the wine</string>
     <string name="delete_wines">Delete Wines</string>
     <string name="wines_deleted_confirmation">All wines deleted!</string>
+    <string name="wine_deleted_confirmation">Wine has been deleted!</string>
     <string name="wines_deleted_cancelled">Your wine data is still here</string>
+    <string name="wine_deleted_cancelled">Your wine is still here</string>
     <string name="alert_dialog_delete_wines">You are about to delete all your wine data</string>
+    <string name="alert_dialog_delete_this_wine">You are about to delete this wine</string>
     <string name="rate_the_wine">Rate wine with number from 1 to 5</string>
     <string name="red" translatable="false">red</string>
     <string name="white" translatable="false">white</string>
@@ -30,7 +33,4 @@
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">You have no wines added yet.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,20 +1,24 @@
 package pl.nataliana.mywine.ui.detail
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentWineDetailBinding
+import kotlinx.coroutines.*
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WineDetailViewModelFactory
 
 class DetailFragment : Fragment() {
 
+    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     lateinit var wineDetailViewModel: WineDetailViewModel
     var id: Long = 0L
 
@@ -43,6 +47,59 @@ class DetailFragment : Fragment() {
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.delete_this_wines -> {
+                confirmThisWineDeletion()
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun confirmThisWineDeletion(): Boolean {
+        showDeleteAlertDialog()
+        return true
+    }
+
+    private fun showDeleteAlertDialog() {
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage(getString(R.string.alert_dialog_delete_this_wine))
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            uiScope.launch {
+                async(bgDispatcher) {
+                    // background thread
+                    wineDetailViewModel.deleteThisWine()
+                }
+            }
+            Toast.makeText(
+                context,
+                getString(R.string.wine_deleted_confirmation),
+                Toast.LENGTH_LONG
+            ).show()
+            navBackToWinesList()
+        }
+        builder.setNegativeButton(android.R.string.cancel) { _, _ ->
+            Toast.makeText(
+                context,
+                getString(R.string.wine_deleted_cancelled), Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder.show()
+    }
+
+    private fun navBackToWinesList() {
+        view?.findNavController()
+            ?.navigate(DetailFragmentDirections.actionDetailFragmentToMainFragment())
     }
 }
