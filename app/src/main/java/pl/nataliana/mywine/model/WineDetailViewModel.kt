@@ -1,7 +1,5 @@
 package pl.nataliana.mywine.model
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
@@ -15,23 +13,11 @@ class WineDetailViewModel(
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    var wine = MutableLiveData<Wine>()
-    lateinit var thisWine: Wine
+    private var thisWine: Wine? = null
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
-    }
-
-    fun onWineDetailDisplay(id: Long) {
-        uiScope.launch {
-            // IO is a thread pool for running operations that access the disk, such as
-            // our Room database.
-            withContext(Dispatchers.IO) {
-                val thisWine = database.getWineDetails(wineKey) ?: return@withContext
-                thisWine.id = id
-            }
-        }
     }
 
     init {
@@ -45,10 +31,9 @@ class WineDetailViewModel(
         }
     }
 
-    private suspend fun getWineFromDatabase(): Wine {
+    private suspend fun getWineFromDatabase(): Wine? {
         return withContext(Dispatchers.IO) {
-            thisWine = database.getWineDetails(wineKey)!!
-            Log.d("Wine object in VM:", wine.toString())
+            thisWine = database.getWineDetails(wineKey)
             thisWine
         }
     }

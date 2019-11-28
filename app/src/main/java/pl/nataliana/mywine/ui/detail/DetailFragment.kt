@@ -1,7 +1,6 @@
 package pl.nataliana.mywine.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +42,6 @@ class DetailFragment : Fragment() {
 
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
-
-        Log.d("Wine object in frag: ", binding.wine.toString())
 
         return binding.root
     }
