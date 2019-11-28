@@ -116,9 +116,9 @@ fun TextView.setTextWineYearDetail(item: Wine?) {
 }
 
 @BindingAdapter("wineImageDetail")
-fun ImageView.setWineImageDetail(item: Wine) {
+fun ImageView.setWineImageDetail(item: Wine?) {
     setImageResource(
-        when (item.color) {
+        when (item?.color) {
             "red" -> R.drawable.red_wine_glass
             "white" -> R.drawable.white_wine_glass
             else -> R.drawable.pink_wine_glass
@@ -127,9 +127,9 @@ fun ImageView.setWineImageDetail(item: Wine) {
 }
 
 @BindingAdapter("grape1ImageDetail")
-fun ImageView.setGrape1ImageDetail(item: Wine) {
+fun ImageView.setGrape1ImageDetail(item: Wine?) {
     setImageResource(
-        when (item.rate) {
+        when (item?.rate) {
             5 -> R.drawable.ic_grape_rate_icon_checked
             4 -> R.drawable.ic_grape_rate_icon_checked
             3 -> R.drawable.ic_grape_rate_icon_checked
@@ -141,9 +141,9 @@ fun ImageView.setGrape1ImageDetail(item: Wine) {
 }
 
 @BindingAdapter("grape2ImageDetail")
-fun ImageView.setGrape2ImageDetail(item: Wine) {
+fun ImageView.setGrape2ImageDetail(item: Wine?) {
     setImageResource(
-        when (item.rate) {
+        when (item?.rate) {
             5 -> R.drawable.ic_grape_rate_icon_checked
             4 -> R.drawable.ic_grape_rate_icon_checked
             3 -> R.drawable.ic_grape_rate_icon_checked
@@ -155,9 +155,9 @@ fun ImageView.setGrape2ImageDetail(item: Wine) {
 }
 
 @BindingAdapter("grape3ImageDetail")
-fun ImageView.setGrape3ImageDetail(item: Wine) {
+fun ImageView.setGrape3ImageDetail(item: Wine?) {
     setImageResource(
-        when (item.rate) {
+        when (item?.rate) {
             5 -> R.drawable.ic_grape_rate_icon_checked
             4 -> R.drawable.ic_grape_rate_icon_checked
             3 -> R.drawable.ic_grape_rate_icon_checked
@@ -169,9 +169,9 @@ fun ImageView.setGrape3ImageDetail(item: Wine) {
 }
 
 @BindingAdapter("grape4ImageDetail")
-fun ImageView.setGrape4ImageDetail(item: Wine) {
+fun ImageView.setGrape4ImageDetail(item: Wine?) {
     setImageResource(
-        when (item.rate) {
+        when (item?.rate) {
             5 -> R.drawable.ic_grape_rate_icon_checked
             4 -> R.drawable.ic_grape_rate_icon_checked
             3 -> R.drawable.ic_grape_rate_icon_unchecked
@@ -183,9 +183,9 @@ fun ImageView.setGrape4ImageDetail(item: Wine) {
 }
 
 @BindingAdapter("grape5ImageDetail")
-fun ImageView.setGrape5ImageDetail(item: Wine) {
+fun ImageView.setGrape5ImageDetail(item: Wine?) {
     setImageResource(
-        when (item.rate) {
+        when (item?.rate) {
             5 -> R.drawable.ic_grape_rate_icon_checked
             4 -> R.drawable.ic_grape_rate_icon_unchecked
             3 -> R.drawable.ic_grape_rate_icon_unchecked

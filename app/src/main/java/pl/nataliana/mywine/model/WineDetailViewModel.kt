@@ -3,12 +3,14 @@ package pl.nataliana.mywine.model
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.database.WineDatabaseDao
 
 class WineDetailViewModel(
     private val wineKey: Long = 0L,
-    val database: WineDatabaseDao
+    val database: WineDatabaseDao,
+    private val binding: FragmentWineDetailBinding
 ) : ViewModel() {
 
     private val viewModelJob = Job()
@@ -36,9 +38,10 @@ class WineDetailViewModel(
         initializeWine()
     }
 
-    private fun initializeWine(){
-         uiScope.launch {
-             getWineFromDatabase()
+    private fun initializeWine() {
+        uiScope.launch {
+            val wineFromDatabase = getWineFromDatabase()
+            binding.wine = wineFromDatabase
         }
     }
 

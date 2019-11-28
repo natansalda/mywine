@@ -34,7 +34,7 @@ class DetailFragment : Fragment() {
         id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
-        val viewModelFactory = WineDetailViewModelFactory(id, dataSource)
+        val viewModelFactory = WineDetailViewModelFactory(id, dataSource,binding)
 
         wineDetailViewModel =
             ViewModelProviders.of(
@@ -44,7 +44,6 @@ class DetailFragment : Fragment() {
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
 
-        binding.wine = wineDetailViewModel.thisWine
         Log.d("Wine object in frag: ", binding.wine.toString())
 
         return binding.root
