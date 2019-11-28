@@ -23,6 +23,10 @@ interface WineDatabaseDao {
     @Query("DELETE FROM wines_table")
     fun deleteAllWines()
 
+    // delete particular wine
+    @Query("DELETE FROM wines_table WHERE id = :key")
+    fun deleteThisWine(key: Long)
+
     // access all wines in database
     @Query("SELECT * FROM wines_table ORDER BY id DESC")
     fun getAllWines(): LiveData<List<Wine>>
