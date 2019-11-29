@@ -31,4 +31,6 @@
     <string name="alert_dialog_delete_this_wine">Za chwilę usuniesz to wino z bazy</string>
     <string name="wine_deleted_cancelled">Twoje wino wciąż tu jest</string>
     <string name="wine_deleted_confirmation">Wino zostało usunięte!</string>
+    <string name="show_wines_in_chronological_order">Pokaż wina w kolejności chronologicznej</string>
+    <string name="sorting_wines">Sortowanie win</string>
 </resources>
