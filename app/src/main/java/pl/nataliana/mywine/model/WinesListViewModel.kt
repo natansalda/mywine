@@ -16,7 +16,9 @@ class WinesListViewModel(
 
     private var allWines = database.getAllWines()
 
-    private var allWinesByRating = database.getAllWinesByRating()
+    private var allWinesByRatingBest = database.getAllWinesByRatingBest()
+
+    private var allWinesByRatingWorse = database.getAllWinesByRatingWorse()
 
     private val _navigateToWineDetail = MutableLiveData<Wine>()
     val navigateToWineDetail: LiveData<Wine>
@@ -38,8 +40,12 @@ class WinesListViewModel(
         return allWines
     }
 
-    fun getAllWinesByRating(): LiveData<List<Wine>> {
-        return allWinesByRating
+    fun getAllWinesByRatingBest(): LiveData<List<Wine>> {
+        return allWinesByRatingBest
+    }
+
+    fun getAllWinesByRatingWorse(): LiveData<List<Wine>> {
+        return allWinesByRatingWorse
     }
 
     fun onWineDetailNavigated() {
