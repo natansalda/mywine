@@ -33,4 +33,5 @@
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">You have no wines added yet.</string>
+    <string name="sorting_wines">Sorting wines</string>
 </resources>

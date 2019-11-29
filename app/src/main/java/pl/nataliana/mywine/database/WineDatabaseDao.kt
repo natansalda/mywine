@@ -1,7 +1,10 @@
 package pl.nataliana.mywine.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import pl.nataliana.mywine.model.Wine
 
 @Dao
@@ -29,7 +32,11 @@ interface WineDatabaseDao {
 
     // access all wines in database by rating descending
     @Query("SELECT * FROM wines_table ORDER BY rate DESC")
-    fun getAllWinesByRating(): LiveData<List<Wine>>
+    fun getAllWinesByRatingBest(): LiveData<List<Wine>>
+
+    // access all wines in database by rating ascending
+    @Query("SELECT * FROM wines_table ORDER BY rate ASC")
+    fun getAllWinesByRatingWorse(): LiveData<List<Wine>>
 
     // get particular wine in the database
     @Query("SELECT * from wines_table WHERE id = :key")

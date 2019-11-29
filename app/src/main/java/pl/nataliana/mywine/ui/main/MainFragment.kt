@@ -27,6 +27,8 @@ class MainFragment : Fragment() {
     private val wineViewModel: WinesListViewModel by inject()
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
+    var winesSortedBest = false
+    private lateinit var mainAdapter: WineAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +52,7 @@ class MainFragment : Fragment() {
             setupButtonAddWine()
         }
 
-        val mainAdapter = WineAdapter(WineListener { id -> setClick(id) })
+        mainAdapter = WineAdapter(WineListener { id -> setClick(id) })
 
         wineViewModel.getAllWines().observe(this,
             Observer<List<Wine>> { list ->
@@ -88,10 +90,34 @@ class MainFragment : Fragment() {
             R.id.delete_all_wines -> {
                 confirmDeletion()
             }
+            R.id.sorting_wines -> {
+                sortWines()
+            }
             else -> {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun sortWines(): Boolean {
+        if (!winesSortedBest) {
+            wineViewModel.getAllWinesByRatingBest().observe(this,
+                Observer<List<Wine>> { list ->
+                    list?.let {
+                        mainAdapter.submitList(it)
+                    }
+                })
+            winesSortedBest = true
+        } else {
+            wineViewModel.getAllWinesByRatingWorse().observe(this,
+                Observer<List<Wine>> { list ->
+                    list?.let {
+                        mainAdapter.submitList(it)
+                    }
+                })
+            winesSortedBest = false
+        }
+        return winesSortedBest
     }
 
     private fun confirmDeletion(): Boolean {
