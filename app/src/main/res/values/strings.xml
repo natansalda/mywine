@@ -34,4 +34,5 @@
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">You have no wines added yet.</string>
     <string name="sorting_wines">Sorting wines</string>
+    <string name="show_wines_in_chronological_order">Show wines in chronological order</string>
 </resources>
