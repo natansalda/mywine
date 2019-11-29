@@ -53,16 +53,8 @@ class MainFragment : Fragment() {
         }
 
         mainAdapter = WineAdapter(WineListener { id -> setClick(id) })
-
-        wineViewModel.getAllWines().observe(this,
-            Observer<List<Wine>> { list ->
-                list?.let {
-                    mainAdapter.submitList(it)
-                }
-            })
-
+        showListOfWinesInChronologicalOrder()
         binding.recyclerView.adapter = mainAdapter
-
         setHasOptionsMenu(true)
 
         return binding.root
@@ -93,10 +85,24 @@ class MainFragment : Fragment() {
             R.id.sorting_wines -> {
                 sortWines()
             }
+            R.id.reset_to_chronological_order -> {
+                showListOfWinesInChronologicalOrder()
+                winesSortedBest = false
+                return winesSortedBest
+            }
             else -> {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun showListOfWinesInChronologicalOrder() {
+        wineViewModel.getAllWines().observe(this,
+            Observer<List<Wine>> { list ->
+                list?.let {
+                    mainAdapter.submitList(it)
+                }
+            })
     }
 
     private fun sortWines(): Boolean {
