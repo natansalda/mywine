@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/detail_fragment" />
         <action
             android:id="@+id/action_mainFragent_to_addWineFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/add_wine_fragment" />
     </fragment>
@@ -31,7 +31,7 @@
             app:argType="long" />
         <action
             android:id="@+id/action_detailFragment_to_mainFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/main_fragment"
             app:launchSingleTop="false"
@@ -45,7 +45,7 @@
         tools:layout="@layout/fragment_add_wine" >
         <action
             android:id="@+id/action_addWineFragment_to_mainFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/main_fragment"
             app:launchSingleTop="false"
