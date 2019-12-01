@@ -195,3 +195,10 @@ fun ImageView.setGrape5ImageDetail(item: Wine?) {
         }
     )
 }
+
+@BindingAdapter("priceDetail")
+fun TextView.setPriceDetail(item: Wine?) {
+    item?.let {
+        text = item.price.toString()
+    }
+}

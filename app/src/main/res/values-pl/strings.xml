@@ -33,4 +33,5 @@
     <string name="wine_deleted_confirmation">Wino zostało usunięte!</string>
     <string name="show_wines_in_chronological_order">Pokaż wina w kolejności chronologicznej</string>
     <string name="sorting_wines">Sortowanie win</string>
+    <string name="currency">zł</string>
 </resources>
