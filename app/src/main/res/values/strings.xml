@@ -28,11 +28,12 @@
     <string name="add">Add</string>
     <string name="pink_wine">Pink wine</string>
     <string name="pink" translatable="false">pink</string>
-    <string name="usual_price">Usual price:</string>
+    <string name="usual_price">Usual price: </string>
     <string name="main_fragment">MainFragment</string>
     <string name="detail_fragment">DetailFragment</string>
     <string name="add_wine_fragment">AddWineFragment</string>
     <string name="no_wines_yet">You have no wines added yet.</string>
     <string name="sorting_wines">Sorting wines</string>
     <string name="show_wines_in_chronological_order">Show wines in chronological order</string>
+    <string name="currency">$</string>
 </resources>

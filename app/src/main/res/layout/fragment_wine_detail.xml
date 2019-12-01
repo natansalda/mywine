@@ -30,10 +30,46 @@
             android:id="@+id/linear_layout_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="@dimen/default_margin_small"
+                android:layout_margin="@dimen/default_margin_small"
+                android:background="@drawable/price_background"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_view_price_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="serif-monospace"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/default_text_size"
+                    android:textStyle="bold"
+                    app:priceDetail="@{wine}"
+                    tools:text="29" />
+
+                <TextView
+                    android:id="@+id/text_view_price_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="serif-monospace"
+                    android:maxLines="1"
+                    android:text="@string/currency"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/default_text_size_small"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/wine_image_detail"
@@ -116,36 +152,6 @@
                     app:grape5ImageDetail="@{wine}"
                     tools:src="@drawable/ic_grape_rate_icon_unchecked" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/default_padding_large">
-
-                <TextView
-                    android:id="@+id/text_view_price_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="monospace"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold"
-                    tools:text="@string/usual_price" />
-
-                <TextView
-                    android:id="@+id/text_view_text_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="monospace"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="normal"
-                    tools:text="29$" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

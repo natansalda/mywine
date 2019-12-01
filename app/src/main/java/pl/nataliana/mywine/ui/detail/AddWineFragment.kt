@@ -69,7 +69,8 @@ class AddWineFragment : Fragment() {
             data.getStringExtra(EXTRA_NAME),
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
-            data.getIntExtra(EXTRA_RATE, 0)
+            data.getIntExtra(EXTRA_RATE, 0),
+            data.getIntExtra(EXTRA_PRICE, 0)
         )
 
         uiScope.launch {
@@ -90,11 +91,13 @@ class AddWineFragment : Fragment() {
             val year: Int = Integer.valueOf(edit_text_year.text.toString())
             // TODO add price to view
             val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
+            val price: Int = Integer.valueOf(edit_text_price.text.toString())
 
             putExtra(EXTRA_NAME, name)
             putExtra(EXTRA_COLOR, color)
             putExtra(EXTRA_YEAR, year)
             putExtra(EXTRA_RATE, rating)
+            putExtra(EXTRA_PRICE, price)
         }
     }
 
@@ -131,5 +134,6 @@ class AddWineFragment : Fragment() {
         const val EXTRA_COLOR = "com.example.mywine.EXTRA_COLOR"
         const val EXTRA_YEAR = "com.example.mywine.EXTRA_YEAR"
         const val EXTRA_RATE = "com.example.mywine.EXTRA_RATE"
+        const val EXTRA_PRICE = "com.example.mywine.EXTRA_PRICE"
     }
 }
