@@ -9,7 +9,7 @@ import pl.nataliana.mywine.model.Wine
 @BindingAdapter("textViewName")
 fun TextView.setTextViewName(item: Wine?) {
     item?.let {
-        text = item.name
+        text = item.name.capitalize()
     }
 }
 
@@ -104,7 +104,7 @@ fun ImageView.setGrape5Image(item: Wine) {
 @BindingAdapter("textViewNameDetail")
 fun TextView.setTextViewNameDetail(item: Wine?) {
     item?.let {
-        text = item.name
+        text = item.name.capitalize()
     }
 }
 

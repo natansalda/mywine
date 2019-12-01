@@ -27,6 +27,7 @@
                 android:layout_margin="@dimen/default_margin_small"
                 android:hint="@string/name_of_wine"
                 android:inputType="text"
+                android:maxLength="36"
                 android:padding="@dimen/default_padding_small"
                 android:textSize="@dimen/default_text_size" />
 
@@ -56,6 +57,7 @@
                     android:layout_margin="@dimen/default_margin_small"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:maxLength="4"
                     android:hint="@string/year_of_production_hint"
                     android:inputType="number"
                     android:textSize="@dimen/default_text_size_small" />
@@ -173,6 +175,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:maxLength="1"
                     android:hint="@string/_1_to_5"
                     android:inputType="number" />
 
