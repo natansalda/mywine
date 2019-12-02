@@ -10,7 +10,7 @@
     <string name="name_of_wine">Marka wina</string>
     <string name="choose_wine_color">Jaki jest kolor wina?</string>
     <string name="price_hint">np. 29zł</string>
-    <string name="rate_the_wine">Oceń wino od 1 do 5</string>
+    <string name="rate_the_wine">Oceń wino od 0 do 5</string>
     <string name="red_wine">Czerwone wino</string>
     <string name="what_s_the_usual_price">Jaka jest zwykle cena?</string>
     <string name="white_wine">Białe wino</string>
@@ -34,4 +34,6 @@
     <string name="show_wines_in_chronological_order">Pokaż wina w kolejności chronologicznej</string>
     <string name="sorting_wines">Sortowanie win</string>
     <string name="currency">zł</string>
+    <string name="your_wine_details">Szczegóły wina</string>
+    <string name="rate_needs_to_be_in_bounds">Wpisz wartość od 0 do 5</string>
 </resources>

@@ -13,7 +13,7 @@
     <string name="wine_deleted_cancelled">Your wine is still here</string>
     <string name="alert_dialog_delete_wines">You are about to delete all your wine data</string>
     <string name="alert_dialog_delete_this_wine">You are about to delete this wine</string>
-    <string name="rate_the_wine">Rate wine with number from 1 to 5</string>
+    <string name="rate_the_wine">Rate wine with number from 0 to 5</string>
     <string name="red" translatable="false">red</string>
     <string name="white" translatable="false">white</string>
     <string name="cant_set_empty_record">Can not insert empty record!</string>
@@ -23,7 +23,7 @@
     <string name="what_s_the_usual_price">What\'s the usual price?</string>
     <string name="price_hint">i.e. 29$</string>
     <string name="choose_wine_color">What\'s the wine color?</string>
-    <string name="_1_to_5">1 to 5</string>
+    <string name="_1_to_5">0 to 5</string>
     <string name="add_new_wine">Add new wine</string>
     <string name="add">Add</string>
     <string name="pink_wine">Pink wine</string>
@@ -37,4 +37,5 @@
     <string name="show_wines_in_chronological_order">Show wines in chronological order</string>
     <string name="currency">$</string>
     <string name="rate_needs_to_be_in_bounds">Please put rate between 0 and 5</string>
+    <string name="your_wine_details">Wine details</string>
 </resources>

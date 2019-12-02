@@ -49,6 +49,8 @@ class DetailFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        activity?.title = getString(R.string.your_wine_details)
+
         return binding.root
     }
 
