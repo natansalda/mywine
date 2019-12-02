@@ -20,6 +20,7 @@ import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class AddWineFragment : Fragment() {
 
     private val wineViewModel: WinesListViewModel by inject()
@@ -57,6 +58,16 @@ class AddWineFragment : Fragment() {
     }
 
     private fun saveWine() {
+        if (checkIfRateInBounds()) {
+            Toast.makeText(
+                context,
+                getString(R.string.rate_needs_to_be_in_bounds),
+                Toast.LENGTH_SHORT
+            )
+                .show()
+            return
+        }
+
         if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
                 .show()
@@ -65,7 +76,6 @@ class AddWineFragment : Fragment() {
 
         val data = applyWineData()
         val newWine = Wine(
-            // TODO type mismatch null and not null
             data.getStringExtra(EXTRA_NAME),
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
@@ -89,7 +99,6 @@ class AddWineFragment : Fragment() {
             val name = edit_text_name.text.toString()
             val color = determineWineColor()
             val year: Int = Integer.valueOf(edit_text_year.text.toString())
-            // TODO add price to view
             val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
             val price: Int = Integer.valueOf(edit_text_price.text.toString())
 
@@ -123,6 +132,20 @@ class AddWineFragment : Fragment() {
     private fun checkIfColorNotEmpty(): Boolean {
         if (determineWineColor() == null) {
             Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
+                .show()
+            return true
+        }
+        return false
+    }
+
+    private fun checkIfRateInBounds(): Boolean {
+        val rateInEditText = edit_text_rate.text.toString().toInt()
+        if (rateInEditText <= 0 || rateInEditText >= 5) {
+            Toast.makeText(
+                context,
+                getString(R.string.rate_needs_to_be_in_bounds),
+                Toast.LENGTH_LONG
+            )
                 .show()
             return true
         }

@@ -36,4 +36,5 @@
     <string name="sorting_wines">Sorting wines</string>
     <string name="show_wines_in_chronological_order">Show wines in chronological order</string>
     <string name="currency">$</string>
+    <string name="rate_needs_to_be_in_bounds">Please put rate between 0 and 5</string>
 </resources>
