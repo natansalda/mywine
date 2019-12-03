@@ -19,7 +19,7 @@ class DetailFragment : Fragment() {
 
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
-    lateinit var wineDetailViewModel: WineDetailViewModel
+    private lateinit var wineDetailViewModel: WineDetailViewModel
     var id: Long = 0L
 
     override fun onCreateView(

@@ -58,7 +58,7 @@ class AddWineFragment : Fragment() {
     }
 
     private fun saveWine() {
-        if (checkIfRateInBounds()) {
+        if (!checkIfRateInBounds()) {
             Toast.makeText(
                 context,
                 getString(R.string.rate_needs_to_be_in_bounds),
@@ -140,16 +140,17 @@ class AddWineFragment : Fragment() {
 
     private fun checkIfRateInBounds(): Boolean {
         val rateInEditText = edit_text_rate.text.toString().toInt()
-        if (rateInEditText <= 0 || rateInEditText >= 5) {
+        return if (rateInEditText in 1..5) {
+            true
+        } else {
             Toast.makeText(
                 context,
                 getString(R.string.rate_needs_to_be_in_bounds),
                 Toast.LENGTH_LONG
             )
                 .show()
-            return true
+            false
         }
-        return false
     }
 
     companion object {
