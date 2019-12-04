@@ -60,7 +60,7 @@ class DetailFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.delete_this_wines -> {
+            R.id.delete_this_wine -> {
                 confirmThisWineDeletion()
             }
             else -> {
