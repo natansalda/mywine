@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Vineyard</string>
     <string name="name_of_wine">Brand of the wine</string>
-    <string name="red_wine">Red wine</string>
-    <string name="white_wine">White wine</string>
+    <string name="red_wine">Red</string>
+    <string name="white_wine">White</string>
     <string name="year_of_production">Year of production:</string>
     <string name="add_wine_button_description">add wine button</string>
     <string name="wine_glass_image_description">Wine glass showing color of the wine</string>
@@ -20,13 +20,13 @@
     <string name="wine_added_toast">Wine added!</string>
     <string name="wine_could_not_be_added">Wine could not be added!</string>
     <string name="year_of_production_hint">i.e. 2017</string>
-    <string name="what_s_the_usual_price">What\'s the usual price?</string>
+    <string name="what_s_the_usual_price">What\'s the price?</string>
     <string name="price_hint">i.e. 29$</string>
     <string name="choose_wine_color">What\'s the wine color?</string>
     <string name="_1_to_5">1 to 5</string>
     <string name="add_new_wine">Add new wine</string>
     <string name="add">Add</string>
-    <string name="pink_wine">Pink wine</string>
+    <string name="pink_wine">Pink</string>
     <string name="pink" translatable="false">pink</string>
     <string name="usual_price">Usual price: </string>
     <string name="main_fragment">MainFragment</string>
@@ -38,4 +38,9 @@
     <string name="currency">$</string>
     <string name="rate_needs_to_be_in_bounds">Please put rate between 1 and 5</string>
     <string name="your_wine_details">Wine details</string>
+    <string name="what_is_the_sweetness_of_the_wine">What is the sweetness of the wine?</string>
+    <string name="dry">Dry</string>
+    <string name="semi_dry">Semi dry</string>
+    <string name="semi_sweet">Semi sweet</string>
+    <string name="sweet">Sweet</string>
 </resources>

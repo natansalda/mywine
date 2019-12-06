@@ -11,9 +11,9 @@
     <string name="choose_wine_color">Jaki jest kolor wina?</string>
     <string name="price_hint">np. 29zł</string>
     <string name="rate_the_wine">Oceń wino od 1 do 5</string>
-    <string name="red_wine">Czerwone wino</string>
-    <string name="what_s_the_usual_price">Jaka jest zwykle cena?</string>
-    <string name="white_wine">Białe wino</string>
+    <string name="red_wine">Czerwone</string>
+    <string name="what_s_the_usual_price">Jaka jest cena?</string>
+    <string name="white_wine">Białe</string>
     <string name="wine_added_toast">Wino dodane!</string>
     <string name="wine_could_not_be_added">Nie udało się dodać wina</string>
     <string name="wine_glass_image_description">Butelka wina demonstrująca kolor wina</string>
@@ -22,7 +22,7 @@
     <string name="year_of_production">Rok produkcji:</string>
     <string name="year_of_production_hint">np. 2017</string>
     <string name="add">Dodaj</string>
-    <string name="pink_wine">Różowe wino</string>
+    <string name="pink_wine">Różowe</string>
     <string name="usual_price">"Cena: "</string>
     <string name="main_fragment">MainFragment</string>
     <string name="detail_fragment">DetailFragment</string>
@@ -36,4 +36,9 @@
     <string name="currency">zł</string>
     <string name="your_wine_details">Szczegóły wina</string>
     <string name="rate_needs_to_be_in_bounds">Wpisz wartość od 1 do 5</string>
+    <string name="what_is_the_sweetness_of_the_wine">Jak słodkie jest wino?</string>
+    <string name="dry">Wytrwane</string>
+    <string name="semi_dry">Półwytrawne</string>
+    <string name="semi_sweet">Półsłodkie</string>
+    <string name="sweet">Słodkie</string>
 </resources>

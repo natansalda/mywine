@@ -95,22 +95,22 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_small"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/choose_wine_color"
+                android:textSize="@dimen/default_text_size_medium"
+                android:textStyle="bold" />
+
             <RadioGroup
                 android:id="@+id/radio_group_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:weightSum="3">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin_small"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/choose_wine_color"
-                    android:textSize="@dimen/default_text_size_small"
-                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/red_radio_button"
@@ -145,6 +145,74 @@
                     android:buttonTint="@color/colorAccent"
                     android:gravity="start"
                     android:text="@string/pink_wine"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_small"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/what_is_the_sweetness_of_the_wine"
+                android:textSize="@dimen/default_text_size_medium"
+                android:textStyle="bold" />
+
+            <!--TODO convert to rate bar-->
+            <RadioGroup
+                android:id="@+id/radio_group_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/dry_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/dry"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/semi_dry_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/semi_dry"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/sweet_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/sweet"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/semi_sweet_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_small"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:gravity="start"
+                    android:text="@string/semi_sweet"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textStyle="bold" />
 
