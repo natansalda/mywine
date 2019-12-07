@@ -46,4 +46,5 @@
     <string name="semi_sweet">Semi sweet</string>
     <string name="sweet">Sweet</string>
     <string name="save_changes_after_edit">Save changes</string>
+    <string name="edit_wine_fragment">EditWineFragment</string>
 </resources>

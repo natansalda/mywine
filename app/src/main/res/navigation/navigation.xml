@@ -20,6 +20,11 @@
             app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/add_wine_fragment" />
+        <action
+            android:id="@+id/action_mainFragent_to_editWineFragment"
+            app:destination="@id/edit_wine_fragment"
+            app:enterAnim="@anim/fragment_open_wine"
+            app:exitAnim="@anim/fragment_close_exit" />
     </fragment>
     <fragment
         android:id="@+id/detail_fragment"
@@ -48,6 +53,23 @@
             app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/main_fragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/main_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_wine_fragment"
+        android:name="pl.nataliana.mywine.ui.detail.EditWineFragment"
+        android:label="@string/edit_wine_fragment"
+        tools:layout="@layout/fragment_add_wine">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_editWineFragment_to_mainFragment"
+            app:destination="@id/main_fragment"
+            app:enterAnim="@anim/fragment_open_wine"
+            app:exitAnim="@anim/fragment_close_exit"
             app:launchSingleTop="false"
             app:popUpTo="@+id/main_fragment"
             app:popUpToInclusive="true" />

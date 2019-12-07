@@ -11,15 +11,19 @@ import androidx.navigation.findNavController
 import com.example.mywine.R
 import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
+import pl.nataliana.mywine.adapter.WineAdapter
+import pl.nataliana.mywine.adapter.WineListener
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WineDetailViewModelFactory
+import pl.nataliana.mywine.ui.main.MainFragmentDirections
 
 class DetailFragment : Fragment() {
 
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private lateinit var wineDetailViewModel: WineDetailViewModel
+    private lateinit var detailAdapter: WineAdapter
     var id: Long = 0L
 
     override fun onCreateView(
@@ -44,14 +48,22 @@ class DetailFragment : Fragment() {
                 this, viewModelFactory
             ).get(WineDetailViewModel::class.java)
 
+        detailAdapter = WineAdapter(WineListener { id -> setClick(id) })
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
-
         setHasOptionsMenu(true)
 
         activity?.title = getString(R.string.your_wine_details)
 
         return binding.root
+    }
+
+    private fun setClick(id: Long) {
+        view?.findNavController()?.navigate(
+            MainFragmentDirections
+                .actionMainFragentToEditWineFragment(id)
+        )
+        wineDetailViewModel.onWineEditNavigated()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

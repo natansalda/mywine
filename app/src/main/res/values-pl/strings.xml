@@ -43,4 +43,6 @@
     <string name="sweet">Słodkie</string>
     <string name="edit_wine">Edytuj wino</string>
     <string name="save_changes_after_edit">Zapisz zmiany</string>
+    <string name="edit_wine_fragment">EditWineFragment</string>
+    <string name="wine_updated_toast">Wino edytowane!</string>
 </resources>

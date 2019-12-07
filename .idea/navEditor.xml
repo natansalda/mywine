@@ -50,6 +50,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="edit_wine_fragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editWineFragment_to_mainFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="main_fragment">
                     <value>
                       <LayoutPositions>
@@ -62,6 +83,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_mainFragent_to_addWineFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_mainFragent_to_editWineFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

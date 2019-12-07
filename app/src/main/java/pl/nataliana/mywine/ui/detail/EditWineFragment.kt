@@ -88,7 +88,7 @@ class EditWineFragment : Fragment() {
         uiScope.launch {
             async(bgDispatcher) {
                 // background thread
-                wineViewModel.update(updatedWine)
+                wineViewModel.edit(updatedWine)
             }
             Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
         }
