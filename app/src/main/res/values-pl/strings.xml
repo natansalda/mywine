@@ -41,4 +41,6 @@
     <string name="semi_dry">Półwytrawne</string>
     <string name="semi_sweet">Półsłodkie</string>
     <string name="sweet">Słodkie</string>
+    <string name="edit_wine">Edytuj wino</string>
+    <string name="save_changes_after_edit">Zapisz zmiany</string>
 </resources>
