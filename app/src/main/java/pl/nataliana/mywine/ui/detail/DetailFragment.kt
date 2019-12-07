@@ -48,8 +48,9 @@ class DetailFragment : Fragment() {
                 this, viewModelFactory
             ).get(WineDetailViewModel::class.java)
 
+        // TODO make this to be clickable
         detailAdapter = WineAdapter(WineListener { id -> setClick(id) })
-        binding.winesListViewModel = wineDetailViewModel
+        binding.winesDetailViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
         setHasOptionsMenu(true)
 
@@ -60,8 +61,8 @@ class DetailFragment : Fragment() {
 
     private fun setClick(id: Long) {
         view?.findNavController()?.navigate(
-            MainFragmentDirections
-                .actionMainFragentToEditWineFragment(id)
+            DetailFragmentDirections
+                .actionDetailFragentToEditWineFragment(id)
         )
         wineDetailViewModel.onWineEditNavigated()
     }

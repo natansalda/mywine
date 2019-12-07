@@ -10,7 +10,7 @@
             type="pl.nataliana.mywine.model.Wine" />
 
         <variable
-            name="winesListViewModel"
+            name="winesDetailViewModel"
             type="pl.nataliana.mywine.model.WineDetailViewModel" />
     </data>
 
