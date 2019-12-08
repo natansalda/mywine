@@ -34,8 +34,6 @@ class WinesListViewModel(
 
     fun insert(wine: Wine) = database.insert(wine)
 
-    fun edit(wine: Wine) = database.update(wine)
-
     fun deleteAllWines() = database.deleteAllWines()
 
     fun getAllWines(): LiveData<List<Wine>> {
