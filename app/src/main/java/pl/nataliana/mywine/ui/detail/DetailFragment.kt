@@ -50,7 +50,7 @@ class DetailFragment : Fragment() {
 
         // TODO make this to be clickable
         detailAdapter = WineAdapter(WineListener { id -> setClick(id) })
-        binding.winesDetailViewModel = wineDetailViewModel
+        binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
         setHasOptionsMenu(true)
 
