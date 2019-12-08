@@ -98,9 +98,24 @@ class AddWineFragment : Fragment() {
         return Intent().apply {
             val name = edit_text_name.text.toString()
             val color = determineWineColor()
-            val year: Int = Integer.valueOf(edit_text_year.text.toString())
-            val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
-            val price: Int = Integer.valueOf(edit_text_price.text.toString())
+            val year: Int? =
+                try {
+                    Integer.valueOf(edit_text_year.text.toString())
+                } catch (e: NumberFormatException) {
+                    Integer.valueOf(0.toString())
+                }
+            val rating: Int? =
+                try {
+                    Integer.valueOf(edit_text_rate.text.toString())
+                } catch (e: NumberFormatException) {
+                    Integer.valueOf(0.toString())
+                }
+            val price: Int? =
+                try {
+                    Integer.valueOf(edit_text_price.text.toString())
+                } catch (e: NumberFormatException) {
+                    Integer.valueOf(0.toString())
+                }
 
             putExtra(EXTRA_NAME, name)
             putExtra(EXTRA_COLOR, color)
@@ -139,18 +154,23 @@ class AddWineFragment : Fragment() {
     }
 
     private fun checkIfRateInBounds(): Boolean {
-        val rateInEditText = edit_text_rate.text.toString().toInt()
-        return if (rateInEditText in 1..5) {
-            true
-        } else {
-            Toast.makeText(
-                context,
-                getString(R.string.rate_needs_to_be_in_bounds),
-                Toast.LENGTH_LONG
-            )
-                .show()
-            false
+        try {
+            val rateInEditText = edit_text_rate.text.toString().toInt()
+            return if (rateInEditText in 1..5) {
+                true
+            } else {
+                Toast.makeText(
+                    context,
+                    getString(R.string.rate_needs_to_be_in_bounds),
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+                false
+            }
+        } catch (e: java.lang.NumberFormatException) {
+            Integer.valueOf(1.toString())
         }
+        return true
     }
 
     companion object {

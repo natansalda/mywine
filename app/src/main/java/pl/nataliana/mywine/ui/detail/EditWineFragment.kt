@@ -36,7 +36,7 @@ class EditWineFragment : Fragment() {
             inflater, R.layout.fragment_add_wine, container, false
         )
 
-        activity?.title = getString(R.string.add_new_wine)
+        activity?.title = getString(R.string.edit_wine)
 
         val application = requireNotNull(this.activity).application
 

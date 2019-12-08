@@ -49,8 +49,9 @@ class DetailFragment : Fragment() {
                 this, viewModelFactory
             ).get(WineDetailViewModel::class.java)
 
-        // TODO make this to be clickable
-        detailAdapter = WineAdapter(WineListener { id -> setClick(id) })
+        binding.cardViewDetail.setOnClickListener {
+            setClick(id)
+        }
         binding.winesListViewModel = wineDetailViewModel
         binding.lifecycleOwner = this
         setHasOptionsMenu(true)
