@@ -28,6 +28,7 @@ class EditWineFragment : Fragment() {
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
 
+    //TODO show proper wine data in edit screen
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -155,6 +156,8 @@ class EditWineFragment : Fragment() {
             false
         }
     }
+
+    // TODO ensure that back button takes us to proper wine
 
     companion object {
         const val EXTRA_NAME = "com.example.mywine.EXTRA_NAME"
