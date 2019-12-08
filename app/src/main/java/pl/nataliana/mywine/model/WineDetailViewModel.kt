@@ -17,10 +17,6 @@ class WineDetailViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private var thisWine: Wine? = null
 
-    private val _navigateToWineEdit = MutableLiveData<Wine>()
-    val navigateToWineEdit: LiveData<Wine>
-        get() = _navigateToWineEdit
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
@@ -43,12 +39,6 @@ class WineDetailViewModel(
             thisWine
         }
     }
-
-    fun onWineEditNavigated() {
-        _navigateToWineEdit.value = null
-    }
-
-    fun edit(wine: Wine) = database.update(wine)
 
     fun deleteThisWine() = database.deleteThisWine(wineKey)
 }

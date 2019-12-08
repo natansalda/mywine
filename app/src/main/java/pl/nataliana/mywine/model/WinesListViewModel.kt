@@ -32,6 +32,10 @@ class WinesListViewModel(
     val navigateToMainFragment
         get() = _navigateToMainFragment
 
+    private val _navigateToWineEdit = MutableLiveData<Wine>()
+    val navigateToWineEdit: LiveData<Wine>
+        get() = _navigateToWineEdit
+
     fun insert(wine: Wine) = database.insert(wine)
 
     fun deleteAllWines() = database.deleteAllWines()
@@ -51,6 +55,12 @@ class WinesListViewModel(
     fun onWineDetailNavigated() {
         _navigateToWineDetail.value = null
     }
+
+    fun onWineEditNavigated() {
+        _navigateToWineEdit.value = null
+    }
+
+    fun edit(wine: Wine) = database.update(wine)
 
     override fun onCleared() {
         super.onCleared()

@@ -17,6 +17,7 @@ import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.Wine
+import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
