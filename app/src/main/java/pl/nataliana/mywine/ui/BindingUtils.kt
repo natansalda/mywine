@@ -1,6 +1,8 @@
 package pl.nataliana.mywine.ui
 
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.mywine.R
@@ -200,5 +202,55 @@ fun ImageView.setGrape5ImageDetail(item: Wine?) {
 fun TextView.setPriceDetail(item: Wine?) {
     item?.let {
         text = item.price.toString()
+    }
+}
+
+@BindingAdapter("nameEdit")
+fun EditText.setNameEdit(item: Wine?) {
+    item?.let {
+        hint = item.name.capitalize()
+    }
+}
+
+@BindingAdapter("yearEdit")
+fun EditText.setYearEdit(item: Wine?) {
+    item?.let {
+        hint = item.year.toString()
+    }
+}
+
+@BindingAdapter("priceEdit")
+fun EditText.setPriceEdit(item: Wine?) {
+    item?.let {
+        hint = item.price.toString()
+    }
+}
+
+// TODO set color properly
+@BindingAdapter("colorRedEdit")
+fun RadioButton.setColorRedEdit(item: Wine?) {
+    if (item?.color == "red") {
+        isChecked
+    } else !isChecked
+}
+
+@BindingAdapter("colorWhiteEdit")
+fun RadioButton.setColorWhiteEdit(item: Wine?) {
+    if (item?.color == "white") {
+        isChecked
+    } else !isChecked
+}
+
+@BindingAdapter("colorPinkEdit")
+fun RadioButton.setColorPinkEdit(item: Wine?) {
+    if (item?.color == "pink") {
+        isChecked
+    } else !isChecked
+}
+
+@BindingAdapter("rateEdit")
+fun EditText.setRateEdit(item: Wine?) {
+    item?.let {
+        hint = item.rate.toString()
     }
 }

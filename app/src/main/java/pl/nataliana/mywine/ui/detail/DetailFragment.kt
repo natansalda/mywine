@@ -12,12 +12,9 @@ import com.example.mywine.R
 import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.adapter.WineAdapter
-import pl.nataliana.mywine.adapter.WineListener
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WineDetailViewModelFactory
-import pl.nataliana.mywine.model.WinesListViewModel
-import pl.nataliana.mywine.ui.main.MainFragmentDirections
 
 class DetailFragment : Fragment() {
 

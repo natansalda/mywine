@@ -11,45 +11,48 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.mywine.R
-import com.example.mywine.databinding.FragmentAddWineBinding
+import com.example.mywine.databinding.FragmentEditWineBinding
 import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WineDetailViewModel
-import pl.nataliana.mywine.model.WinesListViewModel
-import pl.nataliana.mywine.model.WinesListViewModelFactory
+import pl.nataliana.mywine.model.WineEditViewModel
+import pl.nataliana.mywine.model.WineEditViewModelFactory
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class EditWineFragment : Fragment() {
 
+    // TODO check what's needed in this fragment
     private val editWineViewModel: WineDetailViewModel by inject()
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
+    var id: Long = 0L
 
-    //TODO show proper wine data in edit screen
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentAddWineBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_add_wine, container, false
+        val binding: FragmentEditWineBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_edit_wine, container, false
         )
 
         activity?.title = getString(R.string.edit_wine)
 
         val application = requireNotNull(this.activity).application
+        val arguments = DetailFragmentArgs.fromBundle(arguments!!)
+        id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
-        val viewModelFactory = WinesListViewModelFactory(dataSource, application)
+        val viewModelFactory = WineEditViewModelFactory(id, dataSource, binding)
 
         val wineViewModel =
             ViewModelProviders.of(
                 this, viewModelFactory
-            ).get(WinesListViewModel::class.java)
+            ).get(WineEditViewModel::class.java)
 
-        binding.winesListViewModel = wineViewModel
+        binding.wineEditViewModel = wineViewModel
         binding.lifecycleOwner = this
 
         binding.addWineButton.text = getString(R.string.save_changes_after_edit)
