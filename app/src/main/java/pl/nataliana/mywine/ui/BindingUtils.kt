@@ -208,21 +208,21 @@ fun TextView.setPriceDetail(item: Wine?) {
 @BindingAdapter("nameEdit")
 fun EditText.setNameEdit(item: Wine?) {
     item?.let {
-        hint = item.name.capitalize()
+        setText(item.name.capitalize(), TextView.BufferType.EDITABLE)
     }
 }
 
 @BindingAdapter("yearEdit")
 fun EditText.setYearEdit(item: Wine?) {
     item?.let {
-        hint = item.year.toString()
+        setText(item.year.toString(), TextView.BufferType.EDITABLE)
     }
 }
 
 @BindingAdapter("priceEdit")
 fun EditText.setPriceEdit(item: Wine?) {
     item?.let {
-        hint = item.price.toString()
+        setText(item.price.toString(), TextView.BufferType.EDITABLE)
     }
 }
 
@@ -231,26 +231,26 @@ fun EditText.setPriceEdit(item: Wine?) {
 fun RadioButton.setColorRedEdit(item: Wine?) {
     if (item?.color == "red") {
         isChecked
-    } else !isChecked
+    }
 }
 
 @BindingAdapter("colorWhiteEdit")
 fun RadioButton.setColorWhiteEdit(item: Wine?) {
     if (item?.color == "white") {
         isChecked
-    } else !isChecked
+    }
 }
 
 @BindingAdapter("colorPinkEdit")
 fun RadioButton.setColorPinkEdit(item: Wine?) {
     if (item?.color == "pink") {
         isChecked
-    } else !isChecked
+    }
 }
 
 @BindingAdapter("rateEdit")
 fun EditText.setRateEdit(item: Wine?) {
     item?.let {
-        hint = item.rate.toString()
+        setText(item.rate.toString(), TextView.BufferType.EDITABLE)
     }
 }
