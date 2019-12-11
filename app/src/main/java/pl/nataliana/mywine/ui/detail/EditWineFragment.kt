@@ -95,10 +95,10 @@ class EditWineFragment : Fragment() {
                 // background thread
                 editWineViewModel.edit(updatedWine)
             }
-            Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.wine_edited), Toast.LENGTH_SHORT).show()
         }
         view?.findNavController()
-            ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
+            ?.navigate(EditWineFragmentDirections.actionEditWineFragmentToMainFragment())
     }
 
     private fun applyWineData(): Intent {

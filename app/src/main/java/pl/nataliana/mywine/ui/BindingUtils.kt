@@ -226,7 +226,7 @@ fun EditText.setPriceEdit(item: Wine?) {
     }
 }
 
-// TODO set color properly
+// TODO set color of wine properly
 @BindingAdapter("colorRedEdit")
 fun RadioButton.setColorRedEdit(item: Wine?) {
     if (item?.color == "red") {
