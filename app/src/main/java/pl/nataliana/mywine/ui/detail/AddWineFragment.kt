@@ -80,7 +80,8 @@ class AddWineFragment : Fragment() {
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
             data.getIntExtra(EXTRA_RATE, 0),
-            data.getIntExtra(EXTRA_PRICE, 0)
+            data.getIntExtra(EXTRA_PRICE, 0),
+            data.getStringExtra(EXTRA_TYPE)
         )
 
         uiScope.launch {
@@ -179,5 +180,6 @@ class AddWineFragment : Fragment() {
         const val EXTRA_YEAR = "com.example.mywine.EXTRA_YEAR"
         const val EXTRA_RATE = "com.example.mywine.EXTRA_RATE"
         const val EXTRA_PRICE = "com.example.mywine.EXTRA_PRICE"
+        const val EXTRA_TYPE = "com.example.mywine.EXTRA_TYPE"
     }
 }

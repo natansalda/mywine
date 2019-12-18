@@ -9,7 +9,8 @@ data class Wine(
     val color: String,
     val year: Int?,
     val rate: Int?,
-    val price: Int?
+    val price: Int?,
+    val type: String?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L

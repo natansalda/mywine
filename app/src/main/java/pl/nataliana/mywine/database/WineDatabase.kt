@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import pl.nataliana.mywine.model.Wine
 
-@Database(entities = [Wine::class], version = 7, exportSchema = false)
+@Database(entities = [Wine::class], version = 8, exportSchema = false)
 abstract class WineDatabase : RoomDatabase() {
 
     abstract val wineDatabaseDao: WineDatabaseDao
