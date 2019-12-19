@@ -74,7 +74,7 @@ class EditWineFragment : Fragment() {
             return
         }
 
-        if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
+        if (checkIfNameNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
                 .show()
             return
@@ -106,39 +106,39 @@ class EditWineFragment : Fragment() {
         return Intent().apply {
             val name = edit_text_name.text.toString()
             val color = determineWineColor()
-            val year: Int = Integer.valueOf(edit_text_year.text.toString())
-            val rating: Int = Integer.valueOf(edit_text_rate.text.toString())
-            val price: Int = Integer.valueOf(edit_text_price.text.toString())
+            val year = edit_text_year.text?.toString()?.let { Integer.valueOf(it) }
+            val rating = edit_text_rate.text?.toString()?.let { Integer.valueOf(it) }
+            val price = edit_text_price.text?.toString()?.let { Integer.valueOf(it) }
+            val type = determineWineType()
 
             putExtra(EXTRA_NAME, name)
             putExtra(EXTRA_COLOR, color)
             putExtra(EXTRA_YEAR, year)
             putExtra(EXTRA_RATE, rating)
             putExtra(EXTRA_PRICE, price)
+            putExtra(EXTRA_TYPE, type)
         }
     }
 
-    private fun determineWineColor(): String? {
+    private fun determineWineColor(): String {
         return when {
             pink_radio_button.isChecked -> getString(R.string.pink)
             red_radio_button.isChecked -> getString(R.string.red)
-            white_radio_button.isChecked -> getString(R.string.white)
-            // will never happen
-            else -> null
+            else -> getString(R.string.white)
+        }
+    }
+
+    private fun determineWineType(): String? {
+        return when {
+            dry_radio_button.isChecked -> "dry"
+            semi_dry_radio_button.isChecked -> "semi dry"
+            sweet_radio_button.isChecked -> "sweet"
+            else -> "semi sweet"
         }
     }
 
     private fun checkIfNameNotEmpty(): Boolean {
         if (edit_text_name.text.toString().trim().isBlank()) {
-            Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
-                .show()
-            return true
-        }
-        return false
-    }
-
-    private fun checkIfColorNotEmpty(): Boolean {
-        if (determineWineColor() == null) {
             Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
                 .show()
             return true
