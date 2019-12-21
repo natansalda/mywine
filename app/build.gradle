@@ -53,7 +53,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     // ConstraintLayout
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation "androidx.constraintlayout:constraintlayout:$constrainLayout"
 
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
@@ -83,6 +83,9 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
 
 androidExtensions {
