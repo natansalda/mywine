@@ -10,12 +10,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.example.mywine.R
-import com.example.mywine.databinding.FragmentAddWineBinding
 import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
+import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.databinding.FragmentAddWineBinding
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
@@ -175,11 +175,11 @@ class AddWineFragment : Fragment() {
     }
 
     companion object {
-        const val EXTRA_NAME = "com.example.mywine.EXTRA_NAME"
-        const val EXTRA_COLOR = "com.example.mywine.EXTRA_COLOR"
-        const val EXTRA_YEAR = "com.example.mywine.EXTRA_YEAR"
-        const val EXTRA_RATE = "com.example.mywine.EXTRA_RATE"
-        const val EXTRA_PRICE = "com.example.mywine.EXTRA_PRICE"
-        const val EXTRA_TYPE = "com.example.mywine.EXTRA_TYPE"
+        const val EXTRA_NAME = "pl.nataliana.mywine.EXTRA_NAME"
+        const val EXTRA_COLOR = "pl.nataliana.mywine.EXTRA_COLOR"
+        const val EXTRA_YEAR = "pl.nataliana.mywine.EXTRA_YEAR"
+        const val EXTRA_RATE = "pl.nataliana.mywine.EXTRA_RATE"
+        const val EXTRA_PRICE = "pl.nataliana.mywine.EXTRA_PRICE"
+        const val EXTRA_TYPE = "pl.nataliana.mywine.EXTRA_TYPE"
     }
 }

@@ -2,7 +2,6 @@ package pl.nataliana.mywine
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mywine.R
 
 class MainActivity : AppCompatActivity() {
 

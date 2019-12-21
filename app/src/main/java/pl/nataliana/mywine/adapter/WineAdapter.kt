@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mywine.databinding.WineItemBinding
+import pl.nataliana.mywine.databinding.WineItemBinding
 import pl.nataliana.mywine.model.Wine
 
 class WineAdapter(private val clickListener: WineListener) :

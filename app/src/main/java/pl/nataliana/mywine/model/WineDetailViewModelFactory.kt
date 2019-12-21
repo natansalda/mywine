@@ -2,8 +2,8 @@ package pl.nataliana.mywine.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mywine.databinding.FragmentWineDetailBinding
 import pl.nataliana.mywine.database.WineDatabaseDao
+import pl.nataliana.mywine.databinding.FragmentWineDetailBinding
 
 class WineDetailViewModelFactory(
     private val wineKey: Long,

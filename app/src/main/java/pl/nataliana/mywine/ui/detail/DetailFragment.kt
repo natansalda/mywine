@@ -8,11 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.example.mywine.R
-import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
+import pl.nataliana.mywine.R
 import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.databinding.FragmentWineDetailBinding
 import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WineDetailViewModelFactory
 

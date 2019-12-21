@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.mywine.R
+import pl.nataliana.mywine.R
 import pl.nataliana.mywine.model.Wine
 
 @BindingAdapter("textViewName")

@@ -3,10 +3,9 @@ package pl.nataliana.mywine.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mywine.databinding.FragmentEditWineBinding
-import com.example.mywine.databinding.FragmentWineDetailBinding
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.database.WineDatabaseDao
+import pl.nataliana.mywine.databinding.FragmentEditWineBinding
 
 // TODO move here things about editing/check what's needed
 class WineEditViewModel(

@@ -14,7 +14,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@android:color/white"
         tools:context="pl.nataliana.mywine.ui.main.MainFragment">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/wine_anim"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/wine_animation" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

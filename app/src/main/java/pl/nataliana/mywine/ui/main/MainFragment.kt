@@ -10,14 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.example.mywine.R
-import com.example.mywine.databinding.FragmentMainBinding
+import com.airbnb.lottie.LottieAnimationView
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
+import pl.nataliana.mywine.R
 import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.adapter.WineListener
 import pl.nataliana.mywine.database.WineDatabase
+import pl.nataliana.mywine.databinding.FragmentMainBinding
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
@@ -27,7 +28,7 @@ class MainFragment : Fragment() {
     private val wineViewModel: WinesListViewModel by inject()
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
-    var winesSortedBest = false
+    private var winesSortedBest = false
     private lateinit var mainAdapter: WineAdapter
 
     override fun onCreateView(
@@ -57,7 +58,16 @@ class MainFragment : Fragment() {
         binding.recyclerView.adapter = mainAdapter
         setHasOptionsMenu(true)
 
+        checkIfRecyclerViewIsEmpty()
+
         return binding.root
+    }
+
+    // TODO hide animation when at least one wine is added
+    private fun checkIfRecyclerViewIsEmpty() {
+        if (mainAdapter.itemCount != 0) {
+            wine_anim.visibility = View.GONE
+        }
     }
 
     private fun setClick(id: Long) {
