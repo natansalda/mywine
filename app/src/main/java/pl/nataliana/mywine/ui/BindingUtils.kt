@@ -234,6 +234,7 @@ fun RadioButton.setColorRedEdit(item: Wine?) {
     }
 }
 
+// TODO set color of wine properly
 @BindingAdapter("colorWhiteEdit")
 fun RadioButton.setColorWhiteEdit(item: Wine?) {
     if (item?.color == "white") {
@@ -241,6 +242,7 @@ fun RadioButton.setColorWhiteEdit(item: Wine?) {
     }
 }
 
+// TODO set color of wine properly
 @BindingAdapter("colorPinkEdit")
 fun RadioButton.setColorPinkEdit(item: Wine?) {
     if (item?.color == "pink") {
