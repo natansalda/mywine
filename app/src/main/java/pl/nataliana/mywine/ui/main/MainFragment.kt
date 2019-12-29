@@ -89,20 +89,14 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.delete_all_wines -> {
-                confirmDeletion()
-            }
-            R.id.sorting_wines -> {
-                sortWines()
-            }
+            R.id.delete_all_wines -> { confirmDeletion() }
+            R.id.sorting_wines -> { sortWines() }
             R.id.reset_to_chronological_order -> {
                 showListOfWinesInChronologicalOrder()
                 winesSortedBest = false
                 return winesSortedBest
             }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
+            else -> { super.onOptionsItemSelected(item) }
         }
     }
 
@@ -145,30 +139,38 @@ class MainFragment : Fragment() {
         if (!recycler_view.isEmpty()) {
             val builder = AlertDialog.Builder(context)
             builder.setMessage(getString(R.string.alert_dialog_delete_wines))
-            builder.setPositiveButton(android.R.string.ok) { _, _ ->
-                uiScope.launch {
-                    async(bgDispatcher) {
-                        // background thread
-                        wineViewModel.deleteAllWines()
-                    }
-                }
-                Toast.makeText(
-                    context,
-                    getString(R.string.wines_deleted_confirmation),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            builder.setNegativeButton(android.R.string.cancel) { _, _ ->
-                Toast.makeText(
-                    context,
-                    getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
-                ).show()
-            }
+            setPositiveButton(builder)
+            setNegativeButton(builder)
             builder.show()
         } else {
             Toast.makeText(
                 context,
                 getString(R.string.no_wines_yet), Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun setNegativeButton(builder: AlertDialog.Builder) {
+        builder.setNegativeButton(android.R.string.cancel) { _, _ ->
+            Toast.makeText(
+                context,
+                getString(R.string.wines_deleted_cancelled), Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun setPositiveButton(builder: AlertDialog.Builder) {
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            uiScope.launch {
+                async(bgDispatcher) {
+                    // background thread
+                    wineViewModel.deleteAllWines()
+                }
+            }
+            Toast.makeText(
+                context,
+                getString(R.string.wines_deleted_confirmation),
+                Toast.LENGTH_LONG
             ).show()
         }
     }
