@@ -1,17 +1,14 @@
 package pl.nataliana.mywine.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import pl.nataliana.mywine.model.Wine
 
 @Dao
 interface WineDatabaseDao {
 
     // insert new wine
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(wine: Wine)
 
     // update particular wine
