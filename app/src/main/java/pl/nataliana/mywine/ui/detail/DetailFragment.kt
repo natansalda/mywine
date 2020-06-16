@@ -35,7 +35,7 @@ class DetailFragment : Fragment() {
             )
 
         val application = requireNotNull(this.activity).application
-        val arguments = DetailFragmentArgs.fromBundle(arguments!!)
+        val arguments = DetailFragmentArgs.fromBundle(requireArguments())
         id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
