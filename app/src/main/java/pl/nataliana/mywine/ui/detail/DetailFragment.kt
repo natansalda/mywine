@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.R
-import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentWineDetailBinding
 import pl.nataliana.mywine.model.WineDetailViewModel
@@ -21,7 +20,6 @@ class DetailFragment : Fragment() {
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private lateinit var wineDetailViewModel: WineDetailViewModel
-    private lateinit var detailAdapter: WineAdapter
     var id: Long = 0L
 
     override fun onCreateView(
