@@ -66,7 +66,7 @@ class MainFragment : Fragment() {
     // TODO hide animation when at least one wine is added
     private fun checkIfRecyclerViewIsEmpty() {
         if (mainAdapter.itemCount != 0) {
-            wine_anim.visibility = View.GONE
+            wine_anim.visibility = View.INVISIBLE
         }
     }
 
@@ -101,7 +101,7 @@ class MainFragment : Fragment() {
     }
 
     private fun showListOfWinesInChronologicalOrder() {
-        wineViewModel.getAllWines().observe(this,
+        wineViewModel.getAllWines().observe(viewLifecycleOwner,
             Observer<List<Wine>> { list ->
                 list?.let {
                     mainAdapter.submitList(it)

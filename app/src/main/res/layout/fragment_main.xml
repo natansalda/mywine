@@ -23,7 +23,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:visibility="visible"
+            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
