@@ -46,4 +46,6 @@
     <string name="edit_wine_fragment">EditWineFragment</string>
     <string name="wine_updated_toast">Wino edytowane!</string>
     <string name="wine_edited">Wino edytowane!</string>
+    <string name="wines_sorted_chronological_order">Wina wg kolejności dodania</string>
+    <string name="wines_sorted_rate_order">Wina wg rankingu</string>
 </resources>

@@ -37,6 +37,8 @@
     <string name="no_wines_yet">You have no wines added yet.</string>
     <string name="sorting_wines">Sorting wines</string>
     <string name="show_wines_in_chronological_order">Show wines in chronological order</string>
+    <string name="wines_sorted_chronological_order">Wines sorted in chronological order</string>
+    <string name="wines_sorted_rate_order">Wines sorted in rate order</string>
     <string name="currency">$</string>
     <string name="rate_needs_to_be_in_bounds">Please put rate between 1 and 5</string>
     <string name="your_wine_details">Wine details</string>

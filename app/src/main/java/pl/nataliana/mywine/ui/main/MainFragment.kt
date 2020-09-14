@@ -110,6 +110,11 @@ class MainFragment : Fragment() {
                     mainAdapter.submitList(it)
                 }
             })
+
+        Toast.makeText(
+            context,
+            getString(R.string.wines_sorted_chronological_order), Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun sortWines(): Boolean {
@@ -130,6 +135,12 @@ class MainFragment : Fragment() {
                 })
             winesSortedBest = false
         }
+
+        Toast.makeText(
+            context,
+            getString(R.string.wines_sorted_rate_order), Toast.LENGTH_SHORT
+        ).show()
+
         return winesSortedBest
     }
 
