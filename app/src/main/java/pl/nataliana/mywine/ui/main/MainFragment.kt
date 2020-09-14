@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.airbnb.lottie.LottieAnimationView
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject
@@ -58,14 +57,16 @@ class MainFragment : Fragment() {
         binding.recyclerView.adapter = mainAdapter
         setHasOptionsMenu(true)
 
-        checkIfRecyclerViewIsEmpty()
+        if (IS_ANIMATED_WINE_ENABLED) {
+            checkIfRecyclerViewIsEmpty()
+        }
 
         return binding.root
     }
 
     // TODO hide animation when at least one wine is added
     private fun checkIfRecyclerViewIsEmpty() {
-        if (mainAdapter.itemCount != 0) {
+        if (mainAdapter.currentList.isNotEmpty()) {
             wine_anim.visibility = View.INVISIBLE
         }
     }
@@ -173,5 +174,9 @@ class MainFragment : Fragment() {
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    companion object {
+        private var IS_ANIMATED_WINE_ENABLED: Boolean = false
     }
 }

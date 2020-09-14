@@ -17,13 +17,14 @@
         android:background="@android:color/white"
         tools:context="pl.nataliana.mywine.ui.main.MainFragment">
 
+        <!--change for visible when feature is working-->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/wine_anim"
             android:layout_width="100dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            tools:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

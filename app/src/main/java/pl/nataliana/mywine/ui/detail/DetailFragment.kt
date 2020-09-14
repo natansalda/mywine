@@ -57,10 +57,12 @@ class DetailFragment : Fragment() {
     }
 
     private fun setClick(id: Long) {
-        view?.findNavController()?.navigate(
-            DetailFragmentDirections
-                .actionDetailFragentToEditWineFragment(id)
-        )
+        if (IS_EDITING_WINE_ENABLED) {
+            view?.findNavController()?.navigate(
+                DetailFragmentDirections
+                    .actionDetailFragentToEditWineFragment(id)
+            )
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -112,5 +114,9 @@ class DetailFragment : Fragment() {
     private fun navBackToWinesList() {
         view?.findNavController()
             ?.navigate(DetailFragmentDirections.actionDetailFragmentToMainFragment())
+    }
+
+    companion object {
+        private var IS_EDITING_WINE_ENABLED: Boolean = false
     }
 }
