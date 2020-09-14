@@ -61,6 +61,8 @@ class MainFragment : Fragment() {
             checkIfRecyclerViewIsEmpty()
         }
 
+        activity?.title = getString(R.string.app_name)
+
         return binding.root
     }
 
