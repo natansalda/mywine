@@ -1,8 +1,0 @@
-# The name of our workflow
-name: Upload
-on:
-  # Trigger on on push to the `main` branch.
-  push:
-    branches:
-      - main
-# Jobs to be defined.
