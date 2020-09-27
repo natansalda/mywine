@@ -20,8 +20,6 @@ Please note that the app is in the early stage of development.
 * EN
 * PL
 
-# Uses Super-Linter to check quality of the code
-[![GitHub Super-Linter](https://github.com/marketplace/actions/super-linter)](https://github.com/marketplace/actions/super-linter)
 # Screenshots
 
 ![alt text](https://github.com/natansalda/mywine/blob/master/Screenshots/Zrzut%20ekranu%202019-11-12%20o%2016.43.28.png)
