@@ -20,7 +20,7 @@ Please note that the app is in the early stage of development.
 * EN
 * PL
 
-# Uses Seuper-Linter to check quality of the code
+# Uses Super-Linter to check quality of the code
 [![GitHub Super-Linter](https://github.com/natansalda/mywine/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 # Screenshots
