@@ -66,10 +66,10 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    // TODO hide animation when at least one wine is added
+    // TODO hide wine image when at least one wine is added
     private fun checkIfRecyclerViewIsEmpty() {
         if (mainAdapter.currentList.isNotEmpty()) {
-            wine_anim.visibility = View.INVISIBLE
+            wine_image.visibility = View.INVISIBLE
         }
     }
 

@@ -18,20 +18,18 @@
         tools:context="pl.nataliana.mywine.ui.main.MainFragment">
 
         <!--change for visible when feature is working-->
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/wine_anim"
+        <ImageView
+            android:id="@+id/wine_image"
             android:layout_width="100dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:visibility="gone"
+            android:src="@drawable/pink_wine_glass"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/wine_animation" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
