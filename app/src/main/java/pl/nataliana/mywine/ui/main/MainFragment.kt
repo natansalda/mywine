@@ -3,6 +3,7 @@ package pl.nataliana.mywine.ui.main
 import android.app.AlertDialog
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.view.isEmpty
@@ -23,7 +24,6 @@ import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
-
 class MainFragment : Fragment() {
 
     private val wineViewModel: WinesListViewModel by inject()
@@ -34,9 +34,13 @@ class MainFragment : Fragment() {
     private var privateMode = 0
     private val prefName = "mindorks-welcome"
     private var sharedPref: SharedPreferences? = null
+    private val editor by lazy {
+        sharedPref!!.edit()
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -70,16 +74,21 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        checkPreferences()
+        Log.w("MainFragment: ", "onResume")
+    }
 
+    private fun checkPreferences() {
         sharedPref = activity?.getSharedPreferences(prefName, privateMode)
 
         if (sharedPref!!.getBoolean(prefName, false)) {
             instruction_layout.visibility = View.GONE
+            Log.w("MainFragment: ", "view gone")
         } else {
             instruction_layout.visibility = View.VISIBLE
-            val editor = sharedPref!!.edit()
             editor.putBoolean(prefName, true)
             editor.apply()
+            Log.w("MainFragment: ", "view visible")
         }
     }
 
@@ -202,10 +211,9 @@ class MainFragment : Fragment() {
                 getString(R.string.wines_deleted_confirmation),
                 Toast.LENGTH_LONG
             ).show()
-            instruction_layout.visibility = View.VISIBLE
-            val editor = sharedPref!!.edit()
-            editor.putBoolean(prefName, true)
+            editor.putBoolean(prefName, false)
             editor.apply()
+            checkPreferences()
         }
     }
 }
