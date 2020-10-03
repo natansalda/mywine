@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -26,9 +27,11 @@ class AddWineFragment : Fragment() {
     private val wineViewModel: WinesListViewModel by inject()
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private var wineRating: Float = 0F
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentAddWineBinding = DataBindingUtil.inflate(
@@ -57,16 +60,20 @@ class AddWineFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addListenerOnRatingBar()
+    }
+
+    private fun addListenerOnRatingBar() {
+
+        rating_bar.onRatingBarChangeListener =
+            OnRatingBarChangeListener { _, rating, _ ->
+                wineRating = rating
+            }
+    }
+
     private fun saveWine() {
-        if (!checkIfRateInBounds()) {
-            Toast.makeText(
-                context,
-                getString(R.string.rate_needs_to_be_in_bounds),
-                Toast.LENGTH_SHORT
-            )
-                .show()
-            return
-        }
 
         if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
@@ -79,7 +86,7 @@ class AddWineFragment : Fragment() {
             data.getStringExtra(EXTRA_NAME),
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
-            data.getIntExtra(EXTRA_RATE, 0),
+            data.getFloatExtra(EXTRA_RATE, 0F),
             data.getIntExtra(EXTRA_PRICE, 0),
             data.getStringExtra(EXTRA_TYPE)
         )
@@ -105,12 +112,7 @@ class AddWineFragment : Fragment() {
                 } catch (e: NumberFormatException) {
                     Integer.valueOf(0.toString())
                 }
-            val rating: Int? =
-                try {
-                    Integer.valueOf(edit_text_rate.text.toString())
-                } catch (e: NumberFormatException) {
-                    Integer.valueOf(0.toString())
-                }
+            val rating: Float? = wineRating
             val price: Int? =
                 try {
                     Integer.valueOf(edit_text_price.text.toString())
@@ -128,7 +130,7 @@ class AddWineFragment : Fragment() {
 
     private fun determineWineColor(): String? {
         return when {
-            pink_radio_button.isChecked ->getString(R.string.pink)
+            pink_radio_button.isChecked -> getString(R.string.pink)
             red_radio_button.isChecked -> getString(R.string.red)
             white_radio_button.isChecked -> getString(R.string.white)
             // will never happen
@@ -152,26 +154,6 @@ class AddWineFragment : Fragment() {
             return true
         }
         return false
-    }
-
-    private fun checkIfRateInBounds(): Boolean {
-        try {
-            val rateInEditText = edit_text_rate.text.toString().toInt()
-            return if (rateInEditText in 1..5) {
-                true
-            } else {
-                Toast.makeText(
-                    context,
-                    getString(R.string.rate_needs_to_be_in_bounds),
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-                false
-            }
-        } catch (e: java.lang.NumberFormatException) {
-            Integer.valueOf(1.toString())
-        }
-        return true
     }
 
     companion object {

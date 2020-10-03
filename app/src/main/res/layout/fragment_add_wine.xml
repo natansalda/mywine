@@ -223,33 +223,32 @@
             </RadioGroup>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:weightSum="2">
 
                 <TextView
                     android:id="@+id/label_text_rate"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/default_margin_small"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:padding="@dimen/default_padding_small"
                     android:text="@string/rate_the_wine"
                     android:textSize="@dimen/default_text_size_small"
                     android:textStyle="bold" />
 
-                <EditText
-                    tools:ignore="Autofill"
-                    android:id="@+id/edit_text_rate"
-                    android:layout_width="0dp"
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_margin="@dimen/default_margin_small"
                     android:gravity="center"
-                    android:maxLength="1"
-                    android:hint="@string/_1_to_5"
-                    android:inputType="number" />
+                    android:numStars="5"
+                    android:rating="0.0"
+                    android:stepSize="1.0" />
 
             </LinearLayout>
 
