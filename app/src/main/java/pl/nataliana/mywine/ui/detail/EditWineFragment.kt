@@ -31,7 +31,8 @@ class EditWineFragment : Fragment() {
     var id: Long = 0L
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentEditWineBinding = DataBindingUtil.inflate(
