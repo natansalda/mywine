@@ -35,7 +35,7 @@
                 android:fontFamily="@font/alegreya_sans_medium"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Add your first wine with + button"
+                android:text="@string/add_your_first_wine_with_button"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
 

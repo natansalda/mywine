@@ -50,4 +50,5 @@
     <string name="save_changes_after_edit">Save changes</string>
     <string name="edit_wine_fragment">EditWineFragment</string>
     <string name="wine_edited">Wine has been edited</string>
+    <string name="add_your_first_wine_with_button">Add your first wine with + button</string>
 </resources>
