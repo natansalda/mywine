@@ -8,7 +8,7 @@ data class Wine(
     val name: String,
     val color: String,
     val year: Int?,
-    val rate: Int?,
+    val rate: Float?,
     val price: Int?,
     val type: String?
 ) {

@@ -37,11 +37,11 @@ fun ImageView.setWineImage(item: Wine) {
 fun ImageView.setGrape1Image(item: Wine) {
     setImageResource(
         when (item.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_checked
-            1 -> R.drawable.ic_grape_rate_icon_checked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_checked
+            1F -> R.drawable.ic_grape_rate_icon_checked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -51,11 +51,11 @@ fun ImageView.setGrape1Image(item: Wine) {
 fun ImageView.setGrape2Image(item: Wine) {
     setImageResource(
         when (item.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_checked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_checked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -65,11 +65,11 @@ fun ImageView.setGrape2Image(item: Wine) {
 fun ImageView.setGrape3Image(item: Wine) {
     setImageResource(
         when (item.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -79,11 +79,11 @@ fun ImageView.setGrape3Image(item: Wine) {
 fun ImageView.setGrape4Image(item: Wine) {
     setImageResource(
         when (item.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_unchecked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_unchecked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -93,11 +93,11 @@ fun ImageView.setGrape4Image(item: Wine) {
 fun ImageView.setGrape5Image(item: Wine) {
     setImageResource(
         when (item.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_unchecked
-            3 -> R.drawable.ic_grape_rate_icon_unchecked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_unchecked
+            3F -> R.drawable.ic_grape_rate_icon_unchecked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -132,11 +132,11 @@ fun ImageView.setWineImageDetail(item: Wine?) {
 fun ImageView.setGrape1ImageDetail(item: Wine?) {
     setImageResource(
         when (item?.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_checked
-            1 -> R.drawable.ic_grape_rate_icon_checked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_checked
+            1F -> R.drawable.ic_grape_rate_icon_checked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -146,11 +146,11 @@ fun ImageView.setGrape1ImageDetail(item: Wine?) {
 fun ImageView.setGrape2ImageDetail(item: Wine?) {
     setImageResource(
         when (item?.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_checked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_checked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -160,11 +160,11 @@ fun ImageView.setGrape2ImageDetail(item: Wine?) {
 fun ImageView.setGrape3ImageDetail(item: Wine?) {
     setImageResource(
         when (item?.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_checked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_checked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -174,11 +174,11 @@ fun ImageView.setGrape3ImageDetail(item: Wine?) {
 fun ImageView.setGrape4ImageDetail(item: Wine?) {
     setImageResource(
         when (item?.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_checked
-            3 -> R.drawable.ic_grape_rate_icon_unchecked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_checked
+            3F -> R.drawable.ic_grape_rate_icon_unchecked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )
@@ -188,11 +188,11 @@ fun ImageView.setGrape4ImageDetail(item: Wine?) {
 fun ImageView.setGrape5ImageDetail(item: Wine?) {
     setImageResource(
         when (item?.rate) {
-            5 -> R.drawable.ic_grape_rate_icon_checked
-            4 -> R.drawable.ic_grape_rate_icon_unchecked
-            3 -> R.drawable.ic_grape_rate_icon_unchecked
-            2 -> R.drawable.ic_grape_rate_icon_unchecked
-            1 -> R.drawable.ic_grape_rate_icon_unchecked
+            5F -> R.drawable.ic_grape_rate_icon_checked
+            4F -> R.drawable.ic_grape_rate_icon_unchecked
+            3F -> R.drawable.ic_grape_rate_icon_unchecked
+            2F -> R.drawable.ic_grape_rate_icon_unchecked
+            1F -> R.drawable.ic_grape_rate_icon_unchecked
             else -> R.drawable.ic_grape_rate_icon_unchecked
         }
     )

@@ -64,15 +64,6 @@ class EditWineFragment : Fragment() {
     }
 
     private fun saveWine() {
-        if (!checkIfRateInBounds()) {
-            Toast.makeText(
-                context,
-                getString(R.string.rate_needs_to_be_in_bounds),
-                Toast.LENGTH_SHORT
-            )
-                .show()
-            return
-        }
 
         if (checkIfNameNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
@@ -86,7 +77,7 @@ class EditWineFragment : Fragment() {
             data.getStringExtra(EXTRA_NAME),
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
-            data.getIntExtra(EXTRA_RATE, 0),
+            data.getFloatExtra(EXTRA_RATE, 0F),
             data.getIntExtra(EXTRA_PRICE, 0),
             data.getStringExtra(EXTRA_TYPE)
         )
@@ -107,7 +98,7 @@ class EditWineFragment : Fragment() {
             val name = edit_text_name.text.toString()
             val color = determineWineColor()
             val year = edit_text_year.text?.toString()?.let { Integer.valueOf(it) }
-            val rating = edit_text_rate.text?.toString()?.let { Integer.valueOf(it) }
+            val rating = rating_bar.rating.toString().let { Integer.valueOf(it) }
             val price = edit_text_price.text?.toString()?.let { Integer.valueOf(it) }
             val type = determineWineType()
 
@@ -144,21 +135,6 @@ class EditWineFragment : Fragment() {
             return true
         }
         return false
-    }
-
-    private fun checkIfRateInBounds(): Boolean {
-        val rateInEditText = edit_text_rate.text.toString().toInt()
-        return if (rateInEditText in 1..5) {
-            true
-        } else {
-            Toast.makeText(
-                context,
-                getString(R.string.rate_needs_to_be_in_bounds),
-                Toast.LENGTH_LONG
-            )
-                .show()
-            false
-        }
     }
 
     // TODO ensure that back button takes us to proper wine
