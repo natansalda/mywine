@@ -130,7 +130,7 @@ class AddWineFragment : Fragment() {
 
     private fun determineWineColor(): String? {
         return when {
-            pink_radio_button.isChecked ->getString(R.string.pink)
+            pink_radio_button.isChecked -> getString(R.string.pink)
             red_radio_button.isChecked -> getString(R.string.red)
             white_radio_button.isChecked -> getString(R.string.white)
             // will never happen

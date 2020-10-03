@@ -71,7 +71,6 @@ class EditWineFragment : Fragment() {
             return
         }
 
-
         val data = applyWineData()
         val updatedWine = Wine(
             data.getStringExtra(EXTRA_NAME),
