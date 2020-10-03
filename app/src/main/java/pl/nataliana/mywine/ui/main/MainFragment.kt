@@ -9,7 +9,7 @@ import androidx.core.view.isEmpty
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
@@ -48,7 +48,7 @@ class MainFragment : Fragment() {
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
 
         val wineViewModel =
-            ViewModelProviders.of(
+            ViewModelProvider(
                 this, viewModelFactory
             ).get(WinesListViewModel::class.java)
 

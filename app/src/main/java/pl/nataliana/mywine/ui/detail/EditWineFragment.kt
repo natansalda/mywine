@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
@@ -48,7 +48,7 @@ class EditWineFragment : Fragment() {
         val viewModelFactory = WineEditViewModelFactory(id, dataSource, binding)
 
         val wineViewModel =
-            ViewModelProviders.of(
+            ViewModelProvider(
                 this, viewModelFactory
             ).get(WineEditViewModel::class.java)
 
