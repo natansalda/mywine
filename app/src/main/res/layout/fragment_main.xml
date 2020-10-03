@@ -17,19 +17,37 @@
         android:background="@android:color/white"
         tools:context="pl.nataliana.mywine.ui.main.MainFragment">
 
-        <!--change for visible when feature is working-->
-        <ImageView
-            android:id="@+id/wine_image"
-            android:layout_width="100dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:src="@drawable/pink_wine_glass"
+        <LinearLayout
+            android:id="@+id/instruction_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/instruction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alegreya_sans_medium"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Add your first wine with + button"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold" />
+
+            <!--change for visible when feature is working-->
+            <ImageView
+                android:id="@+id/wine_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_grape_rate_icon_checked" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

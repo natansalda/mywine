@@ -1,6 +1,7 @@
 package pl.nataliana.mywine.ui.main
 
 import android.app.AlertDialog
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -22,6 +23,7 @@ import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
+
 class MainFragment : Fragment() {
 
     private val wineViewModel: WinesListViewModel by inject()
@@ -29,11 +31,15 @@ class MainFragment : Fragment() {
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private var winesSortedBest = false
     private lateinit var mainAdapter: WineAdapter
+    private var privateMode = 0
+    private val prefName = "mindorks-welcome"
+    private var sharedPref: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding: FragmentMainBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
@@ -57,19 +63,23 @@ class MainFragment : Fragment() {
         binding.recyclerView.adapter = mainAdapter
         setHasOptionsMenu(true)
 
-        if (IS_ANIMATED_WINE_ENABLED) {
-            checkIfRecyclerViewIsEmpty()
-        }
-
         activity?.title = getString(R.string.app_name)
 
         return binding.root
     }
 
-    // TODO hide wine image when at least one wine is added
-    private fun checkIfRecyclerViewIsEmpty() {
-        if (mainAdapter.currentList.isNotEmpty()) {
-            wine_image.visibility = View.INVISIBLE
+    override fun onResume() {
+        super.onResume()
+
+        sharedPref = activity?.getSharedPreferences(prefName, privateMode)
+
+        if (sharedPref!!.getBoolean(prefName, false)) {
+            instruction_layout.visibility = View.GONE
+        } else {
+            instruction_layout.visibility = View.VISIBLE
+            val editor = sharedPref!!.edit()
+            editor.putBoolean(prefName, true)
+            editor.apply()
         }
     }
 
@@ -92,14 +102,20 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.delete_all_wines -> { confirmDeletion() }
-            R.id.sorting_wines -> { sortWines() }
+            R.id.delete_all_wines -> {
+                confirmDeletion()
+            }
+            R.id.sorting_wines -> {
+                sortWines()
+            }
             R.id.reset_to_chronological_order -> {
                 showListOfWinesInChronologicalOrder()
                 winesSortedBest = false
                 return winesSortedBest
             }
-            else -> { super.onOptionsItemSelected(item) }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 
@@ -186,10 +202,10 @@ class MainFragment : Fragment() {
                 getString(R.string.wines_deleted_confirmation),
                 Toast.LENGTH_LONG
             ).show()
+            instruction_layout.visibility = View.VISIBLE
+            val editor = sharedPref!!.edit()
+            editor.putBoolean(prefName, true)
+            editor.apply()
         }
-    }
-
-    companion object {
-        private var IS_ANIMATED_WINE_ENABLED: Boolean = false
     }
 }
