@@ -32,7 +32,7 @@ class MainFragment : Fragment() {
     private var winesSortedBest = false
     private lateinit var mainAdapter: WineAdapter
     private var privateMode = 0
-    private val prefName = "mindorks-welcome"
+    private val prefInstructions = "instruction-view"
     private var sharedPref: SharedPreferences? = null
     private val editor by lazy {
         sharedPref!!.edit()
@@ -63,7 +63,7 @@ class MainFragment : Fragment() {
         }
 
         mainAdapter = WineAdapter(WineListener { id -> setClick(id) })
-        showListOfWinesInChronologicalOrder()
+        displayWines()
         binding.recyclerView.adapter = mainAdapter
         setHasOptionsMenu(true)
 
@@ -79,14 +79,14 @@ class MainFragment : Fragment() {
     }
 
     private fun checkPreferences() {
-        sharedPref = activity?.getSharedPreferences(prefName, privateMode)
+        sharedPref = activity?.getSharedPreferences(prefInstructions, privateMode)
 
-        if (sharedPref!!.getBoolean(prefName, false)) {
+        if (sharedPref!!.getBoolean(prefInstructions, false)) {
             instruction_layout.visibility = View.GONE
             Log.w("MainFragment: ", "view gone")
         } else {
             instruction_layout.visibility = View.VISIBLE
-            editor.putBoolean(prefName, true)
+            editor.putBoolean(prefInstructions, true)
             editor.apply()
             Log.w("MainFragment: ", "view visible")
         }
@@ -126,6 +126,11 @@ class MainFragment : Fragment() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun displayWines() {
+        // TODO here check what order method was selected last time
+        showListOfWinesInChronologicalOrder()
     }
 
     private fun showListOfWinesInChronologicalOrder() {
@@ -211,7 +216,7 @@ class MainFragment : Fragment() {
                 getString(R.string.wines_deleted_confirmation),
                 Toast.LENGTH_LONG
             ).show()
-            editor.putBoolean(prefName, false)
+            editor.putBoolean(prefInstructions, false)
             editor.apply()
             checkPreferences()
         }
