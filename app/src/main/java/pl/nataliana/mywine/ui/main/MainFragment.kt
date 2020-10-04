@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
-import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.adapter.WineAdapter
 import pl.nataliana.mywine.adapter.WineListener
@@ -26,7 +25,7 @@ import pl.nataliana.mywine.model.WinesListViewModelFactory
 
 class MainFragment : Fragment() {
 
-    private val wineViewModel: WinesListViewModel by inject()
+    private lateinit var wineViewModel: WinesListViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private var winesSortedBest = false
@@ -51,7 +50,7 @@ class MainFragment : Fragment() {
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
 
-        val wineViewModel =
+        wineViewModel =
             ViewModelProvider(
                 this, viewModelFactory
             ).get(WinesListViewModel::class.java)
