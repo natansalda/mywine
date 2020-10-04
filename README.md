@@ -23,6 +23,9 @@ Please note that the app is in the early stage of development.
 # Uses Super-Linter to check quality of the code
 [![GitHub Super-Linter](https://github.com/natansalda/mywine/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
+# The app is availible on Google Play Store
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=pl.nataliana.mywine)
+
 # Screenshots
 
 ![alt text](https://github.com/natansalda/mywine/blob/master/Screenshots/Zrzut%20ekranu%202019-11-12%20o%2016.43.28.png)
