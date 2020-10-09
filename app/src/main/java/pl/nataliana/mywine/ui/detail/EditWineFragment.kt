@@ -76,7 +76,7 @@ class EditWineFragment : Fragment() {
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
             data.getFloatExtra(EXTRA_RATE, 0F),
-            data.getIntExtra(EXTRA_PRICE, 0),
+            data.getDoubleExtra(EXTRA_PRICE, 0.0),
             data.getStringExtra(EXTRA_TYPE)
         )
 

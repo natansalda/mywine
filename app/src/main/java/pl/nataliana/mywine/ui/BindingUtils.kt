@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.model.Wine
+import pl.nataliana.mywine.util.WineHelper.Companion.toPriceAmount
 
 @BindingAdapter("textViewName")
 fun TextView.setTextViewName(item: Wine?) {
@@ -201,7 +202,7 @@ fun ImageView.setGrape5ImageDetail(item: Wine?) {
 @BindingAdapter("priceDetail")
 fun TextView.setPriceDetail(item: Wine?) {
     item?.let {
-        text = item.price.toString()
+        text = item.price?.toPriceAmount().toString()
     }
 }
 
@@ -222,7 +223,7 @@ fun EditText.setYearEdit(item: Wine?) {
 @BindingAdapter("priceEdit")
 fun EditText.setPriceEdit(item: Wine?) {
     item?.let {
-        setText(item.price.toString(), TextView.BufferType.EDITABLE)
+        setText(item.price?.toPriceAmount().toString(), TextView.BufferType.EDITABLE)
     }
 }
 
