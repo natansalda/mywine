@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
-import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentAddWineBinding
@@ -24,7 +23,7 @@ import pl.nataliana.mywine.model.WinesListViewModelFactory
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class AddWineFragment : Fragment() {
 
-    private val wineViewModel: WinesListViewModel by inject()
+    private lateinit var wineViewModel: WinesListViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private var wineRating: Float = 0F
@@ -45,7 +44,7 @@ class AddWineFragment : Fragment() {
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WinesListViewModelFactory(dataSource, application)
 
-        val wineViewModel =
+        wineViewModel =
             ViewModelProvider(
                 this, viewModelFactory
             ).get(WinesListViewModel::class.java)
@@ -87,7 +86,7 @@ class AddWineFragment : Fragment() {
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
             data.getFloatExtra(EXTRA_RATE, 0F),
-            data.getIntExtra(EXTRA_PRICE, 0),
+            data.getDoubleExtra(EXTRA_PRICE, 0.0),
             data.getStringExtra(EXTRA_TYPE)
         )
 
@@ -113,11 +112,11 @@ class AddWineFragment : Fragment() {
                     Integer.valueOf(0.toString())
                 }
             val rating: Float? = wineRating
-            val price: Int? =
+            val price: Double? =
                 try {
-                    Integer.valueOf(edit_text_price.text.toString())
+                    edit_text_price.text.toString().toDouble()
                 } catch (e: NumberFormatException) {
-                    Integer.valueOf(0.toString())
+                    0.toString().toDouble()
                 }
 
             putExtra(EXTRA_NAME, name)

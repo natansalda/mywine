@@ -37,7 +37,7 @@ class DetailFragment : Fragment() {
         id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
-        val viewModelFactory = WineDetailViewModelFactory(id, dataSource,binding)
+        val viewModelFactory = WineDetailViewModelFactory(id, dataSource, binding)
 
         wineDetailViewModel =
             ViewModelProvider(

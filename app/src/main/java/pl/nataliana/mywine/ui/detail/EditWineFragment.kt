@@ -12,12 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
-import org.koin.android.ext.android.inject
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentEditWineBinding
 import pl.nataliana.mywine.model.Wine
-import pl.nataliana.mywine.model.WineDetailViewModel
 import pl.nataliana.mywine.model.WineEditViewModel
 import pl.nataliana.mywine.model.WineEditViewModelFactory
 
@@ -25,7 +23,7 @@ import pl.nataliana.mywine.model.WineEditViewModelFactory
 class EditWineFragment : Fragment() {
 
     // TODO check what's needed in this fragment
-    private val editWineViewModel: WineDetailViewModel by inject()
+    private lateinit var editWineViewModel: WineEditViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     var id: Long = 0L
@@ -48,12 +46,12 @@ class EditWineFragment : Fragment() {
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
         val viewModelFactory = WineEditViewModelFactory(id, dataSource, binding)
 
-        val wineViewModel =
+        editWineViewModel =
             ViewModelProvider(
                 this, viewModelFactory
             ).get(WineEditViewModel::class.java)
 
-        binding.wineEditViewModel = wineViewModel
+        binding.wineEditViewModel = editWineViewModel
         binding.lifecycleOwner = this
 
         binding.addWineButton.text = getString(R.string.save_changes_after_edit)
@@ -78,7 +76,7 @@ class EditWineFragment : Fragment() {
             data.getStringExtra(EXTRA_COLOR),
             data.getIntExtra(EXTRA_YEAR, 0),
             data.getFloatExtra(EXTRA_RATE, 0F),
-            data.getIntExtra(EXTRA_PRICE, 0),
+            data.getDoubleExtra(EXTRA_PRICE, 0.0),
             data.getStringExtra(EXTRA_TYPE)
         )
 

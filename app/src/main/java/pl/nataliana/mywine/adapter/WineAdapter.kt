@@ -17,6 +17,7 @@ class WineAdapter(private val clickListener: WineListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
+        // todo here add which ordering prefs is chosen
     }
 
     class ViewHolder private constructor(private val binding: WineItemBinding) :
