@@ -1,7 +1,7 @@
 package pl.nataliana.mywine.ui.main
 
 import android.app.AlertDialog
-import android.content.SharedPreferences
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -20,7 +20,10 @@ import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentMainBinding
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
+import pl.nataliana.mywine.model.WinesListViewModel.Companion.sharedPref
 import pl.nataliana.mywine.model.WinesListViewModelFactory
+import pl.nataliana.mywine.util.WineHelper
+import pl.nataliana.mywine.util.WineHelper.PreferencesManager.Companion.WELCOME_SCREEN_PREF
 
 class MainFragment : Fragment() {
 
@@ -33,12 +36,6 @@ class MainFragment : Fragment() {
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private var winesSortedBest = false
     private lateinit var mainAdapter: WineAdapter
-    private var privateMode = 0
-    private val prefInstructions = "instruction-view"
-    private var sharedPref: SharedPreferences? = null
-    private val editor by lazy {
-        sharedPref!!.edit()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,22 +71,25 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedPref = activity?.getSharedPreferences(WELCOME_SCREEN_PREF, Context.MODE_PRIVATE)
+        checkPreferences()
+    }
+
     override fun onResume() {
         super.onResume()
-        checkPreferences()
+//        checkPreferences()
         Log.w("MainFragment: ", "onResume")
     }
 
     private fun checkPreferences() {
-        sharedPref = activity?.getSharedPreferences(prefInstructions, privateMode)
 
-        if (sharedPref!!.getBoolean(prefInstructions, false)) {
+        if (WineHelper.PreferencesManager(sharedPref).checkWelcomeScreenStatus() == false) {
             binding.instructionLayout.visibility = View.GONE
             Log.w("MainFragment: ", "view gone")
         } else {
             binding.instructionLayout.visibility = View.VISIBLE
-            editor.putBoolean(prefInstructions, true)
-            editor.apply()
             Log.w("MainFragment: ", "view visible")
         }
     }
@@ -142,11 +142,12 @@ class MainFragment : Fragment() {
                     mainAdapter.submitList(it)
                 }
             })
-
-        Toast.makeText(
-            context,
-            getString(R.string.wines_sorted_chronological_order), Toast.LENGTH_SHORT
-        ).show()
+        if (WineHelper.PreferencesManager(sharedPref).checkWelcomeScreenStatus() == false) {
+            Toast.makeText(
+                context,
+                getString(R.string.wines_sorted_chronological_order), Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun sortWines(): Boolean {
@@ -218,8 +219,7 @@ class MainFragment : Fragment() {
                 getString(R.string.wines_deleted_confirmation),
                 Toast.LENGTH_LONG
             ).show()
-            editor.putBoolean(prefInstructions, false)
-            editor.apply()
+            WineHelper.PreferencesManager(sharedPref).saveWelcomeScreenStatus(true)
             checkPreferences()
         }
     }

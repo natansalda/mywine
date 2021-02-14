@@ -32,22 +32,26 @@ class WineHelper {
         }
     }
 
-    class PreferencesManager(private val preferences: SharedPreferences) {
+    class PreferencesManager(private val preferences: SharedPreferences?) {
 
-        fun saveWelcomeScreenStatus(token: String) {
-            preferences.edit() {
-                putString(WELCOME_SCREEN_PREF, token)
+        fun saveWelcomeScreenStatus(token: Boolean) {
+            preferences?.edit() {
+                putBoolean(WELCOME_SCREEN_PREF, token)
             }
         }
 
+        fun checkWelcomeScreenStatus(): Boolean? {
+            return preferences?.getBoolean(WELCOME_SCREEN_PREF, true)
+        }
+
         fun saveOrderMethod(token: String) {
-            preferences.edit() {
+            preferences?.edit() {
                 putString(ORDER_METHOD_PREF, token)
             }
         }
 
         companion object {
-            private const val WELCOME_SCREEN_PREF = "welcome screen"
+            const val WELCOME_SCREEN_PREF = "welcome screen"
             private const val ORDER_METHOD_PREF = "order method"
         }
     }

@@ -1,6 +1,7 @@
 package pl.nataliana.mywine.model
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -55,5 +56,12 @@ class WinesListViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    companion object {
+        var sharedPref: SharedPreferences? = null
+        val editor by lazy {
+            sharedPref?.edit()
+        }
     }
 }
