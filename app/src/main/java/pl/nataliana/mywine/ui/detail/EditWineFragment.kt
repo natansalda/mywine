@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_add_wine.*
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
@@ -22,6 +21,10 @@ import pl.nataliana.mywine.model.WineEditViewModelFactory
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class EditWineFragment : Fragment() {
 
+    private var _binding: FragmentEditWineBinding? = null
+    internal val binding: FragmentEditWineBinding
+        get() = _binding ?: throw IllegalStateException()
+
     // TODO check what's needed in this fragment
     private lateinit var editWineViewModel: WineEditViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
@@ -32,8 +35,8 @@ class EditWineFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentEditWineBinding = DataBindingUtil.inflate(
+    ): View {
+        _binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_edit_wine, container, false
         )
 
@@ -93,11 +96,11 @@ class EditWineFragment : Fragment() {
 
     private fun applyWineData(): Intent {
         return Intent().apply {
-            val name = edit_text_name.text.toString()
+            val name = binding.nameEdit.text.toString()
             val color = determineWineColor()
-            val year = edit_text_year.text?.toString()?.let { Integer.valueOf(it) }
-            val rating = rating_bar.rating.toString().let { Integer.valueOf(it) }
-            val price = edit_text_price.text?.toString()?.let { Integer.valueOf(it) }
+            val year = binding.yearEdit.text?.toString()?.let { Integer.valueOf(it) }
+            val rating = binding.rateEdit.toString().let { Integer.valueOf(it) }
+            val price = binding.priceEdit.text?.toString()?.let { Integer.valueOf(it) }
             val type = determineWineType()
 
             putExtra(EXTRA_NAME, name)
@@ -111,23 +114,23 @@ class EditWineFragment : Fragment() {
 
     private fun determineWineColor(): String {
         return when {
-            pink_radio_button.isChecked -> getString(R.string.pink)
-            red_radio_button.isChecked -> getString(R.string.red)
+            binding.colorPinkEdit.isChecked -> getString(R.string.pink)
+            binding.colorRedEdit.isChecked -> getString(R.string.red)
             else -> getString(R.string.white)
         }
     }
 
     private fun determineWineType(): String? {
         return when {
-            dry_radio_button.isChecked -> "dry"
-            semi_dry_radio_button.isChecked -> "semi dry"
-            sweet_radio_button.isChecked -> "sweet"
+            binding.dryRadioButton.isChecked -> "dry"
+            binding.semiDryRadioButton.isChecked -> "semi dry"
+            binding.sweetRadioButton.isChecked -> "sweet"
             else -> "semi sweet"
         }
     }
 
     private fun checkIfNameNotEmpty(): Boolean {
-        if (edit_text_name.text.toString().trim().isBlank()) {
+        if (binding.nameEdit.text.toString().trim().isBlank()) {
             Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
                 .show()
             return true

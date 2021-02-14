@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.*
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.adapter.WineAdapter
@@ -24,6 +23,10 @@ import pl.nataliana.mywine.model.WinesListViewModel
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 
 class MainFragment : Fragment() {
+
+    private var _binding: FragmentMainBinding? = null
+    internal val binding: FragmentMainBinding
+        get() = _binding ?: throw IllegalStateException()
 
     private lateinit var wineViewModel: WinesListViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
@@ -41,9 +44,9 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        val binding: FragmentMainBinding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         val application = requireNotNull(this.activity).application
@@ -81,10 +84,10 @@ class MainFragment : Fragment() {
         sharedPref = activity?.getSharedPreferences(prefInstructions, privateMode)
 
         if (sharedPref!!.getBoolean(prefInstructions, false)) {
-            instruction_layout.visibility = View.GONE
+            binding.instructionLayout.visibility = View.GONE
             Log.w("MainFragment: ", "view gone")
         } else {
-            instruction_layout.visibility = View.VISIBLE
+            binding.instructionLayout.visibility = View.VISIBLE
             editor.putBoolean(prefInstructions, true)
             editor.apply()
             Log.w("MainFragment: ", "view visible")
@@ -179,7 +182,7 @@ class MainFragment : Fragment() {
     }
 
     private fun showDeleteAlertDialog() {
-        if (!recycler_view.isEmpty()) {
+        if (!binding.recyclerView.isEmpty()) {
             val builder = AlertDialog.Builder(context)
             builder.setMessage(getString(R.string.alert_dialog_delete_wines))
             setPositiveButton(builder)
