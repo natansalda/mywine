@@ -79,7 +79,7 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        checkPreferences()
+        checkPreferences()
         Log.w("MainFragment: ", "onResume")
     }
 
