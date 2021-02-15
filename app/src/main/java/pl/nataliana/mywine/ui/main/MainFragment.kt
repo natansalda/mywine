@@ -117,10 +117,14 @@ class MainFragment : Fragment() {
                 confirmDeletion()
             }
             R.id.sorting_wines -> {
-                sortWines()
+                showToastThatWinesAreSortedByRating()
+                sortWinesByRating()
             }
             R.id.reset_to_chronological_order -> {
                 showListOfWinesInChronologicalOrder()
+                if (WineHelper.PreferencesManager(sharedPref).checkWelcomeScreenStatus() == false) {
+                    showToastThatWinesAreSortedChronologically()
+                }
                 winesSortedBest = false
                 return winesSortedBest
             }
@@ -142,15 +146,23 @@ class MainFragment : Fragment() {
                     mainAdapter.submitList(it)
                 }
             })
-        if (WineHelper.PreferencesManager(sharedPref).checkWelcomeScreenStatus() == false) {
-            Toast.makeText(
-                context,
-                getString(R.string.wines_sorted_chronological_order), Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 
-    private fun sortWines(): Boolean {
+    private fun showToastThatWinesAreSortedChronologically() {
+        Toast.makeText(
+            context,
+            getString(R.string.wines_sorted_chronological_order), Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun showToastThatWinesAreSortedByRating() {
+        Toast.makeText(
+            context,
+            getString(R.string.wines_sorted_rate_order), Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun sortWinesByRating(): Boolean {
         if (!winesSortedBest) {
             wineViewModel.getAllWinesByRatingBest().observe(this,
                 Observer<List<Wine>> { list ->
@@ -168,11 +180,6 @@ class MainFragment : Fragment() {
                 })
             winesSortedBest = false
         }
-
-        Toast.makeText(
-            context,
-            getString(R.string.wines_sorted_rate_order), Toast.LENGTH_SHORT
-        ).show()
 
         return winesSortedBest
     }
