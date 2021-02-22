@@ -17,11 +17,9 @@ import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentAddWineBinding
 import pl.nataliana.mywine.model.Wine
 import pl.nataliana.mywine.model.WinesListViewModel
-import pl.nataliana.mywine.model.WinesListViewModel.Companion.editor
 import pl.nataliana.mywine.model.WinesListViewModel.Companion.sharedPref
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 import pl.nataliana.mywine.util.WineHelper
-import pl.nataliana.mywine.util.WineHelper.PreferencesManager.Companion.WELCOME_SCREEN_PREF
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class AddWineFragment : Fragment() {

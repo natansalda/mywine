@@ -9,7 +9,7 @@ data class Wine(
     val color: String,
     val year: Int?,
     val rate: Float?,
-    val price: Double?,
+    val price: Double,
     val type: String?
 ) {
     @PrimaryKey(autoGenerate = true)
