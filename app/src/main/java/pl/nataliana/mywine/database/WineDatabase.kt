@@ -17,13 +17,6 @@ abstract class WineDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: WineDatabase? = null
 
-        private val MIGRATION_9_10 = object : Migration(9, 10) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-//                database.execSQL("CREATE TABLE `Fruit` (`id` INTEGER, `name` TEXT, " +
-//                        "PRIMARY KEY(`id`))")
-            }
-        }
-
         fun getInstance(context: Context): WineDatabase {
             synchronized(this) {
                 var instance = INSTANCE
@@ -33,11 +26,38 @@ abstract class WineDatabase : RoomDatabase() {
                         WineDatabase::class.java,
                         "wines_database"
                     )
-                        .addMigrations(MIGRATION_9_10)
+                        .fallbackToDestructiveMigration()
+                        .addMigrations(MIGRATION_8_9, MIGRATION_9_10)
                         .build()
                     INSTANCE = instance
                 }
                 return instance
+            }
+        }
+
+        private val MIGRATION_8_9: Migration = object : Migration(8, 9) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "CREATE TABLE IF NOT EXISTS wines_table_new (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, year INTEGER, rate REAL, price INTEGER NOT NULL, type TEXT)"
+                )
+                database.execSQL(
+                    "INSERT INTO wines_table_new (id, name, color, year, rate, price, type) SELECT id, name, color, year, rate, price, type FROM wines_table"
+                )
+                database.execSQL("DROP TABLE wines_table")
+                database.execSQL("ALTER TABLE wines_table_new RENAME TO wines_table")
+            }
+        }
+
+        private val MIGRATION_9_10: Migration = object : Migration(9, 10) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `wines_table_new` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `color` TEXT NOT NULL, `year` INTEGER, `rate` REAL, `price` REAL NOT NULL, `type` TEXT)"
+                )
+                database.execSQL(
+                    "INSERT INTO wines_table_new (id, name, color, year, rate, price, type) SELECT id, name, color, year, rate, price, type FROM wines_table"
+                )
+                database.execSQL("DROP TABLE wines_table")
+                database.execSQL("ALTER TABLE wines_table_new RENAME TO wines_table")
             }
         }
     }
