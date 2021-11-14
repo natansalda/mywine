@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import pl.nataliana.mywine.model.Wine
 
-@Database(entities = [Wine::class], version = 10, exportSchema = false)
+@Database(entities = [Wine::class], version = 11, exportSchema = false)
 abstract class WineDatabase : RoomDatabase() {
 
     abstract val wineDatabaseDao: WineDatabaseDao
