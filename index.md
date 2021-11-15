@@ -54,4 +54,4 @@
 <p>By using the Application, you are consenting to our processing of your information as set forth in this Privacy Policy now and as amended by us. &quot;Processing,” means using cookies on a computer/hand held device or using or touching information in any way, including, but not limited to, collecting, storing, deleting, using, combining and disclosing information, all of which activities will take place in the United States. If you reside outside the United States&nbsp;your information will be transferred, processed and stored there under United States&nbsp;privacy standards.&nbsp;</p> 
 <p>&nbsp;</p> 
 <h4>Contact us</h4> 
-<p>If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at&nbsp;developer.nataliana@gmailcom.</p>
+<p>If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at&nbsp;developer.nataliana@gmail.com.</p>
