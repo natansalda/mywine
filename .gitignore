@@ -35,7 +35,12 @@ build/
 .idea/caches
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+.idea/
 *.iml
 .idea/gradle.xml
 .idea/assetWizardSettings.xml
 .idea/dictionaries
+
+# Release files
+/app/release/*
+/app/builds/*
