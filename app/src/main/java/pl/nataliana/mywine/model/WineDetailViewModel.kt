@@ -44,10 +44,6 @@ class WineDetailViewModel(
         }
     }
 
-    fun onWineEditNavigated() {
-        _navigateToWineEdit.value = null
-    }
-
     fun edit(wine: Wine) = database.update(wine)
 
     fun deleteThisWine() = database.deleteThisWine(wineKey)

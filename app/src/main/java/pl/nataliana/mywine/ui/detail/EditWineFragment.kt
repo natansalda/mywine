@@ -67,31 +67,32 @@ class EditWineFragment : Fragment() {
 
     private fun saveWine() {
 
-        if (checkIfNameNotEmpty()) {
+        if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
                 .show()
             return
-        }
+        } else {
+            val data = applyWineData()
+            val updatedWine = Wine(
+                // we checked above that name and color are not empty
+                data.getStringExtra(EXTRA_NAME)!!,
+                data.getStringExtra(EXTRA_COLOR)!!,
+                data.getIntExtra(EXTRA_YEAR, 0),
+                data.getFloatExtra(EXTRA_RATE, 0F),
+                data.getDoubleExtra(EXTRA_PRICE, 0.0),
+                data.getStringExtra(EXTRA_TYPE)
+            )
 
-        val data = applyWineData()
-        val updatedWine = Wine(
-            data.getStringExtra(EXTRA_NAME),
-            data.getStringExtra(EXTRA_COLOR),
-            data.getIntExtra(EXTRA_YEAR, 0),
-            data.getFloatExtra(EXTRA_RATE, 0F),
-            data.getDoubleExtra(EXTRA_PRICE, 0.0),
-            data.getStringExtra(EXTRA_TYPE)
-        )
-
-        uiScope.launch {
-            async(bgDispatcher) {
-                // background thread
-                editWineViewModel.edit(updatedWine)
+            uiScope.launch {
+                async(bgDispatcher) {
+                    // background thread
+                    editWineViewModel.edit(updatedWine)
+                }
+                Toast.makeText(context, getString(R.string.wine_edited), Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(context, getString(R.string.wine_edited), Toast.LENGTH_SHORT).show()
+            view?.findNavController()
+                ?.navigate(EditWineFragmentDirections.actionEditWineFragmentToMainFragment())
         }
-        view?.findNavController()
-            ?.navigate(EditWineFragmentDirections.actionEditWineFragmentToMainFragment())
     }
 
     private fun applyWineData(): Intent {
@@ -135,6 +136,10 @@ class EditWineFragment : Fragment() {
                 .show()
             return true
         }
+        return false
+    }
+
+    private fun checkIfColorNotEmpty(): Boolean {
         return false
     }
 

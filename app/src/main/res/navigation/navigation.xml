@@ -13,12 +13,12 @@
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/detail_fragment" />
         <action
             android:id="@+id/action_mainFragent_to_addWineFragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/add_wine_fragment" />
     </fragment>
     <fragment
@@ -32,7 +32,7 @@
         <action
             android:id="@+id/action_detailFragment_to_mainFragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/main_fragment"
             app:launchSingleTop="false"
             app:popUpTo="@+id/main_fragment"
@@ -41,7 +41,7 @@
             android:id="@+id/action_detailFragent_to_editWineFragment"
             app:destination="@id/edit_wine_fragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit" />
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/add_wine_fragment"
@@ -51,7 +51,7 @@
         <action
             android:id="@+id/action_addWineFragment_to_mainFragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/main_fragment"
             app:launchSingleTop="false"
             app:popUpTo="@+id/main_fragment"
@@ -69,7 +69,7 @@
             android:id="@+id/action_editWineFragment_to_mainFragment"
             app:destination="@id/main_fragment"
             app:enterAnim="@anim/fragment_open_wine"
-            app:exitAnim="@anim/fragment_close_exit"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:launchSingleTop="false"
             app:popUpTo="@+id/main_fragment"
             app:popUpToInclusive="true" />
