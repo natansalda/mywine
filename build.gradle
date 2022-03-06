@@ -7,18 +7,18 @@ buildscript {
         recyclerviewVersion = "1.1.0"
         recyclerviewSelectionVersion = "1.1.0-rc02"
         koinVersion = '2.1.6'
-        gradleVersion = '4.1.2'
+        gradleVersion = '7.0.3'
         navigationVersion = '2.3.0'
         constrainLayout = '2.0.1'
         material = '1.2.1'
         jUnit = '1.1.2'
         espresso = "3.3.0"
+        roomVersion = '2.4.2'
     }
 
     repositories {
         google()
         jcenter()
-        
     }
 
     dependencies {
@@ -32,9 +32,8 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
         jcenter()
-        
+        google()
     }
 }
 

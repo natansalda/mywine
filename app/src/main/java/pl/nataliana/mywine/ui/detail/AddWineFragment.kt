@@ -56,7 +56,6 @@ class AddWineFragment : Fragment() {
 
         binding.winesListViewModel = wineViewModel
         binding.lifecycleOwner = this
-
         binding.addWineButton.setOnClickListener {
             saveWine()
         }
@@ -70,7 +69,6 @@ class AddWineFragment : Fragment() {
     }
 
     private fun addListenerOnRatingBar() {
-
         binding.ratingBar.onRatingBarChangeListener =
             OnRatingBarChangeListener { _, rating, _ ->
                 wineRating = rating
@@ -78,33 +76,33 @@ class AddWineFragment : Fragment() {
     }
 
     private fun saveWine() {
-
         if (checkIfNameNotEmpty() || checkIfColorNotEmpty()) {
             Toast.makeText(context, getString(R.string.wine_could_not_be_added), Toast.LENGTH_SHORT)
                 .show()
             return
-        }
+        } else {
+            val data = applyWineData()
+            val newWine = Wine(
+                // we checked above that name and color are not empty
+                data.getStringExtra(EXTRA_NAME)!!,
+                data.getStringExtra(EXTRA_COLOR)!!,
+                data.getIntExtra(EXTRA_YEAR, 0),
+                data.getFloatExtra(EXTRA_RATE, 0F),
+                data.getDoubleExtra(EXTRA_PRICE, 0.0),
+                data.getStringExtra(EXTRA_TYPE)
+            )
 
-        val data = applyWineData()
-        val newWine = Wine(
-            data.getStringExtra(EXTRA_NAME),
-            data.getStringExtra(EXTRA_COLOR),
-            data.getIntExtra(EXTRA_YEAR, 0),
-            data.getFloatExtra(EXTRA_RATE, 0F),
-            data.getDoubleExtra(EXTRA_PRICE, 0.0),
-            data.getStringExtra(EXTRA_TYPE)
-        )
-
-        uiScope.launch {
-            async(bgDispatcher) {
-                // background thread
-                wineViewModel.insert(newWine)
-                WineHelper.PreferencesManager(sharedPref).saveWelcomeScreenStatus(false)
+            uiScope.launch {
+                async(bgDispatcher) {
+                    // background thread
+                    wineViewModel.insert(newWine)
+                    WineHelper.PreferencesManager(sharedPref).saveWelcomeScreenStatus(false)
+                }
+                Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
+            view?.findNavController()
+                ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
         }
-        view?.findNavController()
-            ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
     }
 
     private fun applyWineData(): Intent {
