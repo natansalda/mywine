@@ -9,9 +9,9 @@
         android:supportsRtl="true"
         android:name="pl.nataliana.mywine.di.CoreApplication"
         android:theme="@style/AppTheme"
-        android:allowBackup="true"
-        android:fullBackupContent="true">
-        <activity android:name="pl.nataliana.mywine.MainActivity"
+        android:allowBackup="true">
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
