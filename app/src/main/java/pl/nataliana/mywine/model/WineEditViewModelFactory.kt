@@ -11,7 +11,7 @@ class WineEditViewModelFactory(
     val binding: FragmentEditWineBinding
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WineEditViewModel::class.java)) {
             return WineEditViewModel(wineKey, dataSource,binding) as T
         }
