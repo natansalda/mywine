@@ -140,11 +140,6 @@ class EditWineFragment : Fragment() {
     }
 
     private fun checkIfColorNotEmpty(): Boolean {
-        if (determineWineColor() == null) {
-            Toast.makeText(context, getString(R.string.cant_set_empty_record), Toast.LENGTH_LONG)
-                .show()
-            return true
-        }
         return false
     }
 
