@@ -12,7 +12,7 @@ import pl.nataliana.mywine.util.WineHelper.Companion.toPriceAmount
 @BindingAdapter("textViewName")
 fun TextView.setTextViewName(item: Wine?) {
     item?.let {
-        text = item.name.capitalize()
+        text = item.name.makeFirstCaseUpperCase()
     }
 }
 
@@ -107,7 +107,7 @@ fun ImageView.setGrape5Image(item: Wine) {
 @BindingAdapter("textViewNameDetail")
 fun TextView.setTextViewNameDetail(item: Wine?) {
     item?.let {
-        text = item.name.capitalize()
+        text = item.name.makeFirstCaseUpperCase()
     }
 }
 
@@ -202,14 +202,14 @@ fun ImageView.setGrape5ImageDetail(item: Wine?) {
 @BindingAdapter("priceDetail")
 fun TextView.setPriceDetail(item: Wine?) {
     item?.let {
-        text = item.price?.toPriceAmount().toString()
+        text = item.price.toPriceAmount().toString()
     }
 }
 
 @BindingAdapter("nameEdit")
 fun EditText.setNameEdit(item: Wine?) {
     item?.let {
-        setText(item.name.capitalize(), TextView.BufferType.EDITABLE)
+        setText(item.name.makeFirstCaseUpperCase(), TextView.BufferType.EDITABLE)
     }
 }
 
@@ -223,7 +223,7 @@ fun EditText.setYearEdit(item: Wine?) {
 @BindingAdapter("priceEdit")
 fun EditText.setPriceEdit(item: Wine?) {
     item?.let {
-        setText(item.price?.toPriceAmount().toString(), TextView.BufferType.EDITABLE)
+        setText(item.price.toPriceAmount().toString(), TextView.BufferType.EDITABLE)
     }
 }
 
@@ -257,3 +257,5 @@ fun EditText.setRateEdit(item: Wine?) {
         setText(item.rate.toString(), TextView.BufferType.EDITABLE)
     }
 }
+
+fun String.makeFirstCaseUpperCase() = replaceFirstChar(Char::titlecase)
