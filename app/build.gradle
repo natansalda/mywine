@@ -9,12 +9,25 @@ android {
         applicationId "pl.nataliana.mywine"
         minSdkVersion 22
         targetSdkVersion 31
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName "3.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.debug
     }
     buildTypes {
+        all {
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "my-vineyard-${variant.versionName}.aab"
+                }
+            }
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
