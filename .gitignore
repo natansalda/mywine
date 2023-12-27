@@ -39,6 +39,7 @@ build/
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 .idea/
+.idea/deploymentTargetDropDown.xml
 *.iml
 .idea/gradle.xml
 .idea/assetWizardSettings.xml
