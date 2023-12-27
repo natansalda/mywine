@@ -56,8 +56,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.koin:koin-android:${koinVersion}"
-    api "org.koin:koin-android-viewmodel:${koinVersion}"
+    api "io.insert-koin:koin-android:${koinVersion}"
+    api "io.insert-koin:koin-android-viewmodel:${koinVersion}"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
