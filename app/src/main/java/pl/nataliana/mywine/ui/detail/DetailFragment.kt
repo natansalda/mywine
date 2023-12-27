@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +54,10 @@ class DetailFragment : Fragment() {
 
         activity?.title = getString(R.string.your_wine_details)
 
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
         return binding.root
     }
 
@@ -73,6 +78,10 @@ class DetailFragment : Fragment() {
         return when (item.itemId) {
             R.id.delete_this_wine -> {
                 confirmThisWineDeletion()
+            }
+            android.R.id.home -> {
+                view?.findNavController()?.navigateUp()
+                true
             }
             else -> {
                 super.onOptionsItemSelected(item)
@@ -115,6 +124,14 @@ class DetailFragment : Fragment() {
         view?.findNavController()
             ?.navigate(DetailFragmentDirections.actionDetailFragmentToMainFragment())
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayShowHomeEnabled(false)
+    }
+
 
     companion object {
         private var IS_EDITING_WINE_ENABLED: Boolean = false
