@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "pl.nataliana.mywine"
         minSdkVersion 22
-        targetSdkVersion 33
+        targetSdkVersion 34
         compileSdk 33
         versionCode 3
         versionName "3.0"
