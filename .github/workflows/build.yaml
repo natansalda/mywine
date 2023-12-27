@@ -1,7 +1,5 @@
 name: Build
 on:
-  # Trigger on every pull request and on push
-  # to the `main` branch.
   pull_request:
   push:
     branches:
@@ -13,12 +11,21 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      # Set up Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'temurin' # You can change to 'adopt' or other distributions if needed
+          distribution: 'temurin'
+
+      - name: Run Lint
+        run: ./gradlew lintDebug
+
+      - name: Upload Updated Lint Baseline File
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: lint-baseline
+          path: app/lint-baseline.xml
 
       - name: Build the app
         run: ./gradlew build
