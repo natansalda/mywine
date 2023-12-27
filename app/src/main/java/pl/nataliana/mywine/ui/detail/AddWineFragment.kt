@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RatingBar.OnRatingBarChangeListener
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -36,7 +36,7 @@ class AddWineFragment : Fragment() {
     private lateinit var wineViewModel: WinesListViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
-    private var wineRating: Float = 0F
+    private var wineRating: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,14 +88,30 @@ class AddWineFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addListenerOnRatingBar()
+        setupGrapeRatingBar()
     }
 
-    private fun addListenerOnRatingBar() {
-        binding.ratingBar.onRatingBarChangeListener =
-            OnRatingBarChangeListener { _, rating, _ ->
-                wineRating = rating
+    private fun setupGrapeRatingBar() {
+        val grapeViews = listOf(
+            binding.grape1, binding.grape2, binding.grape3,
+            binding.grape4, binding.grape5
+        )
+
+        grapeViews.forEachIndexed { index, imageView ->
+            imageView.setOnClickListener {
+                setGrapeRating(index + 1, grapeViews)
             }
+        }
+    }
+
+    private fun setGrapeRating(rating: Int, grapeViews: List<ImageView>) {
+        wineRating = rating
+        grapeViews.forEachIndexed { index, imageView ->
+            imageView.setImageResource(
+                if (index < rating) R.drawable.ic_grape_rate_icon_checked
+                else R.drawable.ic_grape_rate_icon_unchecked
+            )
+        }
     }
 
     private fun saveWine() {
@@ -139,7 +155,7 @@ class AddWineFragment : Fragment() {
                 } catch (e: NumberFormatException) {
                     Integer.valueOf(0.toString())
                 }
-            val rating: Float = wineRating
+            val rating: Float = wineRating.toFloat()
             val price: Double =
                 try {
                     binding.editTextPrice.text.toString().toDouble()
