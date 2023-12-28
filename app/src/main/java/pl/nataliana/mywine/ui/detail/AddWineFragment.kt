@@ -3,15 +3,21 @@ package pl.nataliana.mywine.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RatingBar.OnRatingBarChangeListener
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentAddWineBinding
@@ -21,7 +27,6 @@ import pl.nataliana.mywine.model.WinesListViewModel.Companion.sharedPref
 import pl.nataliana.mywine.model.WinesListViewModelFactory
 import pl.nataliana.mywine.util.WineHelper
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class AddWineFragment : Fragment() {
 
     private var _binding: FragmentAddWineBinding? = null
@@ -31,7 +36,7 @@ class AddWineFragment : Fragment() {
     private lateinit var wineViewModel: WinesListViewModel
     private val uiScope = CoroutineScope(Dispatchers.Main)
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
-    private var wineRating: Float = 0F
+    private var wineRating: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,23 +61,57 @@ class AddWineFragment : Fragment() {
 
         binding.winesListViewModel = wineViewModel
         binding.lifecycleOwner = this
+        setHasOptionsMenu(true)
         binding.addWineButton.setOnClickListener {
             saveWine()
         }
 
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
         return binding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                view?.findNavController()?.navigateUp()
+                true
+            }
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addListenerOnRatingBar()
+        setupGrapeRatingBar()
     }
 
-    private fun addListenerOnRatingBar() {
-        binding.ratingBar.onRatingBarChangeListener =
-            OnRatingBarChangeListener { _, rating, _ ->
-                wineRating = rating
+    private fun setupGrapeRatingBar() {
+        val grapeViews = listOf(
+            binding.grape1, binding.grape2, binding.grape3,
+            binding.grape4, binding.grape5
+        )
+
+        grapeViews.forEachIndexed { index, imageView ->
+            imageView.setOnClickListener {
+                setGrapeRating(index + 1, grapeViews)
             }
+        }
+    }
+
+    private fun setGrapeRating(rating: Int, grapeViews: List<ImageView>) {
+        wineRating = rating
+        grapeViews.forEachIndexed { index, imageView ->
+            imageView.setImageResource(
+                if (index < rating) R.drawable.ic_grape_rate_icon_checked
+                else R.drawable.ic_grape_rate_icon_unchecked
+            )
+        }
     }
 
     private fun saveWine() {
@@ -98,7 +137,8 @@ class AddWineFragment : Fragment() {
                     wineViewModel.insert(newWine)
                     WineHelper.PreferencesManager(sharedPref).saveWelcomeScreenStatus(false)
                 }
-                Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.wine_added_toast), Toast.LENGTH_SHORT)
+                    .show()
             }
             view?.findNavController()
                 ?.navigate(AddWineFragmentDirections.actionAddWineFragmentToMainFragment())
@@ -115,7 +155,7 @@ class AddWineFragment : Fragment() {
                 } catch (e: NumberFormatException) {
                     Integer.valueOf(0.toString())
                 }
-            val rating: Float = wineRating
+            val rating: Float = wineRating.toFloat()
             val price: Double =
                 try {
                     binding.editTextPrice.text.toString().toDouble()
@@ -157,6 +197,13 @@ class AddWineFragment : Fragment() {
             return true
         }
         return false
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayShowHomeEnabled(false)
     }
 
     companion object {

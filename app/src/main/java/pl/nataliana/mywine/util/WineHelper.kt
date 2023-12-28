@@ -15,7 +15,7 @@ class WineHelper {
             val editor = edit()
             action(editor)
             if (commit) {
-                editor.commit()
+                editor.apply()
             } else {
                 editor.apply()
             }

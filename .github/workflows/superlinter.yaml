@@ -1,26 +1,30 @@
 name: Lint Code Base
 
-# Run this workflow every time a new commit pushed to your repository
+# Run this workflow every time a new commit is pushed to your repository
 on: push
 
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
   super-lint:
-    # Name the Job
     name: Lint code base
-    # Set the type of machine to run on
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code base
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      # Run Linter against code base
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Add this step to archive lint reports
+      - name: Archive Lint Reports
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-reports
+          path: |
+            app/build/reports/lint-results-debug.html
+            app/build/reports/lint-results-debug.txt

@@ -4,18 +4,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 31
     defaultConfig {
         applicationId "pl.nataliana.mywine"
         minSdkVersion 22
-        targetSdkVersion 31
+        targetSdkVersion 34
+        compileSdk 34
         versionCode 3
         versionName "3.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.debug
     }
     buildTypes {
-        all {
+        configureEach {
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "my-vineyard-${variant.versionName}.aab"
@@ -41,20 +41,33 @@ android {
     lint {
         baseline = file("lint-baseline.xml")
     }
+
+    namespace 'pl.nataliana.mywine'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.koin:koin-android:${koinVersion}"
-    api "org.koin:koin-android-viewmodel:${koinVersion}"
+    api "io.insert-koin:koin-android:${koinVersion}"
+    api "io.insert-koin:koin-android-viewmodel:${koinVersion}"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     implementation "androidx.annotation:annotation:${androidXVersion}"
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "androidx.recyclerview:recyclerview-selection:$recyclerviewSelectionVersion"
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "androidx.core:core-ktx:$coreVersion"
 
     // ConstraintLayout
@@ -62,7 +75,7 @@ dependencies {
 
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
 
     // CardView
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -76,7 +89,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 
     // Koin
-    testImplementation "org.koin:koin-test:${koinVersion}"
+    testImplementation "io.insert-koin:koin-test:${koinVersion}"
 
     androidTestImplementation "androidx.test.ext:junit:$jUnit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"

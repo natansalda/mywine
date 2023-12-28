@@ -21,8 +21,8 @@ class WinesListViewModel(
 
     private var allWinesByRatingWorse = database.getAllWinesByRatingWorse()
 
-    private val _navigateToWineDetail = MutableLiveData<Wine>()
-    val navigateToWineDetail: LiveData<Wine>
+    private val _navigateToWineDetail = MutableLiveData<Wine?>()
+    val navigateToWineDetail: LiveData<Wine?>
         get() = _navigateToWineDetail
 
     private val _navigateToAddWine = MutableLiveData<Long>()
