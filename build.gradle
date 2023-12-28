@@ -14,7 +14,7 @@ buildscript {
         material = '1.11.0'
         jUnit = '1.1.5'
         espresso = "3.5.1"
-        roomVersion = '2.4.2'
+        roomVersion = '2.6.1'
         coreVersion = '1.12.0'
     }
 
