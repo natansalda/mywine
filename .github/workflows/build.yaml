@@ -21,7 +21,7 @@ jobs:
         run: ./gradlew lintDebug
 
       - name: Upload Updated Lint Baseline File
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: lint-baseline
           path: app/lint-baseline.xml
