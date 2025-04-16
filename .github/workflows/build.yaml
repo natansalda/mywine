@@ -22,7 +22,6 @@ jobs:
 
       - name: Upload Updated Lint Baseline File
         uses: actions/upload-artifact@v3
-        if: success()
         with:
           name: lint-baseline
           path: app/lint-baseline.xml
