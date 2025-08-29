@@ -284,6 +284,36 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_small"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/add_photo_of_wine"
+                android:textSize="@dimen/default_text_size_medium"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/wine_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="@dimen/default_margin_small"
+                android:contentDescription="@string/wine_image"
+                android:src="@drawable/ic_wine_glass_filled" />
+
+            <Button
+                android:id="@+id/add_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/default_margin_medium"
+                android:background="@drawable/button_shape"
+                android:padding="@dimen/default_padding_small"
+                android:text="@string/add_photo"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/default_text_size_small" />
+
             <Button
                 android:id="@+id/add_wine_button"
                 android:layout_width="wrap_content"

@@ -9,5 +9,10 @@
         <item name="fontFamily">@font/alegreya_sans_medium</item>
         <item name="colorControlNormal">@android:color/white</item>
     </style>
+
+    <style name="ShapeAppearance.App.CornerSize50Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
 
