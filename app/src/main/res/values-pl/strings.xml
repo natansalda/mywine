@@ -49,4 +49,7 @@
     <string name="wines_sorted_chronological_order">Wina wg kolejności dodania</string>
     <string name="wines_sorted_rate_order">Wina wg rankingu</string>
     <string name="add_your_first_wine_with_button">Dodaj swoje pierwsze wino klikając +</string>
+    <string name="add_photo_of_wine">Dodaj zdjęcie wina</string>
+    <string name="wine_image">Zdjęcie wina</string>
+    <string name="add_photo">Dodaj zdjęcie</string>
 </resources>

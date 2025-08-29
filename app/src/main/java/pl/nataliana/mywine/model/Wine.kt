@@ -10,7 +10,8 @@ data class Wine(
     val year: Int?,
     val rate: Float?,
     val price: Double,
-    val type: String?
+    val type: String?,
+    val photo: String?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L

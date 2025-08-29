@@ -51,4 +51,7 @@
     <string name="edit_wine_fragment">EditWineFragment</string>
     <string name="wine_edited">Wine has been edited</string>
     <string name="add_your_first_wine_with_button">Add your first wine with + button</string>
+    <string name="add_photo_of_wine">Add a photo of the wine</string>
+    <string name="wine_image">Wine image</string>
+    <string name="add_photo">Add photo</string>
 </resources>

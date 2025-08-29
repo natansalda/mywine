@@ -25,13 +25,28 @@ fun TextView.setTextWineYear(item: Wine?) {
 
 @BindingAdapter("wineImage")
 fun ImageView.setWineImage(item: Wine) {
-    setImageResource(
-        when (item.color) {
-            "red" -> R.drawable.red_wine_glass
-            "white" -> R.drawable.white_wine_glass
-            else -> R.drawable.pink_wine_glass
+    if (!item.photo.isNullOrEmpty()) {
+        try {
+            setImageURI(Uri.parse(item.photo))
+        } catch (e: Exception) {
+            // fallback to color based image
+            setImageResource(
+                when (item.color) {
+                    "red" -> R.drawable.red_wine_glass
+                    "white" -> R.drawable.white_wine_glass
+                    else -> R.drawable.pink_wine_glass
+                }
+            )
         }
-    )
+    } else {
+        setImageResource(
+            when (item.color) {
+                "red" -> R.drawable.red_wine_glass
+                "white" -> R.drawable.white_wine_glass
+                else -> R.drawable.pink_wine_glass
+            }
+        )
+    }
 }
 
 @BindingAdapter("grape1Image")
@@ -118,15 +133,34 @@ fun TextView.setTextWineYearDetail(item: Wine?) {
     }
 }
 
+import android.net.Uri
+
 @BindingAdapter("wineImageDetail")
 fun ImageView.setWineImageDetail(item: Wine?) {
-    setImageResource(
-        when (item?.color) {
-            "red" -> R.drawable.red_wine_glass
-            "white" -> R.drawable.white_wine_glass
-            else -> R.drawable.pink_wine_glass
+    item?.let {
+        if (!it.photo.isNullOrEmpty()) {
+            try {
+                setImageURI(Uri.parse(it.photo))
+            } catch (e: Exception) {
+                // fallback to color based image
+                setImageResource(
+                    when (it.color) {
+                        "red" -> R.drawable.red_wine_glass
+                        "white" -> R.drawable.white_wine_glass
+                        else -> R.drawable.pink_wine_glass
+                    }
+                )
+            }
+        } else {
+            setImageResource(
+                when (it.color) {
+                    "red" -> R.drawable.red_wine_glass
+                    "white" -> R.drawable.white_wine_glass
+                    else -> R.drawable.pink_wine_glass
+                }
+            )
         }
-    )
+    }
 }
 
 @BindingAdapter("grape1ImageDetail")

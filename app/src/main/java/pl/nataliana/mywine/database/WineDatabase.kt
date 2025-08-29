@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import pl.nataliana.mywine.model.Wine
 
-@Database(entities = [Wine::class], version = 11, exportSchema = false)
+@Database(entities = [Wine::class], version = 12, exportSchema = false)
 abstract class WineDatabase : RoomDatabase() {
 
     abstract val wineDatabaseDao: WineDatabaseDao
@@ -27,11 +27,17 @@ abstract class WineDatabase : RoomDatabase() {
                         "wines_database"
                     )
                         .fallbackToDestructiveMigration()
-                        .addMigrations(MIGRATION_8_9, MIGRATION_9_10)
+                        .addMigrations(MIGRATION_8_9, MIGRATION_9_10, MIGRATION_11_12)
                         .build()
                     INSTANCE = instance
                 }
                 return instance
+            }
+        }
+
+        private val MIGRATION_11_12: Migration = object : Migration(11, 12) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE wines_table ADD COLUMN photo TEXT")
             }
         }
 
