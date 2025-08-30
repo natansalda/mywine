@@ -1,5 +1,6 @@
 package pl.nataliana.mywine.ui
 
+import android.net.Uri
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -132,8 +133,6 @@ fun TextView.setTextWineYearDetail(item: Wine?) {
         text = item.year.toString()
     }
 }
-
-import android.net.Uri
 
 @BindingAdapter("wineImageDetail")
 fun ImageView.setWineImageDetail(item: Wine?) {
