@@ -72,7 +72,7 @@ class EditWineFragment : Fragment() {
                 .show()
             return
         } else {
-            val data = applyWineData()
+            val data = applyWineData(binding.wine?.photo)
             val updatedWine = Wine(
                 // we checked above that name and color are not empty
                 data.getStringExtra(EXTRA_NAME)!!,
@@ -80,7 +80,8 @@ class EditWineFragment : Fragment() {
                 data.getIntExtra(EXTRA_YEAR, 0),
                 data.getFloatExtra(EXTRA_RATE, 0F),
                 data.getDoubleExtra(EXTRA_PRICE, 0.0),
-                data.getStringExtra(EXTRA_TYPE)
+                data.getStringExtra(EXTRA_TYPE),
+                data.getStringExtra(EXTRA_PHOTO)
             )
 
             uiScope.launch {
@@ -95,7 +96,7 @@ class EditWineFragment : Fragment() {
         }
     }
 
-    private fun applyWineData(): Intent {
+    private fun applyWineData(photo: String?): Intent {
         return Intent().apply {
             val name = binding.nameEdit.text.toString()
             val color = determineWineColor()
@@ -110,6 +111,7 @@ class EditWineFragment : Fragment() {
             putExtra(EXTRA_RATE, rating)
             putExtra(EXTRA_PRICE, price)
             putExtra(EXTRA_TYPE, type)
+            putExtra(EXTRA_PHOTO, photo)
         }
     }
 
@@ -152,5 +154,6 @@ class EditWineFragment : Fragment() {
         const val EXTRA_RATE = "pl.nataliana.mywine.EXTRA_RATE"
         const val EXTRA_PRICE = "pl.nataliana.mywine.EXTRA_PRICE"
         const val EXTRA_TYPE = "pl.nataliana.mywine.EXTRA_TYPE"
+        const val EXTRA_PHOTO = "pl.nataliana.mywine.EXTRA_PHOTO"
     }
 }
