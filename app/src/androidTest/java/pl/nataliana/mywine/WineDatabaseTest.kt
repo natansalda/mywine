@@ -40,7 +40,7 @@ class WineDatabaseTest {
     @Test
     @Throws(Exception::class)
     fun insertAndGetWine() {
-        val wine = Wine("Wine test", "red", 1234, 3F, 23.0, "dry", null)
+        val wine = Wine("Wine test", "red", 1234, 3F, 23.0, "dry")
         wineDao.insert(wine)
         val oneWine = wineDao.getWineDetails(1)
         assertEquals(oneWine?.color, "red")
