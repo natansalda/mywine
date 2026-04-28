@@ -65,7 +65,7 @@ class DetailFragment : Fragment() {
         if (IS_EDITING_WINE_ENABLED) {
             view?.findNavController()?.navigate(
                 DetailFragmentDirections
-                    .actionDetailFragentToEditWineFragment(id)
+                    .actionDetailFragmentToEditWineFragment(id)
             )
         }
     }
@@ -99,7 +99,7 @@ class DetailFragment : Fragment() {
         builder.setMessage(getString(R.string.alert_dialog_delete_this_wine))
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             uiScope.launch {
-                async(bgDispatcher) {
+                withContext(bgDispatcher) {
                     // background thread
                     wineDetailViewModel.deleteThisWine()
                 }

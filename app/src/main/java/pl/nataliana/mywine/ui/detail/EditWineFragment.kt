@@ -43,7 +43,7 @@ class EditWineFragment : Fragment() {
         activity?.title = getString(R.string.edit_wine)
 
         val application = requireNotNull(this.activity).application
-        val arguments = DetailFragmentArgs.fromBundle(requireArguments())
+        val arguments = EditWineFragmentArgs.fromBundle(requireArguments())
         id = arguments.id
 
         val dataSource = WineDatabase.getInstance(application).wineDatabaseDao
@@ -82,10 +82,12 @@ class EditWineFragment : Fragment() {
                 data.getDoubleExtra(EXTRA_PRICE, 0.0),
                 data.getStringExtra(EXTRA_TYPE),
                 data.getStringExtra(EXTRA_PHOTO)
-            )
+            ).apply {
+                id = this@EditWineFragment.id
+            }
 
             uiScope.launch {
-                async(bgDispatcher) {
+                withContext(bgDispatcher) {
                     // background thread
                     editWineViewModel.edit(updatedWine)
                 }
@@ -100,9 +102,21 @@ class EditWineFragment : Fragment() {
         return Intent().apply {
             val name = binding.nameEdit.text.toString()
             val color = determineWineColor()
-            val year = binding.yearEdit.text?.toString()?.let { Integer.valueOf(it) }
-            val rating = binding.rateEdit.toString().let { Integer.valueOf(it) }
-            val price = binding.priceEdit.text?.toString()?.let { Integer.valueOf(it) }
+            val year = try {
+                Integer.valueOf(binding.yearEdit.text.toString())
+            } catch (e: NumberFormatException) {
+                0
+            }
+            val rating = try {
+                binding.rateEdit.text.toString().toFloat()
+            } catch (e: NumberFormatException) {
+                0F
+            }
+            val price = try {
+                binding.priceEdit.text.toString().toDouble()
+            } catch (e: NumberFormatException) {
+                0.0
+            }
             val type = determineWineType()
 
             putExtra(EXTRA_NAME, name)

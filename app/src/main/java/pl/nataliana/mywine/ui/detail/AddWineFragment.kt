@@ -27,6 +27,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import pl.nataliana.mywine.R
 import pl.nataliana.mywine.database.WineDatabase
 import pl.nataliana.mywine.databinding.FragmentAddWineBinding
@@ -150,7 +151,7 @@ class AddWineFragment : Fragment() {
             )
 
             uiScope.launch {
-                async(bgDispatcher) {
+                withContext(bgDispatcher) {
                     // background thread
                     wineViewModel.insert(newWine)
                     WineHelper.PreferencesManager(sharedPref).saveWelcomeScreenStatus(false)
