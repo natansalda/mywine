@@ -15,6 +15,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -52,6 +54,28 @@ class AddWineFragment : Fragment() {
     private val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     private var wineRating: Int = 0
     private var photoURI: Uri? = null
+
+    private val pickMedia =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) {
+                try {
+                    val inputStream = requireActivity().contentResolver.openInputStream(uri)
+                    val file = createImageFile()
+                    val outputStream = file.outputStream()
+                    inputStream?.copyTo(outputStream)
+                    inputStream?.close()
+                    outputStream.close()
+                    photoURI = FileProvider.getUriForFile(
+                        requireContext(),
+                        "pl.nataliana.mywine.fileprovider",
+                        file
+                    )
+                    binding.wineImage.setImageURI(photoURI)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -221,38 +245,39 @@ class AddWineFragment : Fragment() {
     }
 
     private fun selectImage() {
-        if (checkPermissions()) {
-            val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Add a photo!")
-            builder.setItems(options) { dialog, item ->
-                when {
-                    options[item] == "Take Photo" -> {
+        val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Add a photo!")
+        builder.setItems(options) { dialog, item ->
+            when {
+                options[item] == "Take Photo" -> {
+                    if (checkCameraPermission()) {
                         takePhoto()
-                    }
-                    options[item] == "Choose from Gallery" -> {
-                        chooseFromGallery()
-                    }
-                    options[item] == "Cancel" -> {
-                        dialog.dismiss()
+                    } else {
+                        requestCameraPermission()
                     }
                 }
+
+                options[item] == "Choose from Gallery" -> {
+                    chooseFromGallery()
+                }
+
+                options[item] == "Cancel" -> {
+                    dialog.dismiss()
+                }
             }
-            builder.show()
-        } else {
-            requestPermissions()
         }
+        builder.show()
     }
 
-    private fun checkPermissions(): Boolean {
+    private fun checkCameraPermission(): Boolean {
         val camera = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-        val storage = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-        return camera == PackageManager.PERMISSION_GRANTED && storage == PackageManager.PERMISSION_GRANTED
+        return camera == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun requestPermissions() {
+    private fun requestCameraPermission() {
         requestPermissions(
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE),
+            arrayOf(Manifest.permission.CAMERA),
             PERMISSION_REQUEST_CODE
         )
     }
@@ -263,10 +288,10 @@ class AddWineFragment : Fragment() {
         grantResults: IntArray
     ) {
         if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
-                selectImage()
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takePhoto()
             } else {
-                Toast.makeText(context, "Permissions denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Camera permission denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -306,8 +331,7 @@ class AddWineFragment : Fragment() {
 
 
     private fun chooseFromGallery() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, REQUEST_GALLERY_PHOTO)
+        pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -316,27 +340,6 @@ class AddWineFragment : Fragment() {
             when (requestCode) {
                 REQUEST_IMAGE_CAPTURE -> {
                     binding.wineImage.setImageURI(photoURI)
-                }
-                REQUEST_GALLERY_PHOTO -> {
-                    val selectedImageUri = data?.data
-                    if (selectedImageUri != null) {
-                        try {
-                            val inputStream = requireActivity().contentResolver.openInputStream(selectedImageUri)
-                            val file = createImageFile()
-                            val outputStream = file.outputStream()
-                            inputStream?.copyTo(outputStream)
-                            inputStream?.close()
-                            outputStream.close()
-                            photoURI = FileProvider.getUriForFile(
-                                requireContext(),
-                                "pl.nataliana.mywine.fileprovider",
-                                file
-                            )
-                            binding.wineImage.setImageURI(photoURI)
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
                 }
             }
         }
@@ -358,7 +361,6 @@ class AddWineFragment : Fragment() {
         const val EXTRA_TYPE = "pl.nataliana.mywine.EXTRA_TYPE"
         const val EXTRA_PHOTO = "pl.nataliana.mywine.EXTRA_PHOTO"
         private const val REQUEST_IMAGE_CAPTURE = 1
-        private const val REQUEST_GALLERY_PHOTO = 2
         private const val PERMISSION_REQUEST_CODE = 101
     }
 }
