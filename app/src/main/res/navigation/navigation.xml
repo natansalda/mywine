@@ -16,7 +16,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/detail_fragment" />
         <action
-            android:id="@+id/action_mainFragent_to_addWineFragment"
+            android:id="@+id/action_mainFragment_to_addWineFragment"
             app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:destination="@id/add_wine_fragment" />
@@ -38,7 +38,7 @@
             app:popUpTo="@+id/main_fragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_detailFragent_to_editWineFragment"
+            android:id="@+id/action_detailFragment_to_editWineFragment"
             app:destination="@id/edit_wine_fragment"
             app:enterAnim="@anim/fragment_open_wine"
             app:exitAnim="@anim/nav_default_exit_anim" />

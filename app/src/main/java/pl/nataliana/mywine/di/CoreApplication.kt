@@ -10,10 +10,12 @@ class CoreApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@CoreApplication)
-            modules(listOf(
-                dbModule,
-                uiModule
-            ))
+            modules(
+                listOf(
+                    dbModule,
+                    uiModule,
+                )
+            )
         }
     }
 }

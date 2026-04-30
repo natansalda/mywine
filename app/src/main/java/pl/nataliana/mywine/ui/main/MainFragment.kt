@@ -104,7 +104,7 @@ class MainFragment : Fragment() {
 
     private fun setupButtonAddWine() {
         view?.findNavController()
-            ?.navigate(MainFragmentDirections.actionMainFragentToAddWineFragment())
+            ?.navigate(MainFragmentDirections.actionMainFragmentToAddWineFragment())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -216,7 +216,7 @@ class MainFragment : Fragment() {
     private fun setPositiveButton(builder: AlertDialog.Builder) {
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             uiScope.launch {
-                async(bgDispatcher) {
+                withContext(bgDispatcher) {
                     // background thread
                     wineViewModel.deleteAllWines()
                 }
