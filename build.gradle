@@ -9,13 +9,13 @@ buildscript {
         recyclerviewSelectionVersion = "1.2.0-alpha01"
         koinVersion = '2.1.6'
         gradleVersion = '8.9.1'
-        navigationVersion = '2.7.6'
-        constrainLayout = '2.1.4'
-        material = '1.11.0'
-        jUnit = '1.1.5'
-        espresso = "3.5.1"
+        navigationVersion = '2.8.5'
+        constrainLayout = '2.2.1'
+        material = '1.12.0'
+        jUnit = '1.2.1'
+        espresso = "3.6.1"
         roomVersion = '2.6.1'
-        coreVersion = '1.12.0'
+        coreVersion = '1.15.0'
     }
 
     repositories {
