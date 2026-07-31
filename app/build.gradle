@@ -11,8 +11,8 @@ android {
         minSdkVersion 22
         targetSdkVersion 36
         compileSdk 36
-        versionCode 8
-        versionName "8"
+        versionCode 9
+        versionName "9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.debug
     }
